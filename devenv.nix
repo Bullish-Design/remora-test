@@ -8,6 +8,7 @@
   packages = [ 
     pkgs.git 
     pkgs.uv
+    pkgs.jq
     ];
 
   # https://devenv.sh/languages/

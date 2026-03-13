@@ -1,0 +1,15 @@
+discovery_paths:
+  - src
+discovery_languages:
+  - python
+swarm_root: .remora
+bundle_root: /home/andrew/Documents/Projects/remora-v2/bundles
+model_base_url: ${REMORA_MODEL_BASE_URL:-http://localhost:8000/v1}
+model_api_key: ${REMORA_MODEL_API_KEY:-}
+model_default: ${REMORA_MODEL:-Qwen/Qwen3-4B}
+bundle_mapping:
+  function: code-agent
+  class: code-agent
+  method: code-agent
+  file: code-agent
+  directory: directory-agent

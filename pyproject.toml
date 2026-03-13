@@ -12,6 +12,7 @@ authors = [
 
 dependencies = [
   "pydantic>=2.12.5",
+  "remora"
 ]
 
 [project.optional-dependencies]
@@ -21,6 +22,10 @@ dev = [
   "mypy>=1.10",
   "ruff>=0.5.0",
 ]
+
+[tool.uv.sources]
+#remora = { path = "../remora", editable = false } # <-- install direct  false }
+remora = { git = "https://github.com/Bullish-Design/remora-v2.git", rev = "main" }
 
 #[project.urls]
 #homepage = "https://github.com/Bullish-Design/template-py"
