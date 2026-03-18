@@ -1,0 +1,7 @@
+nodes=18
+edges=0
+events_before_chat=20
+events_after_chat=30
+chat_status=sent
+chat_node_id=/home/andrew/Documents/Projects/remora-test/src/api/orders.py::create_order
+model_count=1

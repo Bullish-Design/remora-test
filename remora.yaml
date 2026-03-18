@@ -1,15 +1,32 @@
+# Remora v2 configuration for the test workspace
 discovery_paths:
   - src
+
 discovery_languages:
   - python
+
+# Workspace
 swarm_root: .remora
+
+# Bundles
 bundle_root: /home/andrew/Documents/Projects/remora-v2/bundles
-model_base_url: ${REMORA_MODEL_BASE_URL:-http://localhost:8000/v1}
-model_api_key: ${REMORA_MODEL_API_KEY:-}
-model_default: ${REMORA_MODEL:-Qwen/Qwen3-4B}
+
+# Map node types to bundle names
 bundle_mapping:
   function: code-agent
   class: code-agent
   method: code-agent
   file: code-agent
   directory: directory-agent
+
+# LLM settings
+model_base_url: ${REMORA_MODEL_BASE_URL:-http://remora-server:8000/v1}
+model_api_key: ${REMORA_MODEL_API_KEY:-EMPTY}
+model_default: ${REMORA_MODEL:-Qwen/Qwen3-4B-Instruct-2507-FP8}
+
+# Execution limits
+max_concurrency: 4
+max_turns: 8
+timeout_s: 300.0
+max_trigger_depth: 5
+trigger_cooldown_ms: 1000

@@ -1,0 +1,17 @@
+: connected
+
+event: NodeDiscoveredEvent
+data: {"event_type":"NodeDiscoveredEvent","timestamp":1773604909.5171251,"correlation_id":null,"node_id":"/home/andrew/Documents/Projects/remora-test/src/services/fraud.py::risk_score","node_type":"function","file_path":"/home/andrew/Documents/Projects/remora-test/src/services/fraud.py","name":"risk_score"}
+
+event: NodeDiscoveredEvent
+data: {"event_type":"NodeDiscoveredEvent","timestamp":1773604909.527133,"correlation_id":null,"node_id":"/home/andrew/Documents/Projects/remora-test/src/services/fulfillment/allocator.py::choose_warehouse","node_type":"function","file_path":"/home/andrew/Documents/Projects/remora-test/src/services/fulfillment/allocator.py","name":"choose_warehouse"}
+
+event: NodeDiscoveredEvent
+data: {"event_type":"NodeDiscoveredEvent","timestamp":1773604909.5372243,"correlation_id":null,"node_id":"/home/andrew/Documents/Projects/remora-test/src/services/pricing.py::compute_total","node_type":"function","file_path":"/home/andrew/Documents/Projects/remora-test/src/services/pricing.py","name":"compute_total"}
+
+event: NodeDiscoveredEvent
+data: {"event_type":"NodeDiscoveredEvent","timestamp":1773604909.5468292,"correlation_id":null,"node_id":"/home/andrew/Documents/Projects/remora-test/src/services/tax.py::apply_tax","node_type":"function","file_path":"/home/andrew/Documents/Projects/remora-test/src/services/tax.py","name":"apply_tax"}
+
+event: NodeDiscoveredEvent
+data: {"event_type":"NodeDiscoveredEvent","timestamp":1773604909.556354,"correlation_id":null,"node_id":"/home/andrew/Documents/Projects/remora-test/src/utils/money.py::format_usd","node_type":"function","file_path":"/home/andrew/Documents/Projects/remora-test/src/utils/money.py","name":"format_usd"}
+
