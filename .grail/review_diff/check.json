@@ -1,0 +1,14 @@
+{
+  "file": "/run/user/1000/remora-grail-vyyw9vqp/review_diff.pym",
+  "valid": true,
+  "errors": [],
+  "warnings": [],
+  "info": {
+    "externals_count": 3,
+    "inputs_count": 1,
+    "lines_of_code": 39,
+    "monty_features_used": [
+      "f_string"
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "inputs": [
+    {
+      "name": "target_node_id",
+      "type": "str",
+      "required": true,
+      "default": null
+    },
+    {
+      "name": "relationship",
+      "type": "str",
+      "required": false,
+      "default": "related"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "inputs": [
+    {
+      "name": "query",
+      "type": "str",
+      "required": true,
+      "default": null
+    },
+    {
+      "name": "collection",
+      "type": "str",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "top_k",
+      "type": "int",
+      "required": false,
+      "default": 10
+    }
+  ]
+}

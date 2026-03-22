@@ -5,5 +5,5 @@ node_id: str
 async def graph_get_node(target_id: str) -> dict:
     ...
 
-async def write_file(path: str, content: str) -> bool:
+async def write_file(path: str, content: str) -> None:
     ...

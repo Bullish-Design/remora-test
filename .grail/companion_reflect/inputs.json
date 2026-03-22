@@ -1,0 +1,10 @@
+{
+  "inputs": [
+    {
+      "name": "insight",
+      "type": "str",
+      "required": true,
+      "default": null
+    }
+  ]
+}

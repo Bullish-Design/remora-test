@@ -9,5 +9,5 @@ async def event_get_history(target_id: str, limit: int) -> list[dict]:
 async def read_file(path: str) -> str:
     ...
 
-async def write_file(path: str, content: str) -> bool:
+async def write_file(path: str, content: str) -> None:
     ...

@@ -28,7 +28,7 @@
           "default": null
         }
       ],
-      "return_type": "bool",
+      "return_type": "None",
       "docstring": null
     }
   ]

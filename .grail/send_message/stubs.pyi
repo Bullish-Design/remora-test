@@ -3,5 +3,5 @@
 to_node_id: str
 content: str
 
-async def send_message(to_node_id: str, content: str) -> bool:
+async def send_message(to_node_id: str, content: str) -> dict[str, object]:
     ...

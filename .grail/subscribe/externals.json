@@ -18,6 +18,11 @@
           "name": "path_glob",
           "type": "str | None",
           "default": null
+        },
+        {
+          "name": "tags",
+          "type": "list[str] | None",
+          "default": null
         }
       ],
       "return_type": "int",

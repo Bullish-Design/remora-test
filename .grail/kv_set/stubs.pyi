@@ -3,5 +3,5 @@
 key: str
 value: str
 
-async def kv_set(key: str, value: str) -> bool:
+async def kv_set(key: str, value: str) -> None:
     ...

@@ -6,5 +6,5 @@ history_limit: int
 async def event_get_history(target_id: str, limit: int) -> list[dict]:
     ...
 
-async def write_file(path: str, content: str) -> bool:
+async def write_file(path: str, content: str) -> None:
     ...

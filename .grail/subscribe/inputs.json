@@ -17,6 +17,12 @@
       "type": "str",
       "required": false,
       "default": ""
+    },
+    {
+      "name": "tags",
+      "type": "str",
+      "required": false,
+      "default": ""
     }
   ]
 }

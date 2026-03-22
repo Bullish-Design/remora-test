@@ -1,0 +1,32 @@
+{
+  "externals": [
+    {
+      "name": "semantic_search",
+      "async": true,
+      "parameters": [
+        {
+          "name": "query",
+          "type": "str",
+          "default": null
+        },
+        {
+          "name": "collection",
+          "type": "str | None",
+          "default": null
+        },
+        {
+          "name": "top_k",
+          "type": "int",
+          "default": null
+        },
+        {
+          "name": "mode",
+          "type": "str",
+          "default": null
+        }
+      ],
+      "return_type": "list[dict]",
+      "docstring": null
+    }
+  ]
+}

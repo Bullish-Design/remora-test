@@ -3,6 +3,7 @@
 event_types: str
 from_agents: str
 path_glob: str
+tags: str
 
-async def event_subscribe(event_types: list[str] | None, from_agents: list[str] | None, path_glob: str | None) -> int:
+async def event_subscribe(event_types: list[str] | None, from_agents: list[str] | None, path_glob: str | None, tags: list[str] | None) -> int:
     ...

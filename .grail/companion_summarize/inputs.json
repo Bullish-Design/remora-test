@@ -1,0 +1,16 @@
+{
+  "inputs": [
+    {
+      "name": "summary",
+      "type": "str",
+      "required": true,
+      "default": null
+    },
+    {
+      "name": "tags",
+      "type": "str",
+      "required": true,
+      "default": null
+    }
+  ]
+}

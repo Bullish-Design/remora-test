@@ -1,0 +1,22 @@
+{
+  "externals": [
+    {
+      "name": "request_human_input",
+      "async": true,
+      "parameters": [
+        {
+          "name": "question",
+          "type": "str",
+          "default": null
+        },
+        {
+          "name": "options",
+          "type": "list[str] | None",
+          "default": "Constant(value=None)"
+        }
+      ],
+      "return_type": "str",
+      "docstring": null
+    }
+  ]
+}

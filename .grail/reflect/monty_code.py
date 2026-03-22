@@ -4,7 +4,7 @@ history = await event_get_history(node_id, history_limit)
 existing = ''
 try:
     existing = await read_file('notes/reflection.md')
-except Exception:
+except FileNotFoundError:
     existing = ''
 entry = '\n---\nReviewed recent activity.\n'
 entry = entry + f'Events observed: {len(history)}\n'

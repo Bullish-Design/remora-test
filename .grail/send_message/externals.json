@@ -15,7 +15,7 @@
           "default": null
         }
       ],
-      "return_type": "bool",
+      "return_type": "dict[str, object]",
       "docstring": null
     }
   ]
