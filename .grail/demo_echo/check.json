@@ -1,12 +1,12 @@
 {
-  "file": "/run/user/1000/remora-grail-59y7no52/kv_set.pym",
+  "file": "/run/user/1000/remora-grail-pn1vqj73/demo_echo.pym",
   "valid": true,
   "errors": [],
   "warnings": [],
   "info": {
     "externals_count": 1,
-    "inputs_count": 2,
-    "lines_of_code": 14,
+    "inputs_count": 1,
+    "lines_of_code": 10,
     "monty_features_used": [
       "f_string"
     ]
