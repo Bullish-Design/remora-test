@@ -32,6 +32,9 @@ devenv shell -- remora discover --project-root .
 devenv shell -- remora start --project-root . --port 8080 --log-events
 ```
 
+For a full copy/paste walkthrough (including high-impact demo flows), see:
+- `DEMO_SCRIPT.md`
+
 ## API Smoke Verification
 
 With runtime running on `:8080`:
