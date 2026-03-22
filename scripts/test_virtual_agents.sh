@@ -7,7 +7,20 @@ POLL_INTERVAL_S="${POLL_INTERVAL_S:-1}"
 
 before_count="$(curl -sS "$BASE/api/events?limit=500" | jq '[.[] | select(.event_type=="agent_start" and .agent_id=="demo-review-observer")] | length')"
 
-echo "# demo trigger $(date +%s)" >> src/services/pricing.py
+trigger_dir="src/.remora_demo_trigger"
+mkdir -p "$trigger_dir"
+trigger_file="$trigger_dir/trigger_$(date +%s).py"
+
+cleanup() {
+  rm -f "$trigger_file"
+  rmdir "$trigger_dir" 2>/dev/null || true
+}
+trap cleanup EXIT
+
+cat > "$trigger_file" <<'PY'
+def _remora_demo_trigger() -> int:
+    return 1
+PY
 
 after_count="$before_count"
 elapsed=0
