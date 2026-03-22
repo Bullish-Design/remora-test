@@ -5,6 +5,13 @@ BASE="${BASE:-http://127.0.0.1:8080}"
 TIMEOUT_S="${TIMEOUT_S:-20}"
 POLL_INTERVAL_S="${POLL_INTERVAL_S:-1}"
 
+virtual_nodes_json="$(curl -sS "$BASE/api/nodes" | jq '[.[] | select(.node_type=="virtual") | .node_id]')"
+if ! echo "$virtual_nodes_json" | jq -e '. | index("demo-review-observer")' >/dev/null; then
+  echo "Virtual node demo-review-observer not found. Restart remora with a fresh .remora state." >&2
+  echo "Detected virtual nodes: $virtual_nodes_json" >&2
+  exit 1
+fi
+
 before_count="$(curl -sS "$BASE/api/events?limit=500" | jq '[.[] | select(.event_type=="agent_start" and .agent_id=="demo-review-observer")] | length')"
 
 trigger_dir="src/.remora_demo_trigger"
