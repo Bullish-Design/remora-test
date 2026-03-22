@@ -137,7 +137,7 @@ From `/home/andrew/Documents/Projects/remora-test`:
 
 ```bash
 git checkout -b chore/remora-demo-v2-refactor
-mkdir -p .scratch/projects/03-remora-v2-demo-review-2026-03-22/artifacts
+mkdir -p .scratch/projects/03-remora-v2-demo-review/artifacts
 ```
 
 Capture baseline diagnostics (before edits):
@@ -146,7 +146,7 @@ Capture baseline diagnostics (before edits):
 devenv shell -- uv sync --extra dev
 
 devenv shell -- remora discover --project-root . \
-  | tee .scratch/projects/03-remora-v2-demo-review-2026-03-22/artifacts/baseline_discover.txt
+  | tee .scratch/projects/03-remora-v2-demo-review/artifacts/baseline_discover.txt
 ```
 
 If runtime starts, capture endpoint snapshots:
@@ -157,11 +157,11 @@ devenv shell -- remora start --project-root . --port 8080 --log-events
 
 # terminal B
 curl -sS http://127.0.0.1:8080/api/health \
-  | tee .scratch/projects/03-remora-v2-demo-review-2026-03-22/artifacts/baseline_health.json
+  | tee .scratch/projects/03-remora-v2-demo-review/artifacts/baseline_health.json
 curl -sS http://127.0.0.1:8080/api/nodes \
-  | tee .scratch/projects/03-remora-v2-demo-review-2026-03-22/artifacts/baseline_nodes.json
+  | tee .scratch/projects/03-remora-v2-demo-review/artifacts/baseline_nodes.json
 curl -sS http://127.0.0.1:8080/api/events?limit=20 \
-  | tee .scratch/projects/03-remora-v2-demo-review-2026-03-22/artifacts/baseline_events.json
+  | tee .scratch/projects/03-remora-v2-demo-review/artifacts/baseline_events.json
 ```
 
 ### 4.3 Mandatory Reference Inputs (Read Before Editing)
