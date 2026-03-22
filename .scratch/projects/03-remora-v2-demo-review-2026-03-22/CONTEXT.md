@@ -1,17 +1,20 @@
 # CONTEXT
 
-Project complete as of 2026-03-22.
+Project updated on 2026-03-22 with a second major deliverable.
 
-Work completed:
-- Reviewed remora-v2 docs and source to establish expected capability baseline.
-- Reviewed remora-test docs/config/scripts/source to evaluate demonstration coverage and quality.
-- Produced detailed report at repository root: `DEMO_REVIEW.md`.
-- Recorded supporting notes in `REVIEW_NOTES.md`.
+Deliverables now available in this project folder:
+1. `DEMO_REVIEW.md` (evaluation report)
+2. `REMORA_DEMO_REFACTORING_GUIDE.md` (implementation playbook for intern)
+3. `REVIEW_NOTES.md` (supporting analysis notes)
 
-Important conclusions captured in report:
-- Demo is currently a narrow smoke test rather than a representative remora-v2 showcase.
-- Config and metadata drift are high-priority credibility issues.
-- Most advanced remora-v2 features are not demonstrated yet.
+What the new guide provides:
+- phase-by-phase migration steps from legacy demo integration to current remora-v2 contracts
+- exact config migration templates
+- local bundle/tool introduction plan
+- virtual-agent and proposal workflow demonstration plan
+- optional search/index extension
+- automation, validation matrix, troubleshooting, and commit plan
 
 If resumed later:
-- Use `DEMO_REVIEW.md` Priority 0 items first (config alignment, pyproject cleanup, README rewrite), then implement Priority 1/2 improvements.
+- execute Phase 1 of `REMORA_DEMO_REFACTORING_GUIDE.md` first
+- then work down the checklist in Section 15 and validation matrix in Section 13
