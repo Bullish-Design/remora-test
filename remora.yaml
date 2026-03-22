@@ -44,7 +44,7 @@ workspace_ignore_patterns:
 
 virtual_agents:
   - id: "demo-review-observer"
-    role: "code-agent"
+    role: "demo-virtual-observer"
     subscriptions:
       - event_types: ["node_changed", "node_discovered"]
 
