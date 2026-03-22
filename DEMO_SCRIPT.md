@@ -19,7 +19,7 @@ devenv shell -- uv sync --extra dev
 Quick sanity check:
 
 ```bash
-.devenv/state/venv/bin/remora discover --project-root .
+remora discover --project-root .
 ```
 
 Expected: `Discovered <N> nodes` and no config-key validation errors.
@@ -28,7 +28,7 @@ Expected: `Discovered <N> nodes` and no config-key validation errors.
 
 ```bash
 cd /home/andrew/Documents/Projects/remora-test
-.devenv/state/venv/bin/remora start --project-root . --port 8080 --log-events
+remora start --project-root . --port 8080 --log-events
 ```
 
 Leave this terminal running.
