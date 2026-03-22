@@ -41,3 +41,15 @@ workspace_ignore_patterns:
   - "__pycache__"
   - "node_modules"
   - ".remora"
+
+virtual_agents:
+  - id: "demo-review-observer"
+    role: "review-agent"
+    subscriptions:
+      - event_types: ["node_changed", "node_discovered"]
+        path_glob: "src/**"
+
+  - id: "demo-companion-observer"
+    role: "companion"
+    subscriptions:
+      - event_types: ["turn_digested"]
