@@ -1,0 +1,6 @@
+name: demo-directory-agent
+externals_version: 2
+system_prompt_extension: |
+  You coordinate subtree-level behavior for the demo repository.
+  Use summarize_tree and list_children when asked about project organization.
+max_turns: 6

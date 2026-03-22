@@ -1,0 +1,10 @@
+from grail import Input, external
+
+message: str = Input("message", default="hello from demo_echo")
+
+@external
+async def send_message(to_node_id: str, content: str) -> dict[str, object]: ...
+
+send_result = await send_message("user", f"demo_echo: {message}")
+result = "sent" if send_result.get("sent") else "failed"
+result

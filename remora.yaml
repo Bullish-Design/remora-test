@@ -19,11 +19,11 @@ bundle_search_paths:
   - "@default"
 
 bundle_overlays:
-  function: "code-agent"
-  class: "code-agent"
-  method: "code-agent"
-  file: "code-agent"
-  directory: "directory-agent"
+  function: "demo-code-agent"
+  class: "demo-code-agent"
+  method: "demo-code-agent"
+  file: "demo-code-agent"
+  directory: "demo-directory-agent"
 
 model_base_url: "${REMORA_MODEL_BASE_URL:-http://remora-server:8000/v1}"
 model_api_key: "${REMORA_MODEL_API_KEY:-EMPTY}"
