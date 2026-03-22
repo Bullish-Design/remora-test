@@ -137,6 +137,15 @@ With optional search included:
 RUN_SEARCH=1 scripts/run_demo_checks.sh
 ```
 
+## 8.1 UI Dependency Check (If Graph UI Is Blank)
+
+```bash
+scripts/test_ui_dependencies.sh
+```
+
+If `unpkg` is unreachable, browser UI can appear blank while APIs still work.
+In that case, continue with script/API-based demo flows.
+
 ## 9. Reset Notes (If Needed)
 
 `test_virtual_agents.sh` appends a comment line to `src/services/pricing.py`.

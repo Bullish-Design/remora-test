@@ -47,7 +47,7 @@ virtual_agents:
     role: "companion"
     subscriptions:
       - event_types: ["node_changed", "node_discovered"]
-        path_glob: "src/**"
+        path_glob: "**/src/**"
 
   - id: "demo-companion-observer"
     role: "companion"

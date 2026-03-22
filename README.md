@@ -82,6 +82,12 @@ Full check sequence:
 scripts/run_demo_checks.sh
 ```
 
+UI dependency check:
+
+```bash
+scripts/test_ui_dependencies.sh
+```
+
 ## Troubleshooting
 
 `remora discover` fails with unknown config keys:
@@ -96,3 +102,9 @@ No proposals appear:
 
 Search returns 503:
 - Search is optional; start embeddy and set `REMORA_EMBEDDY_URL` if needed.
+
+Blank web UI at `/`:
+- The current remora web UI loads graph libraries from `unpkg.com`.
+- In network-restricted environments, the page can appear blank if CDN scripts cannot load.
+- Run `scripts/test_ui_dependencies.sh` to confirm.
+- Use API/script flows (`scripts/test_demo_runtime.sh`, `scripts/test_virtual_agents.sh`, `scripts/test_proposal_flow.sh`) as the reliable offline path.
