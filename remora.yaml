@@ -44,7 +44,7 @@ workspace_ignore_patterns:
 
 virtual_agents:
   - id: "demo-review-observer"
-    role: "review-agent"
+    role: "companion"
     subscriptions:
       - event_types: ["node_changed", "node_discovered"]
         path_glob: "src/**"
