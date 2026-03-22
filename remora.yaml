@@ -53,3 +53,10 @@ virtual_agents:
     role: "companion"
     subscriptions:
       - event_types: ["turn_digested"]
+
+search:
+  enabled: true
+  mode: "remote"
+  embeddy_url: "${REMORA_EMBEDDY_URL:-http://localhost:8585}"
+  timeout: 30.0
+  default_collection: "code"
