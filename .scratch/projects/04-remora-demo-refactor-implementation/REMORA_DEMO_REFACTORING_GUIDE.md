@@ -4,6 +4,52 @@ Date: 2026-03-22
 Target repo: `/home/andrew/Documents/Projects/remora-test`  
 Reference library: `/home/andrew/Documents/Projects/remora-v2`
 
+## Implementation Status Update (2026-03-22)
+
+This guide was implemented end-to-end on `main`, with adjustments required by real runtime behavior in this environment.
+
+### Completed
+
+- Phase 1 (`remora.yaml` schema migration) completed.
+- Phase 2 (`pyproject.toml` cleanup + test scaffolding) completed.
+- Phase 3 (README + architecture docs rewrite) completed.
+- Phase 4 (local bundles + custom tools) completed.
+- Phase 5 (virtual agents + verification script) completed, with role/prompt hardening to avoid runtime tool loops.
+- Phase 6 (proposal flow script) completed.
+- Phase 7 (optional search config + script) completed.
+- Phase 8 (runtime checks + integration contract test) completed.
+- Additional offline UI support implemented:
+  - local vendor assets in `ui/vendor/`
+  - installer `scripts/install_local_ui_assets.sh`
+  - fallback graph rendering (nodes, edges, labels, pan/zoom) for no-CDN environments.
+
+### Adaptations Made vs Original Plan
+
+1. Virtual observer role changed from the original `review-agent`/`companion` flow to a dedicated local role:
+- `demo-review-observer` now uses `demo-virtual-observer`.
+- Reason: default upstream bundle tool scripts triggered repeated Grail type-check failures in this environment.
+
+2. Virtual observer behavior constrained:
+- No autonomous tool calls in reactive turns.
+- Reason: avoids non-demo-critical tool schema/type churn and keeps trigger verification stable.
+
+3. Offline UI fallback added:
+- Reason: default remora web UI depends on CDN scripts (`unpkg`), which were unreachable in this environment.
+
+### Current Known Caveats
+
+- Search warning (`embeddy` missing) is expected unless `remora[search]` and embeddy backend are installed.
+- The offline graph renderer is intentionally MVP-level, focused on visibility/interactivity reliability (not full Sigma parity).
+- Runtime can generate many `.grail/*` working files; these are environment/runtime artifacts and not part of the migration contract.
+
+### Current Acceptance Snapshot
+
+- Runtime starts and discovers nodes successfully.
+- API routes used by demo scripts respond correctly.
+- Virtual agent trigger script works with non-mutating temp-file trigger.
+- Proposal demo script is present and executable.
+- Core demo documentation and onboarding flow are in place.
+
 ## Table of Contents
 
 1. Purpose and Success Criteria
