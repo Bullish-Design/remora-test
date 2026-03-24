@@ -23,7 +23,9 @@ dev = [
 ]
 
 [tool.uv.sources]
-remora = { path = "../remora-v2", editable = false }
+#remora = { path = "../remora-v2", editable = false }
+remora = { git = "https://github.com/Bullish-Design/remora-v2.git", rev = "main" }
+
 
 [build-system]
 requires = ["hatchling>=1.18"]
