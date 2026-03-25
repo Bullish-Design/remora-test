@@ -40,4 +40,8 @@ Project: `06-remora-v2-demo-integration-ideas`
 
 ## Pending
 
-- [ ] Commit and push finalized implementation changes from branch `feat/integration-showcase-upgrades`.
+- [ ] None.
+
+## Post-Guide Follow-Up (2026-03-25)
+
+- [x] Additional LSP bridge determinism hardening committed and pushed on `feat/integration-showcase-upgrades` (`42de76a`).

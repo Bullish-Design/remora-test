@@ -7,6 +7,7 @@ COLLECTION="${COLLECTION:-code}"
 TOP_K="${TOP_K:-5}"
 MODE="${MODE:-hybrid}"
 REQUIRE_SEARCH="${REQUIRE_SEARCH:-0}"
+MAX_INDEX_ERRORS="${MAX_INDEX_ERRORS:-}"
 
 workdir="$(mktemp -d)"
 health_json="$workdir/health.json"
@@ -39,6 +40,38 @@ if ! devenv shell -- remora index --project-root . >"$index_log" 2>&1; then
   fi
   echo "remora index failed. Last output:" >&2
   tail -n 40 "$index_log" >&2 || true
+  exit 1
+fi
+
+if [ -z "$MAX_INDEX_ERRORS" ]; then
+  if [ "$REQUIRE_SEARCH" = "1" ]; then
+    MAX_INDEX_ERRORS=0
+  else
+    MAX_INDEX_ERRORS=999999
+  fi
+fi
+
+index_summary_line="$(rg -N "Done: .* errors" "$index_log" | tail -n 1 || true)"
+index_error_count=""
+if [ -n "$index_summary_line" ]; then
+  index_error_count="$(echo "$index_summary_line" | sed -E 's/.* ([0-9]+) errors.*/\1/' || true)"
+fi
+
+if [ -z "$index_error_count" ] || ! [[ "$index_error_count" =~ ^[0-9]+$ ]]; then
+  if [ "$REQUIRE_SEARCH" = "1" ]; then
+    echo "Unable to parse index error count from remora index output in strict mode." >&2
+    echo "Index log tail:" >&2
+    tail -n 40 "$index_log" >&2 || true
+    exit 1
+  fi
+  index_error_count=0
+fi
+
+if [ "$index_error_count" -gt "$MAX_INDEX_ERRORS" ]; then
+  echo "Indexing reported too many errors: $index_error_count (max allowed: $MAX_INDEX_ERRORS)" >&2
+  echo "Index summary: ${index_summary_line:-<missing>}" >&2
+  echo "Top index error lines:" >&2
+  rg -n -i "error|failed|exception" "$index_log" | head -n 20 >&2 || true
   exit 1
 fi
 

@@ -53,9 +53,16 @@ print(time.time())
 PY
 )"
 chat_payload="$(jq -nc --arg node "$TARGET_NODE" --arg message "rewrite_to_magic accept_probe_$(date +%s)" '{node_id:$node, message:$message}')"
-curl -fsS -X POST "$BASE/api/chat" \
+chat_response="$(curl -fsS -X POST "$BASE/api/chat" \
   -H "Content-Type: application/json" \
-  -d "$chat_payload" | jq .
+  -d "$chat_payload")"
+echo "$chat_response" | jq .
+
+if [ "$(echo "$chat_response" | jq -r '.status // empty')" != "sent" ]; then
+  echo "Chat send failed for proposal-accept trigger." >&2
+  echo "$chat_response" | jq . >&2 || true
+  exit 1
+fi
 
 proposal_event=""
 for _ in $(seq 1 "$TIMEOUT_S"); do
