@@ -39,6 +39,12 @@ if [ "$exit_code" -eq 124 ]; then
   exit 0
 fi
 
+if [ "$exit_code" -eq 0 ] && rg -qi "Starting standalone LSP server on stdin/stdout" "$lsp_log"; then
+  echo "LSP server startup appears healthy (server started and exited cleanly on stdin EOF)."
+  echo "test_lsp_startup.sh passed"
+  exit 0
+fi
+
 if rg -qi "LSP support requires pygls" "$lsp_log"; then
   echo "Detected missing LSP dependency (pygls)." >&2
   echo "Install with: pip install remora[lsp]" >&2
