@@ -1,0 +1,22 @@
+{
+  "externals": [
+    {
+      "name": "send_message",
+      "async": true,
+      "parameters": [
+        {
+          "name": "to_agent",
+          "type": "str",
+          "default": null
+        },
+        {
+          "name": "content",
+          "type": "str",
+          "default": null
+        }
+      ],
+      "return_type": "dict[str, object]",
+      "docstring": null
+    }
+  ]
+}
