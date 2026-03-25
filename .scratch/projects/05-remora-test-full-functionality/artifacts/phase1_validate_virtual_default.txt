@@ -1,0 +1,10 @@
+review_start: before=20 after=21
+review_turn_complete: before=68 after=69
+review_model_response: before=68 after=69
+review_output: before=19 after=19
+review_tool_activity: before=49 after=50
+companion_start: before=0 after=0
+companion_turn_complete: before=0 after=0
+companion_tool_activity: before=0 after=0
+turn_digested: before=0 after=0
+test_virtual_agents.sh passed

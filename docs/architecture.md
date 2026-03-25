@@ -21,14 +21,19 @@ This makes local demo bundles first-class and avoids relying only on shipped def
 ## Virtual agents
 
 Two virtual agents are configured:
-- `demo-review-observer` (`review-agent`): subscribes to `node_changed` and `node_discovered` events for `src/**`
+- `demo-review-observer` (`review-agent`): subscribes to `node_changed` and `node_discovered` events
 - `demo-companion-observer` (`companion`): subscribes to `turn_digested`
 
-They appear as `node_type == "virtual"` nodes and provide reactive, cross-cutting behavior.
+Full-mode virtual behavior is now the default profile in `remora.yaml`.
+Constrained fallback remains available in `remora.constrained.yaml` for environments that need reduced observer behavior.
+Both virtual agents appear as `node_type == "virtual"` nodes.
+Companion checks are opt-in in local scripts because some runtime builds do not emit `turn_digested`.
 
 ## Validation scripts
 
 - `scripts/test_demo_runtime.sh`: basic API and chat contract checks
-- `scripts/test_virtual_agents.sh`: verifies observer activity increments on source change
+- `scripts/test_virtual_agents.sh`: validates review observer behavior from event deltas; companion can be enforced with `REQUIRE_COMPANION=1`
 - `scripts/test_proposal_flow.sh`: triggers and validates proposal lifecycle
-- `scripts/run_demo_checks.sh`: orchestrates all checks (plus optional search)
+- `scripts/test_search.sh`: validates semantic search/index path (required in full check runner)
+- `scripts/test_lsp_startup.sh`: validates LSP startup/dependency diagnostics
+- `scripts/run_demo_checks.sh`: orchestrates full check sequence (runtime + virtual + proposal + search)

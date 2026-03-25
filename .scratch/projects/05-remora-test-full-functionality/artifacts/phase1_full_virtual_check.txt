@@ -1,0 +1,190 @@
+review_start: before=35 after=35
+review_turn_complete: before=34 after=34
+review_model_response: before=34 after=34
+review_output: before=34 after=34
+review_tool_activity: before=0 after=0
+companion_start: before=0 after=0
+companion_turn_complete: before=0 after=0
+companion_tool_activity: before=0 after=0
+turn_digested: before=0 after=0
+Review observer behavior check failed within 20s.
+Expected: start + model_response + turn_complete growth, plus output/tool activity evidence.
+Recent review observer events:
+[
+  {
+    "event_type": "agent_complete",
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "result_summary": "Node demo-review-observer discovered and acknowledged.",
+      "full_response": "Node demo-review-observer discovered and acknowledged.",
+      "user_message": "# Node: demo-review-observer\nType: virtual | File: \nRole: demo-virtual-observer\n\n## Source Code\n```\n\n```\n\n## Trigger\nEvent: node_discovered\n\n\n\n"
+    }
+  },
+  {
+    "event_type": "turn_complete",
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "turn": 1,
+      "tool_calls_count": 0,
+      "errors_count": 0
+    }
+  },
+  {
+    "event_type": "model_response",
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "response_preview": "Node demo-review-observer discovered and acknowledged.",
+      "duration_ms": 340,
+      "tool_calls_count": 0,
+      "turn": 1
+    }
+  },
+  {
+    "event_type": "model_request",
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "model": "Qwen/Qwen3-4B-Instruct-2507-FP8",
+      "tool_count": 16,
+      "turn": 1
+    }
+  },
+  {
+    "event_type": "agent_start",
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "node_name": "demo-review-observer"
+    }
+  },
+  {
+    "event_type": "agent_complete",
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "result_summary": "Node demo-review-observer discovered and acknowledged.",
+      "full_response": "Node demo-review-observer discovered and acknowledged.",
+      "user_message": "# Node: demo-review-observer\nType: virtual | File: \nRole: demo-virtual-observer\n\n## Source Code\n```\n\n```\n\n## Trigger\nEvent: node_discovered\n\n\n\n"
+    }
+  },
+  {
+    "event_type": "turn_complete",
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "turn": 1,
+      "tool_calls_count": 0,
+      "errors_count": 0
+    }
+  },
+  {
+    "event_type": "model_response",
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "response_preview": "Node demo-review-observer discovered and acknowledged.",
+      "duration_ms": 1483,
+      "tool_calls_count": 0,
+      "turn": 1
+    }
+  },
+  {
+    "event_type": "model_request",
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "model": "Qwen/Qwen3-4B-Instruct-2507-FP8",
+      "tool_count": 16,
+      "turn": 1
+    }
+  },
+  {
+    "event_type": "agent_start",
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "node_name": "demo-review-observer"
+    }
+  },
+  {
+    "event_type": "agent_complete",
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "result_summary": "Node demo-review-observer discovered and acknowledged.",
+      "full_response": "Node demo-review-observer discovered and acknowledged.",
+      "user_message": "# Node: demo-review-observer\nType: virtual | File: \nRole: demo-virtual-observer\n\n## Source Code\n```\n\n```\n\n## Trigger\nEvent: node_discovered\n\n\n\n"
+    }
+  },
+  {
+    "event_type": "turn_complete",
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "turn": 1,
+      "tool_calls_count": 0,
+      "errors_count": 0
+    }
+  },
+  {
+    "event_type": "model_response",
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "response_preview": "Node demo-review-observer discovered and acknowledged.",
+      "duration_ms": 218,
+      "tool_calls_count": 0,
+      "turn": 1
+    }
+  },
+  {
+    "event_type": "model_request",
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "model": "Qwen/Qwen3-4B-Instruct-2507-FP8",
+      "tool_count": 16,
+      "turn": 1
+    }
+  },
+  {
+    "event_type": "agent_start",
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "node_name": "demo-review-observer"
+    }
+  },
+  {
+    "event_type": "agent_complete",
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "result_summary": "Node demo-review-observer discovered and acknowledged.",
+      "full_response": "Node demo-review-observer discovered and acknowledged.",
+      "user_message": "# Node: demo-review-observer\nType: virtual | File: \nRole: demo-virtual-observer\n\n## Source Code\n```\n\n```\n\n## Trigger\nEvent: node_discovered\n\n\n\n"
+    }
+  },
+  {
+    "event_type": "turn_complete",
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "turn": 1,
+      "tool_calls_count": 0,
+      "errors_count": 0
+    }
+  },
+  {
+    "event_type": "model_response",
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "response_preview": "Node demo-review-observer discovered and acknowledged.",
+      "duration_ms": 1555,
+      "tool_calls_count": 0,
+      "turn": 1
+    }
+  },
+  {
+    "event_type": "model_request",
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "model": "Qwen/Qwen3-4B-Instruct-2507-FP8",
+      "tool_count": 16,
+      "turn": 1
+    }
+  },
+  {
+    "event_type": "agent_start",
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "node_name": "demo-review-observer"
+    }
+  }
+]

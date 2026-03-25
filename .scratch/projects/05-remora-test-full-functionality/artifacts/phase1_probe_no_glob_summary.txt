@@ -1,0 +1,124 @@
+before_start=1 after_start=2
+[
+  {
+    "event_type": "model_request",
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "model": "Qwen/Qwen3-4B-Instruct-2507-FP8",
+      "tool_count": 19,
+      "turn": 4
+    }
+  },
+  {
+    "event_type": "turn_complete",
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "turn": 3,
+      "tool_calls_count": 1,
+      "errors_count": 0,
+      "error_summary": ""
+    }
+  },
+  {
+    "event_type": "remora_tool_result",
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "tool_name": "query_agents",
+      "is_error": false,
+      "error_class": "",
+      "error_reason": "",
+      "duration_ms": 40,
+      "output_preview": "[{'node_id': 'demo-companion-observer', 'node_type': 'virtual', 'name': 'demo-companion-observer', '",
+      "turn": 3
+    }
+  },
+  {
+    "event_type": "remora_tool_call",
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "tool_name": "query_agents",
+      "arguments_summary": "{'node_type': 'virtual'}",
+      "turn": 3
+    }
+  },
+  {
+    "event_type": "model_response",
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "response_preview": "<tool_call>\n{\"name\": \"query_agents\", \"arguments\": {\"node_type\": \"virtual\"}}\n</tool_call>",
+      "duration_ms": 538,
+      "tool_calls_count": 0,
+      "turn": 3
+    }
+  },
+  {
+    "event_type": "model_request",
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "model": "Qwen/Qwen3-4B-Instruct-2507-FP8",
+      "tool_count": 19,
+      "turn": 3
+    }
+  },
+  {
+    "event_type": "turn_complete",
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "turn": 2,
+      "tool_calls_count": 1,
+      "errors_count": 0,
+      "error_summary": ""
+    }
+  },
+  {
+    "event_type": "remora_tool_result",
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "tool_name": "query_agents",
+      "is_error": true,
+      "error_class": "ValueError",
+      "error_reason": "Tool 'query_agents' failed: ValueError: ValueError: Invalid node_type 'review-agent'. Expected one o",
+      "duration_ms": 47,
+      "output_preview": "Tool 'query_agents' failed: ValueError: ValueError: Invalid node_type 'review-agent'. Expected one o",
+      "turn": 2
+    }
+  },
+  {
+    "event_type": "remora_tool_call",
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "tool_name": "query_agents",
+      "arguments_summary": "{'node_type': 'review-agent'}",
+      "turn": 2
+    }
+  },
+  {
+    "event_type": "model_response",
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "response_preview": "<tool_call>\n{\"name\": \"query_agents\", \"arguments\": {\"node_type\": \"review-agent\"}}\n</tool_call>",
+      "duration_ms": 541,
+      "tool_calls_count": 0,
+      "turn": 2
+    }
+  },
+  {
+    "event_type": "model_request",
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "model": "Qwen/Qwen3-4B-Instruct-2507-FP8",
+      "tool_count": 19,
+      "turn": 2
+    }
+  },
+  {
+    "event_type": "turn_complete",
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "turn": 1,
+      "tool_calls_count": 1,
+      "errors_count": 0,
+      "error_summary": ""
+    }
+  }
+]

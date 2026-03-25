@@ -1,5 +1,5 @@
 [project]
-name = "remora-test-demo"
+name = "remora-test"
 version = "0.1.0"
 description = "Demonstration repository for remora-v2 runtime capabilities."
 readme = "README.md"
@@ -23,8 +23,8 @@ dev = [
 ]
 
 [tool.uv.sources]
-#remora = { path = "../remora-v2", editable = false }
-remora = { git = "https://github.com/Bullish-Design/remora-v2.git", rev = "main" }
+remora = { path = "../remora-v2", editable = false }
+#remora = { git = "https://github.com/Bullish-Design/remora-v2.git", rev = "main" }
 
 
 [build-system]
@@ -47,6 +47,9 @@ include = [
 [tool.pytest.ini_options]
 addopts = "-q --cov=src --cov-report=term-missing"
 testpaths = ["tests"]
+markers = [
+  "live: tests that require a running remora runtime and optional external services",
+]
 
 [tool.mypy]
 python_version = "3.13"

@@ -1,0 +1,12 @@
+Discovered 11 nodes
+function /home/andrew/Documents/Projects/remora-test/src/api/orders.py::create_order
+class    /home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderRequest
+class    /home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderRequest.OrderRequest
+class    /home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderSummary
+class    /home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderSummary.OrderSummary
+function /home/andrew/Documents/Projects/remora-test/src/services/discounts.py::discount_for_tier
+function /home/andrew/Documents/Projects/remora-test/src/services/fraud.py::risk_score
+function /home/andrew/Documents/Projects/remora-test/src/services/fulfillment/allocator.py::choose_warehouse
+function /home/andrew/Documents/Projects/remora-test/src/services/pricing.py::compute_total
+function /home/andrew/Documents/Projects/remora-test/src/services/tax.py::apply_tax
+function /home/andrew/Documents/Projects/remora-test/src/utils/money.py::format_usd

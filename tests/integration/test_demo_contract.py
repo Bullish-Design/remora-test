@@ -17,6 +17,7 @@ def test_required_paths_exist() -> None:
         Path("scripts/test_virtual_agents.sh"),
         Path("scripts/test_proposal_flow.sh"),
         Path("scripts/run_demo_checks.sh"),
+        Path("scripts/test_lsp_startup.sh"),
     ]
     missing = [str(path) for path in required if not path.exists()]
     assert not missing, f"Missing required demo paths: {missing}"
@@ -29,6 +30,7 @@ def test_required_scripts_executable() -> None:
         Path("scripts/test_proposal_flow.sh"),
         Path("scripts/run_demo_checks.sh"),
         Path("scripts/test_search.sh"),
+        Path("scripts/test_lsp_startup.sh"),
     ]:
         assert script.exists(), f"Missing script: {script}"
         assert os.access(script, os.X_OK), f"Script not executable: {script}"

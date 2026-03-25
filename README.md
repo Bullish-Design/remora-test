@@ -8,7 +8,7 @@ This repository demonstrates current `remora-v2` runtime capabilities against a 
 - local bundle/tool overrides
 - virtual agent reactive workflows
 - proposal (human-in-the-loop) review flow
-- optional semantic search/index flow
+- semantic search/index flow (required by full demo checks)
 
 ## Prerequisites
 
@@ -17,12 +17,13 @@ This repository demonstrates current `remora-v2` runtime capabilities against a 
 - `jq`
 - local `remora-v2` checkout at `../remora-v2`
 - optional model endpoint (default: `http://remora-server:8000/v1`)
+- embeddy backend for semantic search (required for full check runner)
 
 Environment variables (optional):
 - `REMORA_MODEL_BASE_URL`
 - `REMORA_MODEL_API_KEY`
 - `REMORA_MODEL`
-- `REMORA_EMBEDDY_URL` (for optional search demo)
+- `REMORA_EMBEDDY_URL` (required for full check runner)
 
 ## Quick Start
 
@@ -64,16 +65,34 @@ Virtual agents:
 scripts/test_virtual_agents.sh
 ```
 
+Companion enforcement is opt-in:
+
+```bash
+REQUIRE_COMPANION=1 scripts/test_virtual_agents.sh
+```
+
 Proposal flow:
 
 ```bash
 scripts/test_proposal_flow.sh
 ```
 
-Optional search/index:
+Search/index:
 
 ```bash
-RUN_SEARCH=1 scripts/run_demo_checks.sh
+scripts/test_search.sh
+```
+
+LSP startup check:
+
+```bash
+scripts/test_lsp_startup.sh
+```
+
+Constrained fallback profile (if full-mode virtual behavior is unstable in your environment):
+
+```bash
+devenv shell -- remora start --project-root . --config remora.constrained.yaml --port 8080 --log-events
 ```
 
 Full check sequence:
@@ -101,7 +120,18 @@ No proposals appear:
 - Check `/api/events` for tool call failures.
 
 Search returns 503:
-- Search is optional; start embeddy and set `REMORA_EMBEDDY_URL` if needed.
+- Full demo checks require search availability.
+- Install `remora[search]`, start embeddy, and set `REMORA_EMBEDDY_URL`.
+
+LSP startup check fails:
+- Ensure `.remora/remora.db` exists by running remora runtime at least once.
+- If output mentions `LSP support requires pygls`, install LSP extras (`remora[lsp]`).
+
+Virtual companion checks fail:
+- Companion behavior depends on `turn_digested` event emission from runtime.
+- By default, demo checks enforce review observer behavior and keep companion optional.
+- To enforce companion behavior explicitly, run `REQUIRE_COMPANION=1 scripts/test_virtual_agents.sh`.
+- If your environment cannot support full-mode virtual flow yet, use `--config remora.constrained.yaml` as a temporary fallback.
 
 Blank web UI at `/`:
 - The current remora web UI loads graph libraries from `unpkg.com`.

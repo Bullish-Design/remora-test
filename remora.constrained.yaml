@@ -1,3 +1,5 @@
+# Constrained fallback profile for environments where full virtual-agent behavior is unstable.
+# Use with: remora start --project-root . --config remora.constrained.yaml --port 8080 --log-events
 project_path: "."
 discovery_paths:
   - "src/"
@@ -44,7 +46,7 @@ workspace_ignore_patterns:
 
 virtual_agents:
   - id: "demo-review-observer"
-    role: "review-agent"
+    role: "demo-virtual-observer"
     subscriptions:
       - event_types: ["node_changed", "node_discovered"]
 

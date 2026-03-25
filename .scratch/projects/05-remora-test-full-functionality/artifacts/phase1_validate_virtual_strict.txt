@@ -1,0 +1,15 @@
+review_start: before=21 after=21
+review_turn_complete: before=69 after=72
+review_model_response: before=69 after=72
+review_output: before=18 after=18
+review_tool_activity: before=51 after=55
+companion_start: before=0 after=0
+companion_turn_complete: before=0 after=0
+companion_tool_activity: before=0 after=0
+turn_digested: before=0 after=0
+Companion observer behavior check failed within 20s.
+Expected: companion turn_complete growth and digest/tool evidence.
+Note: if no turn_digested events are emitted by runtime, companion may never trigger.
+Set REQUIRE_COMPANION=0 to run review-only mode (default).
+Recent companion-related events:
+[]

@@ -81,8 +81,15 @@ scripts/test_virtual_agents.sh
 ```
 
 Expected:
-- output like `before=X after=Y`
-- `after` is greater than `before`
+- review observer activity increases (`review_model_response`, `review_turn_complete`, and output/tool evidence)
+- companion counters can increase (`companion_start`, `companion_turn_complete`) when `turn_digested` flow is active
+- script exits with `test_virtual_agents.sh passed`
+
+Optional strict companion validation:
+
+```bash
+REQUIRE_COMPANION=1 scripts/test_virtual_agents.sh
+```
 
 Optional direct proof:
 
@@ -113,7 +120,7 @@ Expected:
 - diff endpoint returns content
 - reject call returns status `rejected`
 
-## 7. Optional WOW #4: Search/Index Demo
+## 7. WOW #4: Search/Index Demo
 
 Requires embeddy backend available at `REMORA_EMBEDDY_URL`.
 
@@ -121,9 +128,31 @@ Requires embeddy backend available at `REMORA_EMBEDDY_URL`.
 scripts/test_search.sh
 ```
 
-If unavailable, this may fail with 503; that is environment-related, not a core demo failure.
+If unavailable, this fails with 503 and full demo checks should be considered blocked until search is configured.
 
-## 8. One-Command Demo Check Runner
+## 8. WOW #5: LSP Startup Path
+
+Run standalone LSP startup check:
+
+```bash
+scripts/test_lsp_startup.sh
+```
+
+If `.remora/remora.db` is missing, start runtime once first:
+
+```bash
+remora start --project-root . --port 8080 --log-events
+```
+
+If missing `pygls` is reported, install remora LSP extras (`remora[lsp]`) in your environment.
+
+If full-mode virtual behavior is unstable in your environment, start runtime with constrained fallback config:
+
+```bash
+remora start --project-root . --config remora.constrained.yaml --port 8080 --log-events
+```
+
+## 9. One-Command Demo Check Runner
 
 After runtime is up, run:
 
@@ -131,13 +160,7 @@ After runtime is up, run:
 scripts/run_demo_checks.sh
 ```
 
-With optional search included:
-
-```bash
-RUN_SEARCH=1 scripts/run_demo_checks.sh
-```
-
-## 8.1 UI Dependency Check (If Graph UI Is Blank)
+## 9.1 UI Dependency Check (If Graph UI Is Blank)
 
 ```bash
 scripts/test_ui_dependencies.sh
@@ -146,18 +169,11 @@ scripts/test_ui_dependencies.sh
 If `unpkg` is unreachable, browser UI can appear blank while APIs still work.
 In that case, continue with script/API-based demo flows.
 
-## 9. Reset Notes (If Needed)
+## 10. Reset Notes (If Needed)
 
-`test_virtual_agents.sh` appends a comment line to `src/services/pricing.py`.
-If you want to clean it up after demo:
+`test_virtual_agents.sh` creates a temporary trigger file under `src/.remora_demo_trigger/` and cleans it up automatically.
 
-```bash
-git checkout -- src/services/pricing.py
-```
-
-(Only do this if you are not preserving that temporary demo marker.)
-
-## 10. Demo Narration Tips (For Live Presentation)
+## 11. Demo Narration Tips (For Live Presentation)
 
 1. Start with runtime health + discovered graph size to establish credibility.
 2. Trigger `demo_echo` to show deterministic tool use from prompt token.

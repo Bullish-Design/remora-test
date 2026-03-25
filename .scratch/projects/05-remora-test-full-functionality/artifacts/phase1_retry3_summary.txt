@@ -1,0 +1,2 @@
+review_only_exit=1
+strict_exit=1

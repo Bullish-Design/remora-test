@@ -1,0 +1,3420 @@
+[
+  {
+    "id": 287,
+    "event_type": "agent_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "b320a3ae-dff0-4096-9199-c04aff345c5e",
+    "timestamp": 1774388425.0602393,
+    "tags": [
+      "primary"
+    ],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "result_summary": "Node demo-review-observer discovered and acknowledged.",
+      "full_response": "Node demo-review-observer discovered and acknowledged.",
+      "user_message": "# Node: demo-review-observer\nType: virtual | File: \nRole: demo-virtual-observer\n\n## Source Code\n```\n\n```\n\n## Trigger\nEvent: node_discovered\n\n\n\n"
+    },
+    "summary": "Node demo-review-observer discovered and acknowledged."
+  },
+  {
+    "id": 286,
+    "event_type": "turn_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "b320a3ae-dff0-4096-9199-c04aff345c5e",
+    "timestamp": 1774388425.0574036,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "turn": 1,
+      "tool_calls_count": 0,
+      "errors_count": 0
+    },
+    "summary": ""
+  },
+  {
+    "id": 285,
+    "event_type": "model_response",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "b320a3ae-dff0-4096-9199-c04aff345c5e",
+    "timestamp": 1774388425.0538092,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "response_preview": "Node demo-review-observer discovered and acknowledged.",
+      "duration_ms": 279,
+      "tool_calls_count": 0,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 284,
+    "event_type": "model_request",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "b320a3ae-dff0-4096-9199-c04aff345c5e",
+    "timestamp": 1774388424.7745245,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "model": "Qwen/Qwen3-4B-Instruct-2507-FP8",
+      "tool_count": 16,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 283,
+    "event_type": "agent_start",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "b320a3ae-dff0-4096-9199-c04aff345c5e",
+    "timestamp": 1774388424.6937387,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "node_name": "demo-review-observer"
+    },
+    "summary": ""
+  },
+  {
+    "id": 282,
+    "event_type": "agent_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "bb2898ca-ebec-4ff8-a292-490fef81c118",
+    "timestamp": 1774388424.688868,
+    "tags": [
+      "primary"
+    ],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "result_summary": "Node demo-review-observer discovered and acknowledged.",
+      "full_response": "Node demo-review-observer discovered and acknowledged.",
+      "user_message": "# Node: demo-review-observer\nType: virtual | File: \nRole: demo-virtual-observer\n\n## Source Code\n```\n\n```\n\n## Trigger\nEvent: node_discovered\n\n\n\n"
+    },
+    "summary": "Node demo-review-observer discovered and acknowledged."
+  },
+  {
+    "id": 281,
+    "event_type": "turn_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "bb2898ca-ebec-4ff8-a292-490fef81c118",
+    "timestamp": 1774388424.686184,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "turn": 1,
+      "tool_calls_count": 0,
+      "errors_count": 0
+    },
+    "summary": ""
+  },
+  {
+    "id": 280,
+    "event_type": "model_response",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "bb2898ca-ebec-4ff8-a292-490fef81c118",
+    "timestamp": 1774388424.6827211,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "response_preview": "Node demo-review-observer discovered and acknowledged.",
+      "duration_ms": 1477,
+      "tool_calls_count": 0,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 279,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774388424.225771,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/utils/money.py::format_usd",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/utils/money.py",
+      "name": "format_usd"
+    },
+    "summary": ""
+  },
+  {
+    "id": 278,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774388424.2078037,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/tax.py::apply_tax",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/tax.py",
+      "name": "apply_tax"
+    },
+    "summary": ""
+  },
+  {
+    "id": 277,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774388424.1926937,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/pricing.py::compute_total",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/pricing.py",
+      "name": "compute_total"
+    },
+    "summary": ""
+  },
+  {
+    "id": 276,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774388424.0998578,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/fulfillment/allocator.py::choose_warehouse",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/fulfillment/allocator.py",
+      "name": "choose_warehouse"
+    },
+    "summary": ""
+  },
+  {
+    "id": 275,
+    "event_type": "model_request",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "bb2898ca-ebec-4ff8-a292-490fef81c118",
+    "timestamp": 1774388423.2048197,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "model": "Qwen/Qwen3-4B-Instruct-2507-FP8",
+      "tool_count": 16,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 274,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774388423.135571,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/fraud.py::risk_score",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/fraud.py",
+      "name": "risk_score"
+    },
+    "summary": ""
+  },
+  {
+    "id": 273,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774388423.0722399,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/discounts.py::discount_for_tier",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/discounts.py",
+      "name": "discount_for_tier"
+    },
+    "summary": ""
+  },
+  {
+    "id": 272,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774388423.014654,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderSummary.OrderSummary",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderSummary"
+    },
+    "summary": ""
+  },
+  {
+    "id": 271,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774388423.0110736,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderSummary",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderSummary"
+    },
+    "summary": ""
+  },
+  {
+    "id": 270,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774388422.9980974,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderRequest.OrderRequest",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderRequest"
+    },
+    "summary": ""
+  },
+  {
+    "id": 269,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774388422.9827325,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderRequest",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderRequest"
+    },
+    "summary": ""
+  },
+  {
+    "id": 268,
+    "event_type": "agent_start",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "bb2898ca-ebec-4ff8-a292-490fef81c118",
+    "timestamp": 1774388422.896169,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "node_name": "demo-review-observer"
+    },
+    "summary": ""
+  },
+  {
+    "id": 267,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774388422.8843026,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/api/orders.py::create_order",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/api/orders.py",
+      "name": "create_order"
+    },
+    "summary": ""
+  },
+  {
+    "id": 266,
+    "event_type": "agent_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "b8d2bc64-6109-431f-89b0-a07d13e48176",
+    "timestamp": 1774387942.7518458,
+    "tags": [
+      "primary"
+    ],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "result_summary": "Node demo-review-observer discovered and acknowledged.",
+      "full_response": "Node demo-review-observer discovered and acknowledged.",
+      "user_message": "# Node: demo-review-observer\nType: virtual | File: \nRole: demo-virtual-observer\n\n## Source Code\n```\n\n```\n\n## Trigger\nEvent: node_discovered\n\n\n\n"
+    },
+    "summary": "Node demo-review-observer discovered and acknowledged."
+  },
+  {
+    "id": 265,
+    "event_type": "turn_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "b8d2bc64-6109-431f-89b0-a07d13e48176",
+    "timestamp": 1774387942.7490513,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "turn": 1,
+      "tool_calls_count": 0,
+      "errors_count": 0
+    },
+    "summary": ""
+  },
+  {
+    "id": 264,
+    "event_type": "model_response",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "b8d2bc64-6109-431f-89b0-a07d13e48176",
+    "timestamp": 1774387942.7453763,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "response_preview": "Node demo-review-observer discovered and acknowledged.",
+      "duration_ms": 302,
+      "tool_calls_count": 0,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 263,
+    "event_type": "model_request",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "b8d2bc64-6109-431f-89b0-a07d13e48176",
+    "timestamp": 1774387942.4425902,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "model": "Qwen/Qwen3-4B-Instruct-2507-FP8",
+      "tool_count": 16,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 262,
+    "event_type": "agent_start",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "b8d2bc64-6109-431f-89b0-a07d13e48176",
+    "timestamp": 1774387942.3648884,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "node_name": "demo-review-observer"
+    },
+    "summary": ""
+  },
+  {
+    "id": 261,
+    "event_type": "agent_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "a80e8ad2-6a5b-4021-b5cd-20bedcf3606d",
+    "timestamp": 1774387942.358671,
+    "tags": [
+      "primary"
+    ],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "result_summary": "Node demo-review-observer discovered and acknowledged.",
+      "full_response": "Node demo-review-observer discovered and acknowledged.",
+      "user_message": "# Node: demo-review-observer\nType: virtual | File: \nRole: demo-virtual-observer\n\n## Source Code\n```\n\n```\n\n## Trigger\nEvent: node_discovered\n\n\n\n"
+    },
+    "summary": "Node demo-review-observer discovered and acknowledged."
+  },
+  {
+    "id": 260,
+    "event_type": "turn_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "a80e8ad2-6a5b-4021-b5cd-20bedcf3606d",
+    "timestamp": 1774387942.3560135,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "turn": 1,
+      "tool_calls_count": 0,
+      "errors_count": 0
+    },
+    "summary": ""
+  },
+  {
+    "id": 259,
+    "event_type": "model_response",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "a80e8ad2-6a5b-4021-b5cd-20bedcf3606d",
+    "timestamp": 1774387942.3509371,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "response_preview": "Node demo-review-observer discovered and acknowledged.",
+      "duration_ms": 1703,
+      "tool_calls_count": 0,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 258,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774387941.622433,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/utils/money.py::format_usd",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/utils/money.py",
+      "name": "format_usd"
+    },
+    "summary": ""
+  },
+  {
+    "id": 257,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774387941.6062171,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/tax.py::apply_tax",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/tax.py",
+      "name": "apply_tax"
+    },
+    "summary": ""
+  },
+  {
+    "id": 256,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774387941.5908463,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/pricing.py::compute_total",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/pricing.py",
+      "name": "compute_total"
+    },
+    "summary": ""
+  },
+  {
+    "id": 255,
+    "event_type": "model_request",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "a80e8ad2-6a5b-4021-b5cd-20bedcf3606d",
+    "timestamp": 1774387940.6471415,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "model": "Qwen/Qwen3-4B-Instruct-2507-FP8",
+      "tool_count": 16,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 254,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774387940.6237135,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/fulfillment/allocator.py::choose_warehouse",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/fulfillment/allocator.py",
+      "name": "choose_warehouse"
+    },
+    "summary": ""
+  },
+  {
+    "id": 253,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774387940.5692568,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/fraud.py::risk_score",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/fraud.py",
+      "name": "risk_score"
+    },
+    "summary": ""
+  },
+  {
+    "id": 252,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774387940.5164514,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/discounts.py::discount_for_tier",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/discounts.py",
+      "name": "discount_for_tier"
+    },
+    "summary": ""
+  },
+  {
+    "id": 251,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774387940.452293,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderSummary.OrderSummary",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderSummary"
+    },
+    "summary": ""
+  },
+  {
+    "id": 250,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774387940.4384224,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderSummary",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderSummary"
+    },
+    "summary": ""
+  },
+  {
+    "id": 249,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774387940.422344,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderRequest.OrderRequest",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderRequest"
+    },
+    "summary": ""
+  },
+  {
+    "id": 248,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774387940.4067686,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderRequest",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderRequest"
+    },
+    "summary": ""
+  },
+  {
+    "id": 247,
+    "event_type": "agent_start",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "a80e8ad2-6a5b-4021-b5cd-20bedcf3606d",
+    "timestamp": 1774387940.3338382,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "node_name": "demo-review-observer"
+    },
+    "summary": ""
+  },
+  {
+    "id": 246,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774387940.3209188,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/api/orders.py::create_order",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/api/orders.py",
+      "name": "create_order"
+    },
+    "summary": ""
+  },
+  {
+    "id": 245,
+    "event_type": "agent_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "aa035f43-217b-4fdd-aca9-7e47c48a3398",
+    "timestamp": 1774387627.833803,
+    "tags": [
+      "primary"
+    ],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "result_summary": "Node demo-review-observer discovered and acknowledged.",
+      "full_response": "Node demo-review-observer discovered and acknowledged.",
+      "user_message": "# Node: demo-review-observer\nType: virtual | File: \nRole: demo-virtual-observer\n\n## Source Code\n```\n\n```\n\n## Trigger\nEvent: node_discovered\n\n\n\n"
+    },
+    "summary": "Node demo-review-observer discovered and acknowledged."
+  },
+  {
+    "id": 244,
+    "event_type": "turn_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "aa035f43-217b-4fdd-aca9-7e47c48a3398",
+    "timestamp": 1774387627.8315449,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "turn": 1,
+      "tool_calls_count": 0,
+      "errors_count": 0
+    },
+    "summary": ""
+  },
+  {
+    "id": 243,
+    "event_type": "model_response",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "aa035f43-217b-4fdd-aca9-7e47c48a3398",
+    "timestamp": 1774387627.8270922,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "response_preview": "Node demo-review-observer discovered and acknowledged.",
+      "duration_ms": 273,
+      "tool_calls_count": 0,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 242,
+    "event_type": "model_request",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "aa035f43-217b-4fdd-aca9-7e47c48a3398",
+    "timestamp": 1774387627.5533998,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "model": "Qwen/Qwen3-4B-Instruct-2507-FP8",
+      "tool_count": 16,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 241,
+    "event_type": "agent_start",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "aa035f43-217b-4fdd-aca9-7e47c48a3398",
+    "timestamp": 1774387627.4827802,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "node_name": "demo-review-observer"
+    },
+    "summary": ""
+  },
+  {
+    "id": 240,
+    "event_type": "agent_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "f821e8d2-18b6-4093-b826-93bc44d50243",
+    "timestamp": 1774387627.4776363,
+    "tags": [
+      "primary"
+    ],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "result_summary": "Node demo-review-observer discovered and acknowledged.",
+      "full_response": "Node demo-review-observer discovered and acknowledged.",
+      "user_message": "# Node: demo-review-observer\nType: virtual | File: \nRole: demo-virtual-observer\n\n## Source Code\n```\n\n```\n\n## Trigger\nEvent: node_discovered\n\n\n\n"
+    },
+    "summary": "Node demo-review-observer discovered and acknowledged."
+  },
+  {
+    "id": 239,
+    "event_type": "turn_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "f821e8d2-18b6-4093-b826-93bc44d50243",
+    "timestamp": 1774387627.4751115,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "turn": 1,
+      "tool_calls_count": 0,
+      "errors_count": 0
+    },
+    "summary": ""
+  },
+  {
+    "id": 238,
+    "event_type": "model_response",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "f821e8d2-18b6-4093-b826-93bc44d50243",
+    "timestamp": 1774387627.4703398,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "response_preview": "Node demo-review-observer discovered and acknowledged.",
+      "duration_ms": 1451,
+      "tool_calls_count": 0,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 237,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774387626.9661684,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/utils/money.py::format_usd",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/utils/money.py",
+      "name": "format_usd"
+    },
+    "summary": ""
+  },
+  {
+    "id": 236,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774387626.9479814,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/tax.py::apply_tax",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/tax.py",
+      "name": "apply_tax"
+    },
+    "summary": ""
+  },
+  {
+    "id": 235,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774387626.9324725,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/pricing.py::compute_total",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/pricing.py",
+      "name": "compute_total"
+    },
+    "summary": ""
+  },
+  {
+    "id": 234,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774387626.01949,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/fulfillment/allocator.py::choose_warehouse",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/fulfillment/allocator.py",
+      "name": "choose_warehouse"
+    },
+    "summary": ""
+  },
+  {
+    "id": 233,
+    "event_type": "model_request",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "f821e8d2-18b6-4093-b826-93bc44d50243",
+    "timestamp": 1774387626.019166,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "model": "Qwen/Qwen3-4B-Instruct-2507-FP8",
+      "tool_count": 16,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 232,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774387625.9391572,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/fraud.py::risk_score",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/fraud.py",
+      "name": "risk_score"
+    },
+    "summary": ""
+  },
+  {
+    "id": 231,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774387625.885417,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/discounts.py::discount_for_tier",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/discounts.py",
+      "name": "discount_for_tier"
+    },
+    "summary": ""
+  },
+  {
+    "id": 230,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774387625.8442543,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderSummary.OrderSummary",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderSummary"
+    },
+    "summary": ""
+  },
+  {
+    "id": 229,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774387625.8309522,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderSummary",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderSummary"
+    },
+    "summary": ""
+  },
+  {
+    "id": 228,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774387625.818069,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderRequest.OrderRequest",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderRequest"
+    },
+    "summary": ""
+  },
+  {
+    "id": 227,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774387625.8026936,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderRequest",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderRequest"
+    },
+    "summary": ""
+  },
+  {
+    "id": 226,
+    "event_type": "agent_start",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "f821e8d2-18b6-4093-b826-93bc44d50243",
+    "timestamp": 1774387625.7247577,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "node_name": "demo-review-observer"
+    },
+    "summary": ""
+  },
+  {
+    "id": 225,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774387625.7143276,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/api/orders.py::create_order",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/api/orders.py",
+      "name": "create_order"
+    },
+    "summary": ""
+  },
+  {
+    "id": 224,
+    "event_type": "agent_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "9fa13008-68be-450b-9044-3390453e5860",
+    "timestamp": 1774386333.9269073,
+    "tags": [
+      "primary"
+    ],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "result_summary": "Node demo-review-observer discovered and acknowledged.",
+      "full_response": "Node demo-review-observer discovered and acknowledged.",
+      "user_message": "# Node: demo-review-observer\nType: virtual | File: \nRole: demo-virtual-observer\n\n## Source Code\n```\n\n```\n\n## Trigger\nEvent: node_discovered\n\n\n\n"
+    },
+    "summary": "Node demo-review-observer discovered and acknowledged."
+  },
+  {
+    "id": 223,
+    "event_type": "turn_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "9fa13008-68be-450b-9044-3390453e5860",
+    "timestamp": 1774386333.9244008,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "turn": 1,
+      "tool_calls_count": 0,
+      "errors_count": 0
+    },
+    "summary": ""
+  },
+  {
+    "id": 222,
+    "event_type": "model_response",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "9fa13008-68be-450b-9044-3390453e5860",
+    "timestamp": 1774386333.9203982,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "response_preview": "Node demo-review-observer discovered and acknowledged.",
+      "duration_ms": 282,
+      "tool_calls_count": 0,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 221,
+    "event_type": "model_request",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "9fa13008-68be-450b-9044-3390453e5860",
+    "timestamp": 1774386333.6378274,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "model": "Qwen/Qwen3-4B-Instruct-2507-FP8",
+      "tool_count": 16,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 220,
+    "event_type": "agent_start",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "9fa13008-68be-450b-9044-3390453e5860",
+    "timestamp": 1774386333.5641387,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "node_name": "demo-review-observer"
+    },
+    "summary": ""
+  },
+  {
+    "id": 219,
+    "event_type": "agent_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "8f68867d-b909-4619-9aea-1052055cb38e",
+    "timestamp": 1774386333.5589285,
+    "tags": [
+      "primary"
+    ],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "result_summary": "Node demo-review-observer discovered and acknowledged.",
+      "full_response": "Node demo-review-observer discovered and acknowledged.",
+      "user_message": "# Node: demo-review-observer\nType: virtual | File: \nRole: demo-virtual-observer\n\n## Source Code\n```\n\n```\n\n## Trigger\nEvent: node_discovered\n\n\n\n"
+    },
+    "summary": "Node demo-review-observer discovered and acknowledged."
+  },
+  {
+    "id": 218,
+    "event_type": "turn_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "8f68867d-b909-4619-9aea-1052055cb38e",
+    "timestamp": 1774386333.5565982,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "turn": 1,
+      "tool_calls_count": 0,
+      "errors_count": 0
+    },
+    "summary": ""
+  },
+  {
+    "id": 217,
+    "event_type": "model_response",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "8f68867d-b909-4619-9aea-1052055cb38e",
+    "timestamp": 1774386333.5515053,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "response_preview": "Node demo-review-observer discovered and acknowledged.",
+      "duration_ms": 1383,
+      "tool_calls_count": 0,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 216,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774386333.120405,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/utils/money.py::format_usd",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/utils/money.py",
+      "name": "format_usd"
+    },
+    "summary": ""
+  },
+  {
+    "id": 215,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774386333.1060834,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/tax.py::apply_tax",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/tax.py",
+      "name": "apply_tax"
+    },
+    "summary": ""
+  },
+  {
+    "id": 214,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774386333.0900595,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/pricing.py::compute_total",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/pricing.py",
+      "name": "compute_total"
+    },
+    "summary": ""
+  },
+  {
+    "id": 213,
+    "event_type": "model_request",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "8f68867d-b909-4619-9aea-1052055cb38e",
+    "timestamp": 1774386332.16793,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "model": "Qwen/Qwen3-4B-Instruct-2507-FP8",
+      "tool_count": 16,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 212,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774386332.1430323,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/fulfillment/allocator.py::choose_warehouse",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/fulfillment/allocator.py",
+      "name": "choose_warehouse"
+    },
+    "summary": ""
+  },
+  {
+    "id": 211,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774386332.088836,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/fraud.py::risk_score",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/fraud.py",
+      "name": "risk_score"
+    },
+    "summary": ""
+  },
+  {
+    "id": 210,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774386332.0330038,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/discounts.py::discount_for_tier",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/discounts.py",
+      "name": "discount_for_tier"
+    },
+    "summary": ""
+  },
+  {
+    "id": 209,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774386331.9849253,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderSummary.OrderSummary",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderSummary"
+    },
+    "summary": ""
+  },
+  {
+    "id": 208,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774386331.9725873,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderSummary",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderSummary"
+    },
+    "summary": ""
+  },
+  {
+    "id": 207,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774386331.9574316,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderRequest.OrderRequest",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderRequest"
+    },
+    "summary": ""
+  },
+  {
+    "id": 206,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774386331.9536827,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderRequest",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderRequest"
+    },
+    "summary": ""
+  },
+  {
+    "id": 205,
+    "event_type": "agent_start",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "8f68867d-b909-4619-9aea-1052055cb38e",
+    "timestamp": 1774386331.8694198,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "node_name": "demo-review-observer"
+    },
+    "summary": ""
+  },
+  {
+    "id": 204,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774386331.8588395,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/api/orders.py::create_order",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/api/orders.py",
+      "name": "create_order"
+    },
+    "summary": ""
+  },
+  {
+    "id": 203,
+    "event_type": "agent_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "56c29383-6d40-4982-97b6-a62d698a2994",
+    "timestamp": 1774385956.272185,
+    "tags": [
+      "primary"
+    ],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "result_summary": "Node demo-review-observer discovered and acknowledged.",
+      "full_response": "Node demo-review-observer discovered and acknowledged.",
+      "user_message": "# Node: demo-review-observer\nType: virtual | File: \nRole: demo-virtual-observer\n\n## Source Code\n```\n\n```\n\n## Trigger\nEvent: node_discovered\n\n\n\n"
+    },
+    "summary": "Node demo-review-observer discovered and acknowledged."
+  },
+  {
+    "id": 202,
+    "event_type": "turn_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "56c29383-6d40-4982-97b6-a62d698a2994",
+    "timestamp": 1774385956.269584,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "turn": 1,
+      "tool_calls_count": 0,
+      "errors_count": 0
+    },
+    "summary": ""
+  },
+  {
+    "id": 201,
+    "event_type": "model_response",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "56c29383-6d40-4982-97b6-a62d698a2994",
+    "timestamp": 1774385956.2651372,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "response_preview": "Node demo-review-observer discovered and acknowledged.",
+      "duration_ms": 312,
+      "tool_calls_count": 0,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 200,
+    "event_type": "model_request",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "56c29383-6d40-4982-97b6-a62d698a2994",
+    "timestamp": 1774385955.952867,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "model": "Qwen/Qwen3-4B-Instruct-2507-FP8",
+      "tool_count": 16,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 199,
+    "event_type": "agent_start",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "56c29383-6d40-4982-97b6-a62d698a2994",
+    "timestamp": 1774385955.8781343,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "node_name": "demo-review-observer"
+    },
+    "summary": ""
+  },
+  {
+    "id": 198,
+    "event_type": "agent_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "b2bffd2d-887c-4799-928f-b64dad3a538c",
+    "timestamp": 1774385955.8727832,
+    "tags": [
+      "primary"
+    ],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "result_summary": "Node demo-review-observer discovered and acknowledged.",
+      "full_response": "Node demo-review-observer discovered and acknowledged.",
+      "user_message": "# Node: demo-review-observer\nType: virtual | File: \nRole: demo-virtual-observer\n\n## Source Code\n```\n\n```\n\n## Trigger\nEvent: node_discovered\n\n\n\n"
+    },
+    "summary": "Node demo-review-observer discovered and acknowledged."
+  },
+  {
+    "id": 197,
+    "event_type": "turn_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "b2bffd2d-887c-4799-928f-b64dad3a538c",
+    "timestamp": 1774385955.8704402,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "turn": 1,
+      "tool_calls_count": 0,
+      "errors_count": 0
+    },
+    "summary": ""
+  },
+  {
+    "id": 196,
+    "event_type": "model_response",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "b2bffd2d-887c-4799-928f-b64dad3a538c",
+    "timestamp": 1774385955.8657587,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "response_preview": "Node demo-review-observer discovered and acknowledged.",
+      "duration_ms": 947,
+      "tool_calls_count": 0,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 195,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774385955.3830605,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/utils/money.py::format_usd",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/utils/money.py",
+      "name": "format_usd"
+    },
+    "summary": ""
+  },
+  {
+    "id": 194,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774385955.3678432,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/tax.py::apply_tax",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/tax.py",
+      "name": "apply_tax"
+    },
+    "summary": ""
+  },
+  {
+    "id": 193,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774385955.353595,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/pricing.py::compute_total",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/pricing.py",
+      "name": "compute_total"
+    },
+    "summary": ""
+  },
+  {
+    "id": 192,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774385955.3244638,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/fulfillment/allocator.py::choose_warehouse",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/fulfillment/allocator.py",
+      "name": "choose_warehouse"
+    },
+    "summary": ""
+  },
+  {
+    "id": 191,
+    "event_type": "model_request",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "b2bffd2d-887c-4799-928f-b64dad3a538c",
+    "timestamp": 1774385954.9177663,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "model": "Qwen/Qwen3-4B-Instruct-2507-FP8",
+      "tool_count": 16,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 190,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774385954.8522177,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/fraud.py::risk_score",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/fraud.py",
+      "name": "risk_score"
+    },
+    "summary": ""
+  },
+  {
+    "id": 189,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774385954.793031,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/discounts.py::discount_for_tier",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/discounts.py",
+      "name": "discount_for_tier"
+    },
+    "summary": ""
+  },
+  {
+    "id": 188,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774385954.7317717,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderSummary.OrderSummary",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderSummary"
+    },
+    "summary": ""
+  },
+  {
+    "id": 187,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774385954.7189326,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderSummary",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderSummary"
+    },
+    "summary": ""
+  },
+  {
+    "id": 186,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774385954.7153862,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderRequest.OrderRequest",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderRequest"
+    },
+    "summary": ""
+  },
+  {
+    "id": 185,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774385954.7006178,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderRequest",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderRequest"
+    },
+    "summary": ""
+  },
+  {
+    "id": 184,
+    "event_type": "agent_start",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "b2bffd2d-887c-4799-928f-b64dad3a538c",
+    "timestamp": 1774385954.6227784,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "node_name": "demo-review-observer"
+    },
+    "summary": ""
+  },
+  {
+    "id": 183,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774385954.6127262,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/api/orders.py::create_order",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/api/orders.py",
+      "name": "create_order"
+    },
+    "summary": ""
+  },
+  {
+    "id": 182,
+    "event_type": "model_request",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "d13d1ccd-4417-4d31-87a9-fd14e7f6d4ac",
+    "timestamp": 1774385933.369449,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "model": "Qwen/Qwen3-4B-Instruct-2507-FP8",
+      "tool_count": 16,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 181,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774385933.3433266,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/fulfillment/allocator.py::choose_warehouse",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/fulfillment/allocator.py",
+      "name": "choose_warehouse"
+    },
+    "summary": ""
+  },
+  {
+    "id": 180,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774385933.2762706,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/fraud.py::risk_score",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/fraud.py",
+      "name": "risk_score"
+    },
+    "summary": ""
+  },
+  {
+    "id": 179,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774385933.2336648,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/discounts.py::discount_for_tier",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/discounts.py",
+      "name": "discount_for_tier"
+    },
+    "summary": ""
+  },
+  {
+    "id": 178,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774385933.1964338,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderSummary.OrderSummary",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderSummary"
+    },
+    "summary": ""
+  },
+  {
+    "id": 177,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774385933.183376,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderSummary",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderSummary"
+    },
+    "summary": ""
+  },
+  {
+    "id": 176,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774385933.1698496,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderRequest.OrderRequest",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderRequest"
+    },
+    "summary": ""
+  },
+  {
+    "id": 175,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774385933.153447,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderRequest",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderRequest"
+    },
+    "summary": ""
+  },
+  {
+    "id": 174,
+    "event_type": "agent_start",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "d13d1ccd-4417-4d31-87a9-fd14e7f6d4ac",
+    "timestamp": 1774385933.0690155,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "node_name": "demo-review-observer"
+    },
+    "summary": ""
+  },
+  {
+    "id": 173,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774385933.0587444,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/api/orders.py::create_order",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/api/orders.py",
+      "name": "create_order"
+    },
+    "summary": ""
+  },
+  {
+    "id": 172,
+    "event_type": "agent_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "fbfe36bb-f103-4ef5-a362-32e29b2f54e1",
+    "timestamp": 1774385768.8753474,
+    "tags": [
+      "primary"
+    ],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "result_summary": "Node demo-review-observer discovered and acknowledged.",
+      "full_response": "Node demo-review-observer discovered and acknowledged.",
+      "user_message": "# Node: demo-review-observer\nType: virtual | File: \nRole: demo-virtual-observer\n\n## Source Code\n```\n\n```\n\n## Trigger\nEvent: node_discovered\n\n\n\n"
+    },
+    "summary": "Node demo-review-observer discovered and acknowledged."
+  },
+  {
+    "id": 171,
+    "event_type": "turn_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "fbfe36bb-f103-4ef5-a362-32e29b2f54e1",
+    "timestamp": 1774385768.8726802,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "turn": 1,
+      "tool_calls_count": 0,
+      "errors_count": 0
+    },
+    "summary": ""
+  },
+  {
+    "id": 170,
+    "event_type": "model_response",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "fbfe36bb-f103-4ef5-a362-32e29b2f54e1",
+    "timestamp": 1774385768.8680933,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "response_preview": "Node demo-review-observer discovered and acknowledged.",
+      "duration_ms": 251,
+      "tool_calls_count": 0,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 169,
+    "event_type": "model_request",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "fbfe36bb-f103-4ef5-a362-32e29b2f54e1",
+    "timestamp": 1774385768.6166198,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "model": "Qwen/Qwen3-4B-Instruct-2507-FP8",
+      "tool_count": 16,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 168,
+    "event_type": "agent_start",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "fbfe36bb-f103-4ef5-a362-32e29b2f54e1",
+    "timestamp": 1774385768.5382438,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "node_name": "demo-review-observer"
+    },
+    "summary": ""
+  },
+  {
+    "id": 167,
+    "event_type": "agent_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "1a49c198-1724-441d-b6c9-431af919831e",
+    "timestamp": 1774385768.5335443,
+    "tags": [
+      "primary"
+    ],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "result_summary": "Node demo-review-observer discovered and acknowledged.",
+      "full_response": "Node demo-review-observer discovered and acknowledged.",
+      "user_message": "# Node: demo-review-observer\nType: virtual | File: \nRole: demo-virtual-observer\n\n## Source Code\n```\n\n```\n\n## Trigger\nEvent: node_discovered\n\n\n\n"
+    },
+    "summary": "Node demo-review-observer discovered and acknowledged."
+  },
+  {
+    "id": 166,
+    "event_type": "turn_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "1a49c198-1724-441d-b6c9-431af919831e",
+    "timestamp": 1774385768.530846,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "turn": 1,
+      "tool_calls_count": 0,
+      "errors_count": 0
+    },
+    "summary": ""
+  },
+  {
+    "id": 165,
+    "event_type": "model_response",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "1a49c198-1724-441d-b6c9-431af919831e",
+    "timestamp": 1774385768.5262718,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "response_preview": "Node demo-review-observer discovered and acknowledged.",
+      "duration_ms": 1457,
+      "tool_calls_count": 0,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 164,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774385768.02271,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/utils/money.py::format_usd",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/utils/money.py",
+      "name": "format_usd"
+    },
+    "summary": ""
+  },
+  {
+    "id": 163,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774385768.0059588,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/tax.py::apply_tax",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/tax.py",
+      "name": "apply_tax"
+    },
+    "summary": ""
+  },
+  {
+    "id": 162,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774385767.9911335,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/pricing.py::compute_total",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/pricing.py",
+      "name": "compute_total"
+    },
+    "summary": ""
+  },
+  {
+    "id": 161,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774385767.97163,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/fulfillment/allocator.py::choose_warehouse",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/fulfillment/allocator.py",
+      "name": "choose_warehouse"
+    },
+    "summary": ""
+  },
+  {
+    "id": 160,
+    "event_type": "model_request",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "1a49c198-1724-441d-b6c9-431af919831e",
+    "timestamp": 1774385767.0688136,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "model": "Qwen/Qwen3-4B-Instruct-2507-FP8",
+      "tool_count": 16,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 159,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774385767.002462,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/fraud.py::risk_score",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/fraud.py",
+      "name": "risk_score"
+    },
+    "summary": ""
+  },
+  {
+    "id": 158,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774385766.947822,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/discounts.py::discount_for_tier",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/discounts.py",
+      "name": "discount_for_tier"
+    },
+    "summary": ""
+  },
+  {
+    "id": 157,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774385766.894378,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderSummary.OrderSummary",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderSummary"
+    },
+    "summary": ""
+  },
+  {
+    "id": 156,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774385766.8806756,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderSummary",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderSummary"
+    },
+    "summary": ""
+  },
+  {
+    "id": 155,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774385766.8681548,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderRequest.OrderRequest",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderRequest"
+    },
+    "summary": ""
+  },
+  {
+    "id": 154,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774385766.8521304,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderRequest",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderRequest"
+    },
+    "summary": ""
+  },
+  {
+    "id": 153,
+    "event_type": "agent_start",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "1a49c198-1724-441d-b6c9-431af919831e",
+    "timestamp": 1774385766.7736628,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "node_name": "demo-review-observer"
+    },
+    "summary": ""
+  },
+  {
+    "id": 152,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774385766.761437,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/api/orders.py::create_order",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/api/orders.py",
+      "name": "create_order"
+    },
+    "summary": ""
+  },
+  {
+    "id": 151,
+    "event_type": "agent_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "b8cd71ce-a1d7-4c25-9bc5-35f7c13398d1",
+    "timestamp": 1774384862.0061858,
+    "tags": [
+      "primary"
+    ],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "result_summary": "Node demo-review-observer discovered and acknowledged.",
+      "full_response": "Node demo-review-observer discovered and acknowledged.",
+      "user_message": "# Node: demo-review-observer\nType: virtual | File: \nRole: demo-virtual-observer\n\n## Source Code\n```\n\n```\n\n## Trigger\nEvent: node_discovered\n\n\n\n"
+    },
+    "summary": "Node demo-review-observer discovered and acknowledged."
+  },
+  {
+    "id": 150,
+    "event_type": "turn_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "b8cd71ce-a1d7-4c25-9bc5-35f7c13398d1",
+    "timestamp": 1774384862.003665,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "turn": 1,
+      "tool_calls_count": 0,
+      "errors_count": 0
+    },
+    "summary": ""
+  },
+  {
+    "id": 149,
+    "event_type": "model_response",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "b8cd71ce-a1d7-4c25-9bc5-35f7c13398d1",
+    "timestamp": 1774384861.999004,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "response_preview": "Node demo-review-observer discovered and acknowledged.",
+      "duration_ms": 286,
+      "tool_calls_count": 0,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 148,
+    "event_type": "model_request",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "b8cd71ce-a1d7-4c25-9bc5-35f7c13398d1",
+    "timestamp": 1774384861.7126658,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "model": "Qwen/Qwen3-4B-Instruct-2507-FP8",
+      "tool_count": 16,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 147,
+    "event_type": "agent_start",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "b8cd71ce-a1d7-4c25-9bc5-35f7c13398d1",
+    "timestamp": 1774384861.6432528,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "node_name": "demo-review-observer"
+    },
+    "summary": ""
+  },
+  {
+    "id": 146,
+    "event_type": "agent_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "7b5baa44-cf66-4bf0-b635-01aa0f2a0ba0",
+    "timestamp": 1774384861.638155,
+    "tags": [
+      "primary"
+    ],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "result_summary": "Node demo-review-observer discovered and acknowledged.",
+      "full_response": "Node demo-review-observer discovered and acknowledged.",
+      "user_message": "# Node: demo-review-observer\nType: virtual | File: \nRole: demo-virtual-observer\n\n## Source Code\n```\n\n```\n\n## Trigger\nEvent: node_discovered\n\n\n\n"
+    },
+    "summary": "Node demo-review-observer discovered and acknowledged."
+  },
+  {
+    "id": 145,
+    "event_type": "turn_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "7b5baa44-cf66-4bf0-b635-01aa0f2a0ba0",
+    "timestamp": 1774384861.635684,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "turn": 1,
+      "tool_calls_count": 0,
+      "errors_count": 0
+    },
+    "summary": ""
+  },
+  {
+    "id": 144,
+    "event_type": "model_response",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "7b5baa44-cf66-4bf0-b635-01aa0f2a0ba0",
+    "timestamp": 1774384861.6309052,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "response_preview": "Node demo-review-observer discovered and acknowledged.",
+      "duration_ms": 1341,
+      "tool_calls_count": 0,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 143,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774384861.2575464,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/utils/money.py::format_usd",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/utils/money.py",
+      "name": "format_usd"
+    },
+    "summary": ""
+  },
+  {
+    "id": 142,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774384861.2406523,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/tax.py::apply_tax",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/tax.py",
+      "name": "apply_tax"
+    },
+    "summary": ""
+  },
+  {
+    "id": 141,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774384861.2252197,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/pricing.py::compute_total",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/pricing.py",
+      "name": "compute_total"
+    },
+    "summary": ""
+  },
+  {
+    "id": 140,
+    "event_type": "model_request",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "7b5baa44-cf66-4bf0-b635-01aa0f2a0ba0",
+    "timestamp": 1774384860.2893565,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "model": "Qwen/Qwen3-4B-Instruct-2507-FP8",
+      "tool_count": 16,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 139,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774384860.267369,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/fulfillment/allocator.py::choose_warehouse",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/fulfillment/allocator.py",
+      "name": "choose_warehouse"
+    },
+    "summary": ""
+  },
+  {
+    "id": 138,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774384860.2136357,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/fraud.py::risk_score",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/fraud.py",
+      "name": "risk_score"
+    },
+    "summary": ""
+  },
+  {
+    "id": 137,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774384860.1624074,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/discounts.py::discount_for_tier",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/discounts.py",
+      "name": "discount_for_tier"
+    },
+    "summary": ""
+  },
+  {
+    "id": 136,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774384860.1123533,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderSummary.OrderSummary",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderSummary"
+    },
+    "summary": ""
+  },
+  {
+    "id": 135,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774384860.0981383,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderSummary",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderSummary"
+    },
+    "summary": ""
+  },
+  {
+    "id": 134,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774384860.0853992,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderRequest.OrderRequest",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderRequest"
+    },
+    "summary": ""
+  },
+  {
+    "id": 133,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774384860.0696578,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderRequest",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderRequest"
+    },
+    "summary": ""
+  },
+  {
+    "id": 132,
+    "event_type": "agent_start",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "7b5baa44-cf66-4bf0-b635-01aa0f2a0ba0",
+    "timestamp": 1774384859.9864006,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "node_name": "demo-review-observer"
+    },
+    "summary": ""
+  },
+  {
+    "id": 131,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774384859.9760363,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/api/orders.py::create_order",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/api/orders.py",
+      "name": "create_order"
+    },
+    "summary": ""
+  },
+  {
+    "id": 130,
+    "event_type": "agent_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "bdfa48fb-e207-4387-a593-245699036b32",
+    "timestamp": 1774383639.6464307,
+    "tags": [
+      "primary"
+    ],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "result_summary": "Node demo-review-observer discovered and acknowledged.",
+      "full_response": "Node demo-review-observer discovered and acknowledged.",
+      "user_message": "# Node: demo-review-observer\nType: virtual | File: \nRole: demo-virtual-observer\n\n## Source Code\n```\n\n```\n\n## Trigger\nEvent: node_discovered\n\n\n\n"
+    },
+    "summary": "Node demo-review-observer discovered and acknowledged."
+  },
+  {
+    "id": 129,
+    "event_type": "turn_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "bdfa48fb-e207-4387-a593-245699036b32",
+    "timestamp": 1774383639.6428661,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "turn": 1,
+      "tool_calls_count": 0,
+      "errors_count": 0
+    },
+    "summary": ""
+  },
+  {
+    "id": 128,
+    "event_type": "model_response",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "bdfa48fb-e207-4387-a593-245699036b32",
+    "timestamp": 1774383639.637832,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "response_preview": "Node demo-review-observer discovered and acknowledged.",
+      "duration_ms": 297,
+      "tool_calls_count": 0,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 127,
+    "event_type": "model_request",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "bdfa48fb-e207-4387-a593-245699036b32",
+    "timestamp": 1774383639.3399265,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "model": "Qwen/Qwen3-4B-Instruct-2507-FP8",
+      "tool_count": 16,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 126,
+    "event_type": "agent_start",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "bdfa48fb-e207-4387-a593-245699036b32",
+    "timestamp": 1774383639.261312,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "node_name": "demo-review-observer"
+    },
+    "summary": ""
+  },
+  {
+    "id": 125,
+    "event_type": "agent_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "96135c0c-19e1-4bfc-9491-2c2813be2eb0",
+    "timestamp": 1774383639.2544496,
+    "tags": [
+      "primary"
+    ],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "result_summary": "Node demo-review-observer discovered and acknowledged.",
+      "full_response": "Node demo-review-observer discovered and acknowledged.",
+      "user_message": "# Node: demo-review-observer\nType: virtual | File: \nRole: demo-virtual-observer\n\n## Source Code\n```\n\n```\n\n## Trigger\nEvent: node_discovered\n\n\n\n"
+    },
+    "summary": "Node demo-review-observer discovered and acknowledged."
+  },
+  {
+    "id": 124,
+    "event_type": "turn_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "96135c0c-19e1-4bfc-9491-2c2813be2eb0",
+    "timestamp": 1774383639.250843,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "turn": 1,
+      "tool_calls_count": 0,
+      "errors_count": 0
+    },
+    "summary": ""
+  },
+  {
+    "id": 123,
+    "event_type": "model_response",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "96135c0c-19e1-4bfc-9491-2c2813be2eb0",
+    "timestamp": 1774383639.2448242,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "response_preview": "Node demo-review-observer discovered and acknowledged.",
+      "duration_ms": 1762,
+      "tool_calls_count": 0,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 122,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774383638.4733233,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/utils/money.py::format_usd",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/utils/money.py",
+      "name": "format_usd"
+    },
+    "summary": ""
+  },
+  {
+    "id": 121,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774383638.4571996,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/tax.py::apply_tax",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/tax.py",
+      "name": "apply_tax"
+    },
+    "summary": ""
+  },
+  {
+    "id": 120,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774383638.441859,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/pricing.py::compute_total",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/pricing.py",
+      "name": "compute_total"
+    },
+    "summary": ""
+  },
+  {
+    "id": 119,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774383638.3514447,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/fulfillment/allocator.py::choose_warehouse",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/fulfillment/allocator.py",
+      "name": "choose_warehouse"
+    },
+    "summary": ""
+  },
+  {
+    "id": 118,
+    "event_type": "model_request",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "96135c0c-19e1-4bfc-9491-2c2813be2eb0",
+    "timestamp": 1774383637.4818635,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "model": "Qwen/Qwen3-4B-Instruct-2507-FP8",
+      "tool_count": 16,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 117,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774383637.408349,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/fraud.py::risk_score",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/fraud.py",
+      "name": "risk_score"
+    },
+    "summary": ""
+  },
+  {
+    "id": 116,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774383637.356096,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/discounts.py::discount_for_tier",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/discounts.py",
+      "name": "discount_for_tier"
+    },
+    "summary": ""
+  },
+  {
+    "id": 115,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774383637.3122501,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderSummary.OrderSummary",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderSummary"
+    },
+    "summary": ""
+  },
+  {
+    "id": 114,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774383637.2990973,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderSummary",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderSummary"
+    },
+    "summary": ""
+  },
+  {
+    "id": 113,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774383637.2867844,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderRequest.OrderRequest",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderRequest"
+    },
+    "summary": ""
+  },
+  {
+    "id": 112,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774383637.271088,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderRequest",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderRequest"
+    },
+    "summary": ""
+  },
+  {
+    "id": 111,
+    "event_type": "agent_start",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "96135c0c-19e1-4bfc-9491-2c2813be2eb0",
+    "timestamp": 1774383637.184152,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "node_name": "demo-review-observer"
+    },
+    "summary": ""
+  },
+  {
+    "id": 110,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774383637.1728802,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/api/orders.py::create_order",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/api/orders.py",
+      "name": "create_order"
+    },
+    "summary": ""
+  },
+  {
+    "id": 109,
+    "event_type": "agent_complete",
+    "agent_id": "src/api",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "f215582f-537d-4643-b6dc-0d22006f9cf2",
+    "timestamp": 1774233991.6866045,
+    "tags": [
+      "primary"
+    ],
+    "payload": {
+      "agent_id": "src/api",
+      "result_summary": "The `src/api` directory in the project is likely responsible for handling the application's API endpoints. This typically includes defining routes, controllers, and middleware that allow the backend t",
+      "full_response": "The `src/api` directory in the project is likely responsible for handling the application's API endpoints. This typically includes defining routes, controllers, and middleware that allow the backend to communicate with external systems or clients (like web browsers or mobile apps). Since the directory is empty in the current state, it may be a placeholder or a structure that will be populated with API-related files (e.g., `routes.js`, `controllers`, `middleware`, or `index.js`) as development progresses.\n\nIf you'd like, I can help explore related files or suggest what might be in this directory based on common project patterns. Let me know how you'd like to proceed! 😊\n\nTo provide more specific details, I can check for related files or look up what other parts of the codebase reference this directory. Would you like me to do that?",
+      "user_message": "# Node: src/api\nType: directory | File: src/api\nRole: demo-directory-agent\n\n## Source Code\n```\n\n```\n\n## Trigger\nEvent: agent_message\nWhat does this do?\n\n\n"
+    },
+    "summary": "The `src/api` directory in the project is likely responsible for handling the application's API endpoints. This typically includes defining routes, controllers, and middleware that allow the backend t"
+  },
+  {
+    "id": 108,
+    "event_type": "turn_complete",
+    "agent_id": "src/api",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "f215582f-537d-4643-b6dc-0d22006f9cf2",
+    "timestamp": 1774233991.6839182,
+    "tags": [],
+    "payload": {
+      "agent_id": "src/api",
+      "turn": 1,
+      "tool_calls_count": 0,
+      "errors_count": 0
+    },
+    "summary": ""
+  },
+  {
+    "id": 107,
+    "event_type": "model_response",
+    "agent_id": "src/api",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "f215582f-537d-4643-b6dc-0d22006f9cf2",
+    "timestamp": 1774233991.6756358,
+    "tags": [],
+    "payload": {
+      "agent_id": "src/api",
+      "response_preview": "The `src/api` directory in the project is likely responsible for handling the application's API endpoints. This typically includes defining routes, controllers, and middleware that allow the backend t",
+      "duration_ms": 3896,
+      "tool_calls_count": 0,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 106,
+    "event_type": "model_request",
+    "agent_id": "src/api",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "f215582f-537d-4643-b6dc-0d22006f9cf2",
+    "timestamp": 1774233987.778871,
+    "tags": [],
+    "payload": {
+      "agent_id": "src/api",
+      "model": "Qwen/Qwen3-4B-Instruct-2507-FP8",
+      "tool_count": 16,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 105,
+    "event_type": "agent_start",
+    "agent_id": "src/api",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "f215582f-537d-4643-b6dc-0d22006f9cf2",
+    "timestamp": 1774233987.6837578,
+    "tags": [],
+    "payload": {
+      "agent_id": "src/api",
+      "node_name": "api"
+    },
+    "summary": ""
+  },
+  {
+    "id": 104,
+    "event_type": "agent_message",
+    "agent_id": null,
+    "from_agent": "user",
+    "to_agent": "src/api",
+    "correlation_id": null,
+    "timestamp": 1774233987.6763794,
+    "tags": [],
+    "payload": {
+      "from_agent": "user",
+      "to_agent": "src/api",
+      "content": "What does this do?"
+    },
+    "summary": "What does this do?"
+  },
+  {
+    "id": 103,
+    "event_type": "agent_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "3439e135-b3d8-4db2-801a-ac657c8eeb48",
+    "timestamp": 1774233924.0944624,
+    "tags": [
+      "primary"
+    ],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "result_summary": "Node demo-review-observer discovered and acknowledged.",
+      "full_response": "Node demo-review-observer discovered and acknowledged.",
+      "user_message": "# Node: demo-review-observer\nType: virtual | File: \nRole: demo-virtual-observer\n\n## Source Code\n```\n\n```\n\n## Trigger\nEvent: node_discovered\n\n\n\n"
+    },
+    "summary": "Node demo-review-observer discovered and acknowledged."
+  },
+  {
+    "id": 102,
+    "event_type": "turn_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "3439e135-b3d8-4db2-801a-ac657c8eeb48",
+    "timestamp": 1774233924.0922534,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "turn": 1,
+      "tool_calls_count": 0,
+      "errors_count": 0
+    },
+    "summary": ""
+  },
+  {
+    "id": 101,
+    "event_type": "model_response",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "3439e135-b3d8-4db2-801a-ac657c8eeb48",
+    "timestamp": 1774233924.0887764,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "response_preview": "Node demo-review-observer discovered and acknowledged.",
+      "duration_ms": 335,
+      "tool_calls_count": 0,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 100,
+    "event_type": "model_request",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "3439e135-b3d8-4db2-801a-ac657c8eeb48",
+    "timestamp": 1774233923.7529042,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "model": "Qwen/Qwen3-4B-Instruct-2507-FP8",
+      "tool_count": 16,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 99,
+    "event_type": "agent_start",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "3439e135-b3d8-4db2-801a-ac657c8eeb48",
+    "timestamp": 1774233923.6690056,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "node_name": "demo-review-observer"
+    },
+    "summary": ""
+  },
+  {
+    "id": 98,
+    "event_type": "agent_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "44ceadb6-b69d-4ee8-b81e-73e3e7d67366",
+    "timestamp": 1774233923.6644638,
+    "tags": [
+      "primary"
+    ],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "result_summary": "Node demo-review-observer discovered and acknowledged.",
+      "full_response": "Node demo-review-observer discovered and acknowledged.",
+      "user_message": "# Node: demo-review-observer\nType: virtual | File: \nRole: demo-virtual-observer\n\n## Source Code\n```\n\n```\n\n## Trigger\nEvent: node_discovered\n\n\n\n"
+    },
+    "summary": "Node demo-review-observer discovered and acknowledged."
+  },
+  {
+    "id": 97,
+    "event_type": "turn_complete",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "44ceadb6-b69d-4ee8-b81e-73e3e7d67366",
+    "timestamp": 1774233923.6623101,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "turn": 1,
+      "tool_calls_count": 0,
+      "errors_count": 0
+    },
+    "summary": ""
+  },
+  {
+    "id": 96,
+    "event_type": "model_response",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "44ceadb6-b69d-4ee8-b81e-73e3e7d67366",
+    "timestamp": 1774233923.6589768,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "response_preview": "Node demo-review-observer discovered and acknowledged.",
+      "duration_ms": 977,
+      "tool_calls_count": 0,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 95,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774233923.1336808,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/utils/money.py::format_usd",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/utils/money.py",
+      "name": "format_usd"
+    },
+    "summary": ""
+  },
+  {
+    "id": 94,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774233923.1168153,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/tax.py::apply_tax",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/tax.py",
+      "name": "apply_tax"
+    },
+    "summary": ""
+  },
+  {
+    "id": 93,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774233923.1014988,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/pricing.py::compute_total",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/pricing.py",
+      "name": "compute_total"
+    },
+    "summary": ""
+  },
+  {
+    "id": 92,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774233923.0743816,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/fulfillment/allocator.py::choose_warehouse",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/fulfillment/allocator.py",
+      "name": "choose_warehouse"
+    },
+    "summary": ""
+  },
+  {
+    "id": 91,
+    "event_type": "model_request",
+    "agent_id": "demo-review-observer",
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": "44ceadb6-b69d-4ee8-b81e-73e3e7d67366",
+    "timestamp": 1774233922.6814804,
+    "tags": [],
+    "payload": {
+      "agent_id": "demo-review-observer",
+      "model": "Qwen/Qwen3-4B-Instruct-2507-FP8",
+      "tool_count": 16,
+      "turn": 1
+    },
+    "summary": ""
+  },
+  {
+    "id": 90,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774233922.617942,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/fraud.py::risk_score",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/fraud.py",
+      "name": "risk_score"
+    },
+    "summary": ""
+  },
+  {
+    "id": 89,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774233922.563515,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/services/discounts.py::discount_for_tier",
+      "node_type": "function",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/services/discounts.py",
+      "name": "discount_for_tier"
+    },
+    "summary": ""
+  },
+  {
+    "id": 88,
+    "event_type": "node_discovered",
+    "agent_id": null,
+    "from_agent": null,
+    "to_agent": null,
+    "correlation_id": null,
+    "timestamp": 1774233922.5254927,
+    "tags": [],
+    "payload": {
+      "node_id": "/home/andrew/Documents/Projects/remora-test/src/models/order.py::OrderSummary.OrderSummary",
+      "node_type": "class",
+      "file_path": "/home/andrew/Documents/Projects/remora-test/src/models/order.py",
+      "name": "OrderSummary"
+    },
+    "summary": ""
+  }
+]
