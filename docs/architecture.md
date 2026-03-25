@@ -53,9 +53,14 @@ Primary scripts:
 - `scripts/test_relationship_tools.sh`: graph relationship tool checks
 - `scripts/test_runtime_guardrails.sh`: metrics/overflow guardrail checks (stress profile)
 - `scripts/test_lsp_startup.sh`: LSP startup/dependency diagnostics
-- `scripts/test_lsp_event_bridge.sh`: LSP didOpen/didSave -> `content_changed`
-- `scripts/test_search.sh`: semantic search/index checks
+- `scripts/test_lsp_event_bridge.sh`: LSP didOpen/didSave -> file change events (`content_changed` or `node_changed`) with strict handshake enforcement
+- `scripts/test_search.sh`: semantic search/index checks with strict `MAX_INDEX_ERRORS` threshold support
 - `scripts/run_demo_checks.sh`: orchestrated check runner with optional guardrails/LSP bridge gates
+
+## Repository artifact policy
+
+Runtime-generated `.grail/*/check.json` and `.grail/*/run.log` are ignored and untracked.
+Stable `.grail` sources (such as `monty_code.py`, `inputs.json`, `externals.json`, and `stubs.pyi`) remain tracked.
 
 ## Runtime profiles
 

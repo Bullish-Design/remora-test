@@ -20,9 +20,19 @@ cp ui/vendor/graphology-layout-forceatlas2.min.js "$STATIC_DIR/vendor/graphology
 
 INDEX_HTML="$STATIC_DIR/index.html"
 
-sed -i 's#https://unpkg.com/graphology@0.25.4/dist/graphology.umd.min.js#/static/vendor/graphology.umd.min.js#g' "$INDEX_HTML"
-sed -i 's#https://unpkg.com/sigma@3.0.0-beta.31/build/sigma.min.js#/static/vendor/sigma.min.js#g' "$INDEX_HTML"
-sed -i 's#https://unpkg.com/graphology-layout-forceatlas2@0.10.1/build/graphology-layout-forceatlas2.min.js#/static/vendor/graphology-layout-forceatlas2.min.js#g' "$INDEX_HTML"
+sedi() {
+  local expr="$1"
+  local file="$2"
+  if sed --version >/dev/null 2>&1; then
+    sed -i "$expr" "$file"
+  else
+    sed -i '' "$expr" "$file"
+  fi
+}
+
+sedi 's#https://unpkg.com/graphology@0.25.4/dist/graphology.umd.min.js#/static/vendor/graphology.umd.min.js#g' "$INDEX_HTML"
+sedi 's#https://unpkg.com/sigma@3.0.0-beta.31/build/sigma.min.js#/static/vendor/sigma.min.js#g' "$INDEX_HTML"
+sedi 's#https://unpkg.com/graphology-layout-forceatlas2@0.10.1/build/graphology-layout-forceatlas2.min.js#/static/vendor/graphology-layout-forceatlas2.min.js#g' "$INDEX_HTML"
 
 echo "Installed local UI vendor assets into: $STATIC_DIR/vendor"
 echo "Patched index.html to local /static/vendor scripts"

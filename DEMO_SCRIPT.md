@@ -170,6 +170,12 @@ Use strict mode when you want the search path to be mandatory:
 REQUIRE_SEARCH=1 scripts/test_search.sh
 ```
 
+Strict mode also enforces indexing error counts (default `MAX_INDEX_ERRORS=0`):
+
+```bash
+REQUIRE_SEARCH=1 MAX_INDEX_ERRORS=0 scripts/test_search.sh
+```
+
 ## 12. WOW #9: LSP Paths
 
 Startup diagnostics path:
@@ -186,13 +192,15 @@ scripts/test_lsp_event_bridge.sh
 
 Expected:
 - LSP starts (or returns clear dependency diagnostics)
-- event bridge path emits `content_changed` from LSP open/save.
+- event bridge path emits a file change event (`content_changed` or `node_changed`) from LSP open/save.
 
 For strict bridge enforcement:
 
 ```bash
 REQUIRE_LSP_BRIDGE=1 scripts/test_lsp_event_bridge.sh
 ```
+
+Strict mode treats missing initialize handshake response as a hard failure.
 
 ## 13. Guardrails Metrics (Optional)
 

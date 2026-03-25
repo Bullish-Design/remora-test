@@ -215,6 +215,10 @@ cython_debug/
 .cursorignore
 .cursorindexingignore
 
+# Runtime-generated grail artifacts
+.grail/*/check.json
+.grail/*/run.log
+
 # Marimo
 marimo/_static/
 marimo/_lsp/

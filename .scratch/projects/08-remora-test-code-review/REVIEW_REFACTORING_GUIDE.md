@@ -5,9 +5,9 @@
 - [x] Phase 2 completed: script reliability fixes landed for:
   - index error accounting/threshold handling in `scripts/test_search.sh`
   - chat send-status assertions in `scripts/test_proposal_flow.sh` and `scripts/test_proposal_accept_flow.sh`
-- [ ] Phase 3 pending
-- [ ] Phase 4 pending
-- [ ] Phase 5 pending
+- [x] Phase 3 completed: meaningful unit/smoke/script-contract tests added with coverage threshold enforcement (`--cov-fail-under=60`).
+- [x] Phase 4 completed: `.grail` generated artifact policy enforced, portable `sed` helper added, and trigger comments removed from `src/services/pricing.py`.
+- [x] Phase 5 completed: README/DEMO/architecture docs updated for strict search + strict LSP bridge behavior and troubleshooting matrix.
 
 ## Objective
 Implement all actionable issues identified in `CODE_REVIEW.md` with a phased, low-risk rollout that improves:

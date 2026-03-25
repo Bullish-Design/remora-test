@@ -45,7 +45,7 @@ include = [
 [tool.uv]
 
 [tool.pytest.ini_options]
-addopts = "-q --cov=src --cov-report=term-missing"
+addopts = "-q --cov=src --cov-report=term-missing --cov-fail-under=60"
 testpaths = ["tests"]
 markers = [
   "live: tests that require a running remora runtime and optional external services",

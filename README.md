@@ -113,9 +113,15 @@ Runner options:
 
 ```bash
 REQUIRE_SEARCH=1 scripts/run_demo_checks.sh
+REQUIRE_SEARCH=1 MAX_INDEX_ERRORS=0 scripts/test_search.sh
 RUN_GUARDRAILS_CHECK=1 REQUIRE_OVERFLOW=1 scripts/run_demo_checks.sh
 RUN_LSP_BRIDGE_CHECK=1 REQUIRE_LSP_BRIDGE=1 scripts/run_demo_checks.sh
 ```
+
+## Repository Hygiene Policy
+
+`.grail/*/check.json` and `.grail/*/run.log` are runtime-generated artifacts and are intentionally ignored.
+Only stable tool sources/config inputs under `.grail/*` should be tracked.
 
 ## Troubleshooting
 
@@ -133,6 +139,7 @@ No proposals appear:
 Search returns 503:
 - In default mode, `scripts/test_search.sh` skips with diagnostics.
 - For strict behavior, run with `REQUIRE_SEARCH=1` after installing `remora[search]`, starting embeddy, and setting `REMORA_EMBEDDY_URL`.
+- In strict mode, indexing errors are also enforced. Override threshold only when needed with `MAX_INDEX_ERRORS=<N>`.
 
 Search returns 500 with `Model not loaded`:
 - Start the local adapter in one shell:
@@ -149,8 +156,17 @@ LSP startup check fails:
 LSP bridge check fails:
 - Ensure runtime is already running on `BASE` and points to same `.remora/remora.db`.
 - Install `remora[lsp]` (pygls dependency).
-- In default mode, bridge check can skip when LSP extras are missing.
-- For strict behavior, run with `REQUIRE_LSP_BRIDGE=1`.
+- In strict mode (`REQUIRE_LSP_BRIDGE=1`), initialize handshake failure is terminal.
+- Bridge check accepts change events emitted as either `content_changed` or `node_changed` for the target file.
+
+### Troubleshooting Matrix
+
+| Symptom | Likely cause | Action |
+|---|---|---|
+| `Unable to parse index error count` | `remora index` output format changed | Inspect index log tail and update parser in `scripts/test_search.sh` |
+| `Indexing reported too many errors` | backend unavailable or per-file indexing failures | fix backend, or set temporary `MAX_INDEX_ERRORS` while triaging |
+| `Chat send failed for proposal-* trigger` | `/api/chat` request rejected | inspect returned JSON payload and runtime logs before polling proposals |
+| `LSP cycle failed` / no bridge event | LSP extras missing, wrong runtime DB path, or no change event emitted | install `remora[lsp]`, verify `.remora/remora.db`, rerun with strict mode diagnostics |
 
 Guardrails check shows no overflow increase:
 - Start runtime with `remora.stress.yaml` and retry with `REQUIRE_OVERFLOW=1`.
