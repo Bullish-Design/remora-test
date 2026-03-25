@@ -1,0 +1,81 @@
+project_path: "."
+discovery_paths:
+  - "src/"
+  - "docs/"
+  - "configs/"
+
+discovery_languages:
+  - "python"
+  - "markdown"
+  - "toml"
+
+language_map:
+  ".py": "python"
+  ".md": "markdown"
+  ".toml": "toml"
+
+query_search_paths:
+  - "queries/"
+  - "@default"
+
+bundle_search_paths:
+  - "bundles/"
+  - "@default"
+
+bundle_overlays:
+  function: "demo-code-agent"
+  class: "demo-code-agent"
+  method: "demo-code-agent"
+  file: "demo-code-agent"
+  directory: "demo-directory-agent"
+
+model_base_url: "${REMORA_MODEL_BASE_URL:-http://remora-server:8000/v1}"
+model_api_key: "${REMORA_MODEL_API_KEY:-EMPTY}"
+model_default: "${REMORA_MODEL:-Qwen/Qwen3-4B-Instruct-2507-FP8}"
+timeout_s: 300.0
+max_turns: 8
+
+workspace_root: ".remora"
+max_concurrency: 1
+max_trigger_depth: 5
+trigger_cooldown_ms: 50
+actor_inbox_max_items: 5
+actor_inbox_overflow_policy: "drop_new"
+send_message_rate_limit: 2
+send_message_rate_window_s: 1.0
+workspace_ignore_patterns:
+  - ".git"
+  - ".venv"
+  - "__pycache__"
+  - "node_modules"
+  - ".remora"
+
+virtual_agents:
+  - id: "demo-review-observer"
+    role: "demo-virtual-observer"
+    subscriptions:
+      - event_types: ["node_changed", "node_discovered"]
+
+  - id: "demo-companion-observer"
+    role: "companion"
+    subscriptions:
+      - event_types: ["turn_digested"]
+
+  - id: "demo-src-filter-observer"
+    role: "demo-virtual-observer"
+    subscriptions:
+      - event_types: ["node_changed"]
+        path_glob: "src/**"
+
+  - id: "demo-docs-filter-observer"
+    role: "demo-virtual-observer"
+    subscriptions:
+      - event_types: ["node_changed"]
+        path_glob: "docs/**"
+
+search:
+  enabled: true
+  mode: "remote"
+  embeddy_url: "${REMORA_EMBEDDY_URL:-http://localhost:8585}"
+  timeout: 30.0
+  default_collection: "code"

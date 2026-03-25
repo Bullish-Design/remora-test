@@ -2,13 +2,15 @@
 
 ## What This Repository Demonstrates
 
-This repository demonstrates current `remora-v2` runtime capabilities against a small Python codebase:
-- code discovery into remora nodes/edges
-- chat-driven node interaction
-- local bundle/tool overrides
-- virtual agent reactive workflows
-- proposal (human-in-the-loop) review flow
-- semantic search/index flow (required by full demo checks)
+This repository demonstrates current `remora-v2` runtime capabilities against a small multi-language codebase:
+- graph discovery across Python, Markdown, and TOML
+- chat-driven node interaction with local bundle/tool overrides
+- layered reflection flow (`turn_digested` + companion observer)
+- scoped virtual-agent routing (`path_glob` filtering)
+- proposal (human-in-the-loop) review flow (reject and accept paths)
+- SSE replay/resume, cursor focus events, and relationship-aware tools
+- semantic search/index path
+- LSP startup and LSP event-bridge path
 
 ## Prerequisites
 
@@ -17,13 +19,13 @@ This repository demonstrates current `remora-v2` runtime capabilities against a 
 - `jq`
 - local `remora-v2` checkout at `../remora-v2`
 - optional model endpoint (default: `http://remora-server:8000/v1`)
-- embeddy backend for semantic search (required for full check runner)
+- embeddy backend for semantic search (required only for strict search checks)
 
 Environment variables (optional):
 - `REMORA_MODEL_BASE_URL`
 - `REMORA_MODEL_API_KEY`
 - `REMORA_MODEL`
-- `REMORA_EMBEDDY_URL` (required for full check runner)
+- `REMORA_EMBEDDY_URL` (required for search checks)
 
 ## Quick Start
 
@@ -45,13 +47,9 @@ curl -sS http://127.0.0.1:8080/api/health | jq .
 curl -sS http://127.0.0.1:8080/api/nodes | jq 'length'
 curl -sS http://127.0.0.1:8080/api/edges | jq 'length'
 curl -sS 'http://127.0.0.1:8080/api/events?limit=5' | jq 'length'
-
-curl -sS -X POST http://127.0.0.1:8080/api/chat \
-  -H 'Content-Type: application/json' \
-  -d '{"node_id":"user","message":"hello"}' | jq .
 ```
 
-You can also run:
+Baseline script:
 
 ```bash
 scripts/test_demo_runtime.sh
@@ -59,34 +57,37 @@ scripts/test_demo_runtime.sh
 
 ## Advanced Demo Paths
 
-Virtual agents:
+Core behavior checks:
 
 ```bash
 scripts/test_virtual_agents.sh
+scripts/test_reflection_pipeline.sh
+scripts/test_subscription_filters.sh
+scripts/test_proposal_flow.sh
+scripts/test_proposal_accept_flow.sh
+scripts/test_multilang_discovery.sh
+scripts/test_sse_contract.sh
+scripts/test_cursor_focus.sh
+scripts/test_relationship_tools.sh
+scripts/test_search.sh
+scripts/test_lsp_startup.sh
 ```
 
-Companion enforcement is opt-in:
+Optional high-load / deep integration checks:
+
+```bash
+# requires runtime started with remora.stress.yaml for strict overflow expectation
+REQUIRE_OVERFLOW=1 scripts/test_runtime_guardrails.sh
+
+# requires healthy remora runtime and lsp extras available
+scripts/test_lsp_event_bridge.sh
+```
+
+Companion strict mode examples:
 
 ```bash
 REQUIRE_COMPANION=1 scripts/test_virtual_agents.sh
-```
-
-Proposal flow:
-
-```bash
-scripts/test_proposal_flow.sh
-```
-
-Search/index:
-
-```bash
-scripts/test_search.sh
-```
-
-LSP startup check:
-
-```bash
-scripts/test_lsp_startup.sh
+REQUIRE_COMPANION=1 scripts/test_reflection_pipeline.sh
 ```
 
 Constrained fallback profile (if full-mode virtual behavior is unstable in your environment):
@@ -95,16 +96,24 @@ Constrained fallback profile (if full-mode virtual behavior is unstable in your 
 devenv shell -- remora start --project-root . --config remora.constrained.yaml --port 8080 --log-events
 ```
 
-Full check sequence:
+Stress profile (for guardrail metrics demo):
+
+```bash
+devenv shell -- remora start --project-root . --config remora.stress.yaml --port 8080 --log-events
+```
+
+Full check runner:
 
 ```bash
 scripts/run_demo_checks.sh
 ```
 
-UI dependency check:
+Runner options:
 
 ```bash
-scripts/test_ui_dependencies.sh
+REQUIRE_SEARCH=1 scripts/run_demo_checks.sh
+RUN_GUARDRAILS_CHECK=1 REQUIRE_OVERFLOW=1 scripts/run_demo_checks.sh
+RUN_LSP_BRIDGE_CHECK=1 REQUIRE_LSP_BRIDGE=1 scripts/run_demo_checks.sh
 ```
 
 ## Troubleshooting
@@ -114,27 +123,26 @@ scripts/test_ui_dependencies.sh
 
 Custom tools missing in agent workspaces:
 - Verify `bundle_overlays` maps node types to `demo-code-agent` and `demo-directory-agent`.
+- Confirm tool files exist under `bundles/demo-code-agent/tools/`.
 
 No proposals appear:
 - Confirm target node resolves and tools exist under `_bundle/tools`.
 - Check `/api/events` for tool call failures.
 
 Search returns 503:
-- Full demo checks require search availability.
-- Install `remora[search]`, start embeddy, and set `REMORA_EMBEDDY_URL`.
+- In default mode, `scripts/test_search.sh` skips with diagnostics.
+- For strict behavior, run with `REQUIRE_SEARCH=1` after installing `remora[search]`, starting embeddy, and setting `REMORA_EMBEDDY_URL`.
 
 LSP startup check fails:
-- Ensure `.remora/remora.db` exists by running remora runtime at least once.
+- Ensure `.remora/remora.db` exists by running runtime at least once.
 - If output mentions `LSP support requires pygls`, install LSP extras (`remora[lsp]`).
 
-Virtual companion checks fail:
-- Companion behavior depends on `turn_digested` event emission from runtime.
-- By default, demo checks enforce review observer behavior and keep companion optional.
-- To enforce companion behavior explicitly, run `REQUIRE_COMPANION=1 scripts/test_virtual_agents.sh`.
-- If your environment cannot support full-mode virtual flow yet, use `--config remora.constrained.yaml` as a temporary fallback.
+LSP bridge check fails:
+- Ensure runtime is already running on `BASE` and points to same `.remora/remora.db`.
+- Install `remora[lsp]` (pygls dependency).
+- In default mode, bridge check can skip when LSP extras are missing.
+- For strict behavior, run with `REQUIRE_LSP_BRIDGE=1`.
 
-Blank web UI at `/`:
-- The current remora web UI loads graph libraries from `unpkg.com`.
-- In network-restricted environments, the page can appear blank if CDN scripts cannot load.
-- Run `scripts/test_ui_dependencies.sh` to confirm.
-- Use API/script flows (`scripts/test_demo_runtime.sh`, `scripts/test_virtual_agents.sh`, `scripts/test_proposal_flow.sh`) as the reliable offline path.
+Guardrails check shows no overflow increase:
+- Start runtime with `remora.stress.yaml` and retry with `REQUIRE_OVERFLOW=1`.
+- Without stress profile, metrics keys still validate but overflow may remain zero.

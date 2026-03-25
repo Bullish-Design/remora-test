@@ -1,0 +1,29 @@
+{
+  "externals": [
+    {
+      "name": "my_node_id",
+      "async": true,
+      "parameters": [],
+      "return_type": "str",
+      "docstring": null
+    },
+    {
+      "name": "graph_get_edges_by_type",
+      "async": true,
+      "parameters": [
+        {
+          "name": "target_id",
+          "type": "str",
+          "default": null
+        },
+        {
+          "name": "edge_type",
+          "type": "str",
+          "default": null
+        }
+      ],
+      "return_type": "list[dict]",
+      "docstring": null
+    }
+  ]
+}

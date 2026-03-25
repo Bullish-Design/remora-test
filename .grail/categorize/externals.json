@@ -10,7 +10,7 @@
           "default": null
         }
       ],
-      "return_type": "dict",
+      "return_type": "dict | None",
       "docstring": null
     },
     {

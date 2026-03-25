@@ -13,6 +13,16 @@
           "name": "status",
           "type": "str | None",
           "default": null
+        },
+        {
+          "name": "file_path",
+          "type": "str | None",
+          "default": "Constant(value=None)"
+        },
+        {
+          "name": "role",
+          "type": "str | None",
+          "default": "Constant(value=None)"
         }
       ],
       "return_type": "list[dict]",

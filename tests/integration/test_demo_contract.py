@@ -15,9 +15,19 @@ def test_required_paths_exist() -> None:
         Path("bundles/demo-directory-agent/bundle.yaml"),
         Path("scripts/test_demo_runtime.sh"),
         Path("scripts/test_virtual_agents.sh"),
+        Path("scripts/test_reflection_pipeline.sh"),
+        Path("scripts/test_subscription_filters.sh"),
         Path("scripts/test_proposal_flow.sh"),
+        Path("scripts/test_proposal_accept_flow.sh"),
+        Path("scripts/test_multilang_discovery.sh"),
+        Path("scripts/test_sse_contract.sh"),
+        Path("scripts/test_cursor_focus.sh"),
+        Path("scripts/test_relationship_tools.sh"),
+        Path("scripts/test_runtime_guardrails.sh"),
         Path("scripts/run_demo_checks.sh"),
         Path("scripts/test_lsp_startup.sh"),
+        Path("scripts/test_lsp_event_bridge.sh"),
+        Path("remora.stress.yaml"),
     ]
     missing = [str(path) for path in required if not path.exists()]
     assert not missing, f"Missing required demo paths: {missing}"
@@ -27,10 +37,19 @@ def test_required_scripts_executable() -> None:
     for script in [
         Path("scripts/test_demo_runtime.sh"),
         Path("scripts/test_virtual_agents.sh"),
+        Path("scripts/test_reflection_pipeline.sh"),
+        Path("scripts/test_subscription_filters.sh"),
         Path("scripts/test_proposal_flow.sh"),
+        Path("scripts/test_proposal_accept_flow.sh"),
+        Path("scripts/test_multilang_discovery.sh"),
+        Path("scripts/test_sse_contract.sh"),
+        Path("scripts/test_cursor_focus.sh"),
+        Path("scripts/test_relationship_tools.sh"),
+        Path("scripts/test_runtime_guardrails.sh"),
         Path("scripts/run_demo_checks.sh"),
         Path("scripts/test_search.sh"),
         Path("scripts/test_lsp_startup.sh"),
+        Path("scripts/test_lsp_event_bridge.sh"),
     ]:
         assert script.exists(), f"Missing script: {script}"
         assert os.access(script, os.X_OK), f"Script not executable: {script}"

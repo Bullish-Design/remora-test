@@ -1,0 +1,42 @@
+{
+  "externals": [
+    {
+      "name": "kv_get",
+      "async": true,
+      "parameters": [
+        {
+          "name": "key",
+          "type": "str",
+          "default": null
+        }
+      ],
+      "return_type": "object",
+      "docstring": null
+    },
+    {
+      "name": "kv_set",
+      "async": true,
+      "parameters": [
+        {
+          "name": "key",
+          "type": "str",
+          "default": null
+        },
+        {
+          "name": "value",
+          "type": "object",
+          "default": null
+        }
+      ],
+      "return_type": "None",
+      "docstring": null
+    },
+    {
+      "name": "my_correlation_id",
+      "async": true,
+      "parameters": [],
+      "return_type": "str | None",
+      "docstring": null
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "name": "agent_id",
+      "type": "str",
+      "required": true,
+      "default": null
+    },
+    {
+      "name": "summary",
+      "type": "str",
+      "required": true,
+      "default": null
+    },
+    {
+      "name": "tags",
+      "type": "str",
+      "required": true,
+      "default": null
+    },
+    {
+      "name": "insight",
+      "type": "str",
+      "required": false,
+      "default": ""
+    }
+  ]
+}

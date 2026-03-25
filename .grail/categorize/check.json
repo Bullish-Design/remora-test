@@ -1,12 +1,12 @@
 {
-  "file": "/run/user/1000/remora-grail-31wz3pwg/categorize.pym",
+  "file": "/run/user/1000/remora-grail-38rx3_ke/categorize.pym",
   "valid": true,
   "errors": [],
   "warnings": [],
   "info": {
     "externals_count": 2,
     "inputs_count": 1,
-    "lines_of_code": 30,
+    "lines_of_code": 34,
     "monty_features_used": [
       "f_string"
     ]

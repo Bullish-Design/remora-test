@@ -66,21 +66,19 @@ max_companion_turn_complete="$before_companion_turn_complete"
 max_companion_tool_activity="$before_companion_tool_activity"
 max_turn_digested="$before_turn_digested"
 
-trigger_dir="src/.remora_demo_trigger"
-mkdir -p "$trigger_dir"
-trigger_file="$trigger_dir/trigger_$(date +%s).py"
-trap 'rm -f "$trigger_file"; rmdir "$trigger_dir" 2>/dev/null || true; cleanup' EXIT
-
-cat > "$trigger_file" <<'PY'
-def _remora_demo_trigger() -> int:
-    return 1
-PY
+probe_token="virtual_observer_probe_$(date +%s)"
+chat_payload="$(jq -nc --arg node "demo-review-observer" --arg message "$probe_token" '{node_id:$node, message:$message}')"
+chat_resp="$(curl -fsS -X POST "$BASE/api/chat" -H "Content-Type: application/json" -d "$chat_payload")"
+if [ "$(echo "$chat_resp" | jq -r '.status // empty')" != "sent" ]; then
+  echo "Failed to send chat probe to demo-review-observer: $chat_resp" >&2
+  exit 1
+fi
+probe_corr=""
 
 review_ok=0
 companion_ok=0
 elapsed=0
 while [ "$elapsed" -lt "$TIMEOUT_S" ]; do
-  printf "# remora_demo_tick %s\n" "$elapsed" >> "$trigger_file"
   sleep "$POLL_INTERVAL_S"
   elapsed=$((elapsed + POLL_INTERVAL_S))
 
@@ -107,9 +105,11 @@ while [ "$elapsed" -lt "$TIMEOUT_S" ]; do
   if [ "$after_companion_tool_activity" -gt "$max_companion_tool_activity" ]; then max_companion_tool_activity="$after_companion_tool_activity"; fi
   if [ "$after_turn_digested" -gt "$max_turn_digested" ]; then max_turn_digested="$after_turn_digested"; fi
 
-  if [ "$max_review_turn_complete" -gt "$before_review_turn_complete" ] &&
-     [ "$max_review_model_response" -gt "$before_review_model_response" ] &&
-     { [ "$max_review_output" -gt "$before_review_output" ] || [ "$max_review_tool_activity" -gt "$before_review_tool_activity" ]; }; then
+  if [ -z "$probe_corr" ]; then
+    probe_corr="$(jq -r 'first(.[] | select(.event_type=="agent_complete" and (.payload.agent_id // "")=="demo-review-observer" and ((.payload.user_message // "") | contains("'"$probe_token"'"))).correlation_id // empty)' "$after_events")"
+  fi
+
+  if [ -n "$probe_corr" ]; then
     review_ok=1
   fi
 
@@ -149,7 +149,7 @@ echo "turn_digested: before=$before_turn_digested after=$after_turn_digested"
 
 if [ "$review_ok" -ne 1 ]; then
   echo "Review observer behavior check failed within ${TIMEOUT_S}s." >&2
-  echo "Expected: model_response + turn_complete growth, plus output/tool activity evidence." >&2
+  echo "Expected: review observer completion for probe token '$probe_token'." >&2
   echo "Recent review observer events:" >&2
   jq '[.[] | select((.payload.agent_id // "")=="demo-review-observer") | {event_type, payload}] | .[0:20]' "$after_events" >&2
   exit 1

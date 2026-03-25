@@ -1,0 +1,14 @@
+{
+  "file": "/run/user/1000/remora-grail-jh2x56ty/rewrite_to_magic.pym",
+  "valid": true,
+  "errors": [],
+  "warnings": [],
+  "info": {
+    "externals_count": 3,
+    "inputs_count": 0,
+    "lines_of_code": 15,
+    "monty_features_used": [
+      "f_string"
+    ]
+  }
+}

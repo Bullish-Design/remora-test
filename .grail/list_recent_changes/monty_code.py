@@ -2,7 +2,7 @@
 
 MAX_ITEMS = 20
 MAX_OUTPUT = 2000
-nodes = await graph_list_nodes()
+nodes = await graph_query_nodes()
 if not nodes:
     result = 'No nodes found.'
 else:

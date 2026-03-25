@@ -1,14 +1,15 @@
 {
-  "file": "/run/user/1000/remora-grail-_fc_4f3t/companion_summarize.pym",
+  "file": "/run/user/1000/remora-grail-g8i0_z6k/companion_summarize.pym",
   "valid": true,
   "errors": [],
   "warnings": [],
   "info": {
     "externals_count": 3,
     "inputs_count": 2,
-    "lines_of_code": 33,
+    "lines_of_code": 58,
     "monty_features_used": [
       "f_string",
+      "for_loop",
       "list_comprehension"
     ]
   }

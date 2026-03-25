@@ -4,7 +4,7 @@ This guide is a copy/paste walkthrough for a new user to:
 - set up the environment
 - start the remora runtime
 - verify baseline functionality
-- run high-impact demo flows (tool calls, reactive virtual agents, proposal review)
+- run high-impact demo flows (reflection, virtual routing, proposal lifecycle, SSE/cursor, relationship tools)
 
 Assumes repo path:
 - `/home/andrew/Documents/Projects/remora-test`
@@ -49,9 +49,7 @@ Expected:
 - health status is `ok`
 - nodes count is > 0
 
-## 4. WOW #1: Trigger a Custom Tool Through Chat
-
-This uses the local `demo-code-agent` bundle and `demo_echo.pym` tool.
+## 4. WOW #1: Trigger Custom Tools Through Chat
 
 Find a function node:
 
@@ -60,67 +58,104 @@ TARGET_NODE="$(curl -sS "$BASE/api/nodes" | jq -r 'map(select(.node_type=="funct
 echo "$TARGET_NODE"
 ```
 
-Send chat with `demo_echo` token:
+Send chat with deterministic tokens:
 
 ```bash
 curl -sS -X POST "$BASE/api/chat" \
   -H "Content-Type: application/json" \
-  -d "{\"node_id\": \"$TARGET_NODE\", \"message\": \"demo_echo\"}" | jq .
+  -d "{\"node_id\": \"$TARGET_NODE\", \"message\": \"demo_echo show_dependencies\"}" | jq .
 ```
 
 Expected:
 - response contains `"status": "sent"`
-- in Terminal A logs, you should see the turn and tool invocation activity.
+- logs/events show `demo_echo` and/or `show_dependencies` tool activity.
 
-## 5. WOW #2: Show Virtual Agent Reactivity
-
-This demonstrates `demo-review-observer` reacting to source changes.
+## 5. WOW #2: Reflection Pipeline + Companion Digest
 
 ```bash
-scripts/test_virtual_agents.sh
+scripts/test_reflection_pipeline.sh
 ```
 
 Expected:
-- review observer activity increases (`review_model_response`, `review_turn_complete`, and output/tool evidence)
-- companion counters can increase (`companion_start`, `companion_turn_complete`) when `turn_digested` flow is active
-- script exits with `test_virtual_agents.sh passed`
+- target code node executes a primary turn
+- `turn_digested` event appears for that node
+- companion observer turn activity increases
 
-Optional strict companion validation:
-
-```bash
-REQUIRE_COMPANION=1 scripts/test_virtual_agents.sh
-```
-
-Optional direct proof:
+Optional strict mode:
 
 ```bash
-curl -sS "$BASE/api/nodes" | jq '[.[] | select(.node_type=="virtual") | .node_id]'
+REQUIRE_COMPANION=1 scripts/test_reflection_pipeline.sh
 ```
 
-Expected includes:
-- `demo-review-observer`
-- `demo-companion-observer`
+## 6. WOW #3: Scoped Virtual-Agent Routing (`path_glob`)
 
-## 6. WOW #3: Human-in-the-Loop Proposal Flow
+```bash
+scripts/test_subscription_filters.sh
+```
 
-This demonstrates AI-generated code changes going to proposal review instead of direct commit.
+Expected:
+- src-only changes trigger `demo-src-filter-observer`
+- docs-only changes trigger `demo-docs-filter-observer`
+- no cross-triggering between the two observers.
+
+## 7. WOW #4: Human-in-the-Loop Proposal Flow (Reject + Accept)
+
+Reject path:
 
 ```bash
 scripts/test_proposal_flow.sh
 ```
 
-What this does:
-- asks `compute_total` node to run `rewrite_to_magic`
-- waits for proposal creation
-- shows proposal diff
-- rejects proposal (intentionally, to keep source clean)
+Accept path with auto-restore:
+
+```bash
+scripts/test_proposal_accept_flow.sh
+```
 
 Expected:
 - proposal appears in `/api/proposals`
 - diff endpoint returns content
-- reject call returns status `rejected`
+- accept path emits `rewrite_accepted` and `content_changed`
+- script restores file after acceptance to keep repo clean.
 
-## 7. WOW #4: Search/Index Demo
+## 8. WOW #5: Multi-Language Discovery
+
+```bash
+scripts/test_multilang_discovery.sh
+```
+
+Expected:
+- discover output includes `function`, `section`, and `table` nodes.
+
+## 9. WOW #6: SSE Replay/Resume + Cursor Focus
+
+SSE contract:
+
+```bash
+scripts/test_sse_contract.sh
+```
+
+Cursor focus:
+
+```bash
+scripts/test_cursor_focus.sh
+```
+
+Expected:
+- SSE replay includes earlier probe events
+- SSE resume with `Last-Event-ID` includes newer probe events
+- cursor call emits `cursor_focus` and resolves node id.
+
+## 10. WOW #7: Relationship-Aware Agent Tooling
+
+```bash
+scripts/test_relationship_tools.sh
+```
+
+Expected:
+- `show_dependencies` tool execution appears in events for target node.
+
+## 11. WOW #8: Search/Index Demo
 
 Requires embeddy backend available at `REMORA_EMBEDDY_URL`.
 
@@ -128,31 +163,55 @@ Requires embeddy backend available at `REMORA_EMBEDDY_URL`.
 scripts/test_search.sh
 ```
 
-If unavailable, this fails with 503 and full demo checks should be considered blocked until search is configured.
+If unavailable, this script skips in non-strict mode with diagnostics.
+Use strict mode when you want the search path to be mandatory:
 
-## 8. WOW #5: LSP Startup Path
+```bash
+REQUIRE_SEARCH=1 scripts/test_search.sh
+```
 
-Run standalone LSP startup check:
+## 12. WOW #9: LSP Paths
+
+Startup diagnostics path:
 
 ```bash
 scripts/test_lsp_startup.sh
 ```
 
-If `.remora/remora.db` is missing, start runtime once first:
+Event bridge path:
 
 ```bash
-remora start --project-root . --port 8080 --log-events
+scripts/test_lsp_event_bridge.sh
 ```
 
-If missing `pygls` is reported, install remora LSP extras (`remora[lsp]`) in your environment.
+Expected:
+- LSP starts (or returns clear dependency diagnostics)
+- event bridge path emits `content_changed` from LSP open/save.
 
-If full-mode virtual behavior is unstable in your environment, start runtime with constrained fallback config:
+For strict bridge enforcement:
 
 ```bash
-remora start --project-root . --config remora.constrained.yaml --port 8080 --log-events
+REQUIRE_LSP_BRIDGE=1 scripts/test_lsp_event_bridge.sh
 ```
 
-## 9. One-Command Demo Check Runner
+## 13. Guardrails Metrics (Optional)
+
+Start runtime with stress config in Terminal A:
+
+```bash
+remora start --project-root . --config remora.stress.yaml --port 8080 --log-events
+```
+
+Then run:
+
+```bash
+REQUIRE_OVERFLOW=1 scripts/test_runtime_guardrails.sh
+```
+
+Expected:
+- overflow-related metrics increase while runtime remains healthy.
+
+## 14. One-Command Demo Check Runner
 
 After runtime is up, run:
 
@@ -160,23 +219,28 @@ After runtime is up, run:
 scripts/run_demo_checks.sh
 ```
 
-## 9.1 UI Dependency Check (If Graph UI Is Blank)
+Enable optional checks:
 
 ```bash
-scripts/test_ui_dependencies.sh
+REQUIRE_SEARCH=1 scripts/run_demo_checks.sh
+RUN_GUARDRAILS_CHECK=1 REQUIRE_OVERFLOW=1 scripts/run_demo_checks.sh
+RUN_LSP_BRIDGE_CHECK=1 REQUIRE_LSP_BRIDGE=1 scripts/run_demo_checks.sh
 ```
 
-If `unpkg` is unreachable, browser UI can appear blank while APIs still work.
-In that case, continue with script/API-based demo flows.
+## 15. Fallback Profile (If Needed)
 
-## 10. Reset Notes (If Needed)
+If full-mode virtual behavior is unstable in your environment:
 
-`test_virtual_agents.sh` creates a temporary trigger file under `src/.remora_demo_trigger/` and cleans it up automatically.
+```bash
+remora start --project-root . --config remora.constrained.yaml --port 8080 --log-events
+```
 
-## 11. Demo Narration Tips (For Live Presentation)
+## 16. Demo Narration Tips
 
-1. Start with runtime health + discovered graph size to establish credibility.
-2. Trigger `demo_echo` to show deterministic tool use from prompt token.
-3. Run virtual-agent test to show event-driven automation.
-4. Run proposal flow to show safety/human approval controls.
-5. End with `run_demo_checks.sh` as proof of repeatable validation.
+1. Start with runtime health + discovered graph size.
+2. Trigger deterministic tools via chat token prompts.
+3. Show reflection -> digest -> companion flow.
+4. Show scoped virtual-agent routing.
+5. Show proposal reject and accept safety controls.
+6. Show SSE replay/resume and cursor focus.
+7. End with `scripts/run_demo_checks.sh` for repeatability.

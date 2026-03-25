@@ -5,12 +5,6 @@
       "type": "str",
       "required": true,
       "default": null
-    },
-    {
-      "name": "relationship",
-      "type": "str",
-      "required": false,
-      "default": "related"
     }
   ]
 }

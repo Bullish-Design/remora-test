@@ -1,9 +1,13 @@
 project_path: "."
 discovery_paths:
   - "src/"
+  - "docs/"
+  - "configs/"
 
 discovery_languages:
   - "python"
+  - "markdown"
+  - "toml"
 
 language_map:
   ".py": "python"
@@ -44,7 +48,7 @@ workspace_ignore_patterns:
 
 virtual_agents:
   - id: "demo-review-observer"
-    role: "review-agent"
+    role: "demo-virtual-observer"
     subscriptions:
       - event_types: ["node_changed", "node_discovered"]
 
@@ -52,6 +56,18 @@ virtual_agents:
     role: "companion"
     subscriptions:
       - event_types: ["turn_digested"]
+
+  - id: "demo-src-filter-observer"
+    role: "demo-virtual-observer"
+    subscriptions:
+      - event_types: ["node_changed"]
+        path_glob: "src/**"
+
+  - id: "demo-docs-filter-observer"
+    role: "demo-virtual-observer"
+    subscriptions:
+      - event_types: ["node_changed"]
+        path_glob: "docs/**"
 
 search:
   enabled: true

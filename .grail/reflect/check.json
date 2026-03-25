@@ -1,12 +1,12 @@
 {
-  "file": "/run/user/1000/remora-grail-jj6049_0/reflect.pym",
+  "file": "/run/user/1000/remora-grail-_rgd_wf1/reflect.pym",
   "valid": true,
   "errors": [],
   "warnings": [],
   "info": {
-    "externals_count": 3,
+    "externals_count": 2,
     "inputs_count": 2,
-    "lines_of_code": 32,
+    "lines_of_code": 21,
     "monty_features_used": [
       "f_string"
     ]

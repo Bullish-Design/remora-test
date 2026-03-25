@@ -1,0 +1,16 @@
+{
+  "file": "/run/user/1000/remora-grail-2qnrxb02/aggregate_digest.pym",
+  "valid": true,
+  "errors": [],
+  "warnings": [],
+  "info": {
+    "externals_count": 3,
+    "inputs_count": 4,
+    "lines_of_code": 114,
+    "monty_features_used": [
+      "f_string",
+      "for_loop",
+      "list_comprehension"
+    ]
+  }
+}

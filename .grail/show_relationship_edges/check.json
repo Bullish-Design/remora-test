@@ -1,0 +1,15 @@
+{
+  "file": "/run/user/1000/remora-grail-1_yrhv3q/show_relationship_edges.pym",
+  "valid": true,
+  "errors": [],
+  "warnings": [],
+  "info": {
+    "externals_count": 2,
+    "inputs_count": 2,
+    "lines_of_code": 28,
+    "monty_features_used": [
+      "f_string",
+      "for_loop"
+    ]
+  }
+}
