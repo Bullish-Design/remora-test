@@ -33,7 +33,7 @@ fi
 
 # Verify LSP extras are available before attempting bridge interactions.
 set +e
-timeout 8s devenv shell -- remora lsp --project-root "$PROJECT_ROOT" >"$lsp_preflight_log" 2>&1
+timeout 8s devenv shell -- remora lsp --project-root "$PROJECT_ROOT" --log-level ERROR >"$lsp_preflight_log" 2>&1
 lsp_preflight_code=$?
 set -e
 
@@ -128,12 +128,13 @@ def read_message(proc: subprocess.Popen[bytes], timeout_s: float = 15.0) -> dict
 file_path = PROJECT_ROOT / "src/services/pricing.py"
 uri = file_path.resolve().as_uri()
 text = file_path.read_text(encoding="utf-8")
+updated_text = text + "\n# remora lsp bridge probe\n"
 
 baseline_events = http_json(f"{BASE}/api/events?limit=200")
 before_ts = max([float(item.get("timestamp", 0.0)) for item in baseline_events] + [time.time()])
 
 proc = subprocess.Popen(
-    ["remora", "lsp", "--project-root", str(PROJECT_ROOT)],
+    ["remora", "lsp", "--project-root", str(PROJECT_ROOT), "--log-level", "ERROR"],
     stdin=subprocess.PIPE,
     stdout=subprocess.PIPE,
     stderr=subprocess.PIPE,
@@ -192,8 +193,27 @@ try:
         proc,
         {
             "jsonrpc": "2.0",
+            "method": "textDocument/didChange",
+            "params": {
+                "textDocument": {
+                    "uri": uri,
+                    "version": 2,
+                },
+                "contentChanges": [
+                    {
+                        "text": updated_text,
+                    }
+                ],
+            },
+        },
+    )
+
+    send_message(
+        proc,
+        {
+            "jsonrpc": "2.0",
             "method": "textDocument/didSave",
-            "params": {"textDocument": {"uri": uri}},
+            "params": {"textDocument": {"uri": uri}, "text": updated_text},
         },
     )
 

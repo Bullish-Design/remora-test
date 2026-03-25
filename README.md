@@ -20,6 +20,7 @@ This repository demonstrates current `remora-v2` runtime capabilities against a 
 - local `remora-v2` checkout at `../remora-v2`
 - optional model endpoint (default: `http://remora-server:8000/v1`)
 - embeddy backend for semantic search (required only for strict search checks)
+- local mock embedder adapter (`scripts/mock_embedder_server.py`) for strict search in environments without a real embeddy local model
 
 Environment variables (optional):
 - `REMORA_MODEL_BASE_URL`
@@ -132,6 +133,14 @@ No proposals appear:
 Search returns 503:
 - In default mode, `scripts/test_search.sh` skips with diagnostics.
 - For strict behavior, run with `REQUIRE_SEARCH=1` after installing `remora[search]`, starting embeddy, and setting `REMORA_EMBEDDY_URL`.
+
+Search returns 500 with `Model not loaded`:
+- Start the local adapter in one shell:
+  `devenv shell -- python scripts/mock_embedder_server.py`
+- Start embeddy in a second shell with remote config:
+  `devenv shell -- embeddy serve --config configs/embeddy.remote.yaml`
+- Start remora with:
+  `REMORA_EMBEDDY_URL=http://127.0.0.1:8585 devenv shell -- remora start --project-root . --port 8080 --log-events`
 
 LSP startup check fails:
 - Ensure `.remora/remora.db` exists by running runtime at least once.
