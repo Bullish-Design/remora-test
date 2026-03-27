@@ -1,0 +1,90 @@
+-- allium: 3
+-- virtual-routing-and-subscriptions.allium
+--
+-- Scope: virtual agent subscription evaluation and path_glob filtering
+-- Includes:
+--   - event type matching
+--   - path-scoped observer routing for src/** and docs/**
+-- Excludes:
+--   - behavior inside agent turns
+--   - proposal workflows
+
+entity VirtualAgent {
+    agent_id: String
+    role: String
+}
+
+entity SubscriptionRule {
+    subscriber: VirtualAgent
+    event_types: Set<String>
+    path_glob: String?
+}
+
+entity RuntimeEvent {
+    event_type: String
+    file_path: String?
+}
+
+entity DeliveryDecision {
+    subscription: SubscriptionRule
+    event: RuntimeEvent
+    status: pending | delivered | filtered
+
+    transitions status {
+        pending -> delivered
+        pending -> filtered
+        terminal: delivered, filtered
+    }
+}
+
+default VirtualAgent demo_src_filter_observer = { agent_id: "demo-src-filter-observer", role: "demo-virtual-observer" }
+default VirtualAgent demo_docs_filter_observer = { agent_id: "demo-docs-filter-observer", role: "demo-virtual-observer" }
+
+default SubscriptionRule src_change_subscription = {
+    subscriber: demo_src_filter_observer,
+    event_types: {"node_changed"},
+    path_glob: "src/**"
+}
+
+default SubscriptionRule docs_change_subscription = {
+    subscriber: demo_docs_filter_observer,
+    event_types: {"node_changed"},
+    path_glob: "docs/**"
+}
+
+rule DeliverUnscopedSubscription {
+    when: decision: DeliveryDecision.created
+    requires: decision.status = pending
+    requires: decision.event.event_type in decision.subscription.event_types
+    requires: decision.subscription.path_glob = null
+    ensures: decision.status = delivered
+}
+
+rule DeliverScopedSubscription {
+    when: decision: DeliveryDecision.created
+    requires: decision.status = pending
+    requires: decision.event.event_type in decision.subscription.event_types
+    requires: decision.subscription.path_glob != null
+    requires: PathGlob.matches(decision.subscription.path_glob, decision.event.file_path)
+    ensures: decision.status = delivered
+}
+
+rule FilterScopedSubscription {
+    when: decision: DeliveryDecision.created
+    requires: decision.status = pending
+    requires: decision.event.event_type in decision.subscription.event_types
+    requires: decision.subscription.path_glob != null
+    requires: not PathGlob.matches(decision.subscription.path_glob, decision.event.file_path)
+    ensures: decision.status = filtered
+}
+
+invariant SrcAndDocsGlobAreMutuallyExclusiveForSingleFileEvent {
+    for event in RuntimeEvents:
+        event.file_path != null
+            implies not (
+                PathGlob.matches("src/**", event.file_path)
+                and PathGlob.matches("docs/**", event.file_path)
+            )
+}
+
+deferred PathGlob.matches

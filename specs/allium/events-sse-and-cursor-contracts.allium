@@ -1,0 +1,74 @@
+-- allium: 3
+-- events-sse-and-cursor-contracts.allium
+--
+-- Scope: cursor mapping and SSE replay/resume behavior
+-- Includes:
+--   - /api/cursor node resolution and cursor_focus emission
+--   - SSE replay with historical token visibility
+--   - Last-Event-ID resume delivering newer events
+-- Excludes:
+--   - proposal processing
+--   - bundle token routing
+
+entity CursorLookup {
+    file_path: String
+    line: Integer
+    character: Integer
+    status: pending | resolved
+    node_id: String when status = resolved
+
+    transitions status {
+        pending -> resolved
+        terminal: resolved
+    }
+}
+
+entity SseSession {
+    status: pending | replayed | resumed
+    replay_last_event_id: String when status = replayed | resumed
+    replay_contains_first_probe: Boolean when status = replayed | resumed
+    resume_contains_second_probe: Boolean when status = resumed
+
+    transitions status {
+        pending -> replayed
+        replayed -> resumed
+        terminal: resumed
+    }
+}
+
+rule ResolveCursorLookup {
+    when: lookup: CursorLookup.created
+    requires: lookup.status = pending
+    ensures: lookup.node_id = GraphResolve.node_at_position(lookup.file_path, lookup.line, lookup.character)
+    ensures: lookup.status = resolved
+}
+
+rule EmitCursorFocus {
+    when: lookup: CursorLookup.status transitions_to resolved
+    ensures: CursorFocus(node_id: lookup.node_id, file_path: lookup.file_path, line: lookup.line)
+}
+
+rule ReplaySseEvents {
+    when: ReplayRequested(session, replay_limit)
+    requires: session.status = pending
+    ensures: session.replay_last_event_id = EventStream.last_event_id(replay_limit)
+    ensures: session.replay_contains_first_probe = EventStream.contains_probe_token(replay_limit, "first")
+    ensures: session.status = replayed
+}
+
+rule ResumeSseFromLastEventId {
+    when: ResumeRequested(session)
+    requires: session.status = replayed
+    ensures: session.resume_contains_second_probe = EventStream.resume_contains_probe(session.replay_last_event_id, "second")
+    ensures: session.status = resumed
+}
+
+invariant ReplayMustExposeCursorEventOrderAnchor {
+    for session in SseSessions:
+        session.status in {replayed, resumed} implies session.replay_last_event_id != ""
+}
+
+deferred GraphResolve.node_at_position
+deferred EventStream.last_event_id
+deferred EventStream.contains_probe_token
+deferred EventStream.resume_contains_probe

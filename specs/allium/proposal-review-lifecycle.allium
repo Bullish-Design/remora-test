@@ -1,0 +1,64 @@
+-- allium: 3
+-- proposal-review-lifecycle.allium
+--
+-- Scope: rewrite proposal creation, review, and accept/reject outcomes
+-- Includes:
+--   - proposal event emission
+--   - diff availability requirement
+--   - reject and accept transitions
+--   - accept-side rewrite_accepted/content_changed emission
+-- Excludes:
+--   - tool-token triggering rules
+--   - reflection/companion pipeline
+
+entity RewriteProposal {
+    agent_id: String
+    proposal_id: String
+    target_path: String
+    status: proposed | rejected | accepted
+    diff_count: Integer
+    feedback: String?
+
+    transitions status {
+        proposed -> rejected
+        proposed -> accepted
+        terminal: rejected, accepted
+    }
+}
+
+rule CreateRewriteProposal {
+    when: RewriteRequested(agent_id, target_path)
+    ensures:
+        let proposal = RewriteProposal.created(
+            agent_id: agent_id,
+            proposal_id: ProposalIdentity.new_id(agent_id, target_path),
+            target_path: target_path,
+            status: proposed,
+            diff_count: ProposalDiff.count_candidates(agent_id, target_path)
+        )
+        RewriteProposalRaised(proposal: proposal)
+}
+
+rule RejectRewriteProposal {
+    when: ProposalRejected(proposal, feedback)
+    requires: proposal.status = proposed
+    ensures: proposal.feedback = feedback
+    ensures: proposal.status = rejected
+}
+
+rule AcceptRewriteProposal {
+    when: ProposalAccepted(proposal)
+    requires: proposal.status = proposed
+    requires: proposal.diff_count > 0
+    ensures: proposal.status = accepted
+    ensures: RewriteAccepted(agent_id: proposal.agent_id, proposal_id: proposal.proposal_id)
+    ensures: ContentChanged(path: proposal.target_path)
+}
+
+invariant ProposedProposalAlwaysHasDiffCandidate {
+    for proposal in RewriteProposals:
+        proposal.status = proposed implies proposal.diff_count > 0
+}
+
+deferred ProposalIdentity.new_id
+deferred ProposalDiff.count_candidates

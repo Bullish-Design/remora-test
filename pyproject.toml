@@ -11,7 +11,7 @@ authors = [
 
 dependencies = [
   "pydantic>=2.12.5",
-  "remora[python,markdown,toml]",
+  "remora[all-languages,search-local,lsp]",
 ]
 
 [project.optional-dependencies]
@@ -23,8 +23,8 @@ dev = [
 ]
 
 [tool.uv.sources]
-remora = { path = "../remora-v2", editable = false }
-#remora = { git = "https://github.com/Bullish-Design/remora-v2.git", rev = "main" }
+#remora = { path = "../remora-v2", editable = false }
+remora = { git = "https://github.com/Bullish-Design/remora-v2.git", rev = "main" }
 
 
 [build-system]

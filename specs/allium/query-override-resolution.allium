@@ -1,0 +1,44 @@
+-- allium: 3
+-- query-override-resolution.allium
+--
+-- Scope: query search path precedence with local overrides
+-- Includes:
+--   - local queries/ path participation
+--   - fallback to @default query set
+-- Excludes:
+--   - query execution semantics
+--   - graph discovery behavior
+
+entity QueryCatalogResolution {
+    query_name: String
+    status: pending | resolved
+    resolved_source: local_override | default_catalog when status = resolved
+    resolved_path: String when status = resolved
+
+    transitions status {
+        pending -> resolved
+        terminal: resolved
+    }
+}
+
+rule ResolveLocalQueryOverride {
+    when: resolution: QueryCatalogResolution.created
+    requires: resolution.status = pending
+    requires: QueryCatalog.exists_in_local_overrides(resolution.query_name)
+    ensures: resolution.resolved_source = local_override
+    ensures: resolution.resolved_path = QueryCatalog.local_override_path(resolution.query_name)
+    ensures: resolution.status = resolved
+}
+
+rule ResolveDefaultQueryFallback {
+    when: resolution: QueryCatalogResolution.created
+    requires: resolution.status = pending
+    requires: not QueryCatalog.exists_in_local_overrides(resolution.query_name)
+    ensures: resolution.resolved_source = default_catalog
+    ensures: resolution.resolved_path = QueryCatalog.default_path(resolution.query_name)
+    ensures: resolution.status = resolved
+}
+
+deferred QueryCatalog.exists_in_local_overrides
+deferred QueryCatalog.local_override_path
+deferred QueryCatalog.default_path

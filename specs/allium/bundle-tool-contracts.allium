@@ -1,0 +1,88 @@
+-- allium: 3
+-- bundle-tool-contracts.allium
+--
+-- Scope: bundle-level turn behavior and deterministic tool triggers
+-- Includes:
+--   - token-triggered tool invocation for demo-code-agent
+--   - directory bundle summarization role
+--   - virtual observer reactive guardrails
+-- Excludes:
+--   - runtime event routing
+--   - proposal accept/reject lifecycle
+
+entity BundleRole {
+    name: demo_code_agent | demo_directory_agent | demo_virtual_observer
+    max_turns: Integer
+    self_reflect_enabled: Boolean
+}
+
+entity BundleTurn {
+    role: BundleRole
+    mode: chat | reactive
+    status: pending | completed
+    user_message_sent: Boolean when status = completed
+    tools_called: Set<String> when status = completed
+
+    transitions status {
+        pending -> completed
+        terminal: completed
+    }
+}
+
+rule TriggerRewriteTool {
+    when: TokenDetected(turn, rewrite_to_magic)
+    requires: turn.role.name = demo_code_agent
+    ensures: ToolExecutionRequested(turn: turn, tool_name: "rewrite_to_magic")
+}
+
+rule TriggerDemoEchoTool {
+    when: TokenDetected(turn, demo_echo)
+    requires: turn.role.name = demo_code_agent
+    ensures: ToolExecutionRequested(turn: turn, tool_name: "demo_echo")
+}
+
+rule TriggerShowImportersTool {
+    when: TokenDetected(turn, show_importers)
+    requires: turn.role.name = demo_code_agent
+    ensures: ToolExecutionRequested(turn: turn, tool_name: "show_importers")
+}
+
+rule TriggerShowDependenciesTool {
+    when: TokenDetected(turn, show_dependencies)
+    requires: turn.role.name = demo_code_agent
+    ensures: ToolExecutionRequested(turn: turn, tool_name: "show_dependencies")
+}
+
+rule TriggerShowRelationshipEdgesTool {
+    when: TokenDetected(turn, show_relationship_edges)
+    requires: turn.role.name = demo_code_agent
+    ensures: ToolExecutionRequested(turn: turn, tool_name: "show_relationship_edges")
+}
+
+rule CompleteCodeAgentTurn {
+    when: turn: BundleTurn.status transitions_to completed
+    requires: turn.role.name = demo_code_agent
+    ensures: turn.user_message_sent = true
+}
+
+rule CompleteDirectoryTurn {
+    when: turn: BundleTurn.status transitions_to completed
+    requires: turn.role.name = demo_directory_agent
+    ensures: turn.user_message_sent = true
+}
+
+rule CompleteVirtualReactiveTurnWithoutTools {
+    when: turn: BundleTurn.status transitions_to completed
+    requires: turn.role.name = demo_virtual_observer
+    requires: turn.mode = reactive
+    ensures: turn.tools_called = {}
+    ensures: turn.user_message_sent = false
+}
+
+invariant VirtualObserverReactiveTurnsDoNotCallTools {
+    for turn in BundleTurns:
+        turn.status = completed and turn.role.name = demo_virtual_observer and turn.mode = reactive
+            implies turn.tools_called.count = 0
+}
+
+open question "Should token-triggered tool execution remain strict one-shot when multiple identical tokens appear in one message?"

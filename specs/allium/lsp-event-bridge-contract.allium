@@ -1,0 +1,82 @@
+-- allium: 3
+-- lsp-event-bridge-contract.allium
+--
+-- Scope: remora lsp notification cycle and event bridge verification
+-- Includes:
+--   - initialize + didOpen/didChange/didSave probe cycle
+--   - acceptance of either content_changed or node_changed
+--   - strict vs non-strict failure behavior
+-- Excludes:
+--   - search/index checks
+--   - proposal flow
+
+entity LspBridgeProbe {
+    target_path: String
+    require_bridge: Boolean
+    status: pending | passed | soft_skipped | failed
+
+    transitions status {
+        pending -> passed
+        pending -> soft_skipped
+        pending -> failed
+        terminal: passed, soft_skipped, failed
+    }
+}
+
+entity LspCycle {
+    probe: LspBridgeProbe
+    status: pending | initialized | notifications_sent | terminated
+
+    transitions status {
+        pending -> initialized
+        initialized -> notifications_sent
+        notifications_sent -> terminated
+        terminal: terminated
+    }
+}
+
+rule StartLspCycle {
+    when: probe: LspBridgeProbe.created
+    requires: probe.status = pending
+    ensures: LspCycle.created(probe: probe, status: pending)
+}
+
+rule RunLspHandshake {
+    when: cycle: LspCycle.created
+    requires: cycle.status = pending
+    ensures: cycle.status = initialized
+}
+
+rule SendOpenChangeSaveNotifications {
+    when: cycle: LspCycle.status transitions_to initialized
+    ensures: cycle.status = notifications_sent
+}
+
+rule TerminateLspCycle {
+    when: cycle: LspCycle.status transitions_to notifications_sent
+    ensures: cycle.status = terminated
+}
+
+rule MarkBridgePassed {
+    when: ChangeEventObserved(probe, event_type, event_path)
+    requires: probe.status = pending
+    requires: event_type in {"content_changed", "node_changed"}
+    requires: PathScope.matches_target(event_path, probe.target_path)
+    ensures: probe.status = passed
+}
+
+rule MarkBridgeSoftSkipped {
+    when: BridgeTimeoutObserved(probe)
+    requires: probe.status = pending
+    requires: probe.require_bridge = false
+    ensures: probe.status = soft_skipped
+}
+
+rule MarkBridgeFailedStrict {
+    when: BridgeTimeoutObserved(probe)
+    requires: probe.status = pending
+    requires: probe.require_bridge = true
+    ensures: probe.status = failed
+}
+
+deferred PathScope.matches_target

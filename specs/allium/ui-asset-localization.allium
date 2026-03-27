@@ -1,0 +1,65 @@
+-- allium: 3
+-- ui-asset-localization.allium
+--
+-- Scope: local UI vendor installation and CDN dependency checks
+-- Includes:
+--   - copying vendor JS assets into remora static dir
+--   - patching index.html script sources to /static/vendor/*
+--   - diagnostic check for unpkg dependency/reachability
+-- Excludes:
+--   - graph rendering semantics
+--   - runtime API behavior
+
+entity UiAssetInstall {
+    status: pending | installed
+    static_dir: String when status = installed
+    index_patched_to_local_vendor: Boolean when status = installed
+
+    transitions status {
+        pending -> installed
+        terminal: installed
+    }
+}
+
+entity UiDependencyCheck {
+    status: pending | checked
+    index_references_unpkg: Boolean when status = checked
+    unpkg_reachable: Boolean when status = checked
+
+    transitions status {
+        pending -> checked
+        terminal: checked
+    }
+}
+
+rule InstallVendorAssetsLocally {
+    when: install: UiAssetInstall.created
+    requires: install.status = pending
+    ensures: install.static_dir = RemoraStatic.resolve_dir()
+    ensures: VendorAssetCopied(path: "graphology.umd.min.js")
+    ensures: VendorAssetCopied(path: "sigma.min.js")
+    ensures: VendorAssetCopied(path: "graphology-layout-forceatlas2.min.js")
+    ensures: install.index_patched_to_local_vendor = true
+    ensures: install.status = installed
+}
+
+rule RunUiDependencyDiagnostics {
+    when: check: UiDependencyCheck.created
+    requires: check.status = pending
+    ensures: check.index_references_unpkg = UiIndex.has_unpkg_graph_dependencies()
+    ensures: check.unpkg_reachable = NetworkProbe.unpkg_reachable()
+    ensures: check.status = checked
+}
+
+rule RaiseOfflineAdvisory {
+    when: check: UiDependencyCheck.status transitions_to checked
+    requires: check.index_references_unpkg
+    requires: not check.unpkg_reachable
+    ensures: UiOfflineAdvisoryRaised(
+        message: "UI may be blank in offline-restricted environments; use API/script demos"
+    )
+}
+
+deferred RemoraStatic.resolve_dir
+deferred UiIndex.has_unpkg_graph_dependencies
+deferred NetworkProbe.unpkg_reachable

@@ -1,0 +1,28 @@
+-- allium: 3
+-- remora-demo-context-map.allium
+--
+-- Scope: bounded-context decomposition for remora-test demo runtime surfaces
+-- Includes:
+--   - bundles, configs, queries, scripts, ui behavior contracts
+-- Excludes:
+--   - business demo code under src/ (treated as graph-discovery fixture only)
+
+use "./runtime-discovery-and-overlays.allium" as runtime_discovery
+use "./query-override-resolution.allium" as query_resolution
+use "./bundle-tool-contracts.allium" as bundle_tools
+use "./virtual-routing-and-subscriptions.allium" as virtual_routing
+use "./proposal-review-lifecycle.allium" as proposal_lifecycle
+use "./reflection-and-companion-digest.allium" as reflection_pipeline
+use "./events-sse-and-cursor-contracts.allium" as event_contracts
+use "./search-and-embedder-contracts.allium" as search_contracts
+use "./lsp-event-bridge-contract.allium" as lsp_bridge
+use "./ui-asset-localization.allium" as ui_assets
+use "./demo-check-runner.allium" as check_runner
+
+-- High-level dependency flow:
+--   runtime_discovery -> bundle_tools + virtual_routing + query_resolution
+--   bundle_tools -> proposal_lifecycle + reflection_pipeline + event_contracts
+--   check_runner orchestrates proposal_lifecycle, reflection_pipeline, event_contracts,
+--   search_contracts, lsp_bridge, and ui_assets verification.
+
+open question "Should UI asset localization become a mandatory step in run_demo_checks for offline-restricted environments?"
