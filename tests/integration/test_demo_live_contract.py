@@ -136,6 +136,28 @@ def repo_root() -> Path:
 
 
 @pytest.fixture(scope="module")
+def live_project_root(repo_root: Path) -> Path:
+    raw = os.getenv("REMORA_LIVE_PROJECT_ROOT", "").strip()
+    if not raw:
+        return repo_root
+    path = Path(raw).expanduser()
+    if not path.is_absolute():
+        path = (repo_root / path).resolve()
+    return path
+
+
+@pytest.fixture(scope="module")
+def live_config_path(repo_root: Path) -> Path:
+    raw = os.getenv("REMORA_LIVE_CONFIG_PATH", "").strip()
+    if not raw:
+        return (repo_root / "demo/00_repo_baseline/config/remora.yaml").resolve()
+    path = Path(raw).expanduser()
+    if not path.is_absolute():
+        path = (repo_root / path).resolve()
+    return path
+
+
+@pytest.fixture(scope="module")
 def live_runtime(live_base_url: str) -> str:
     try:
         status, body = _request_json("GET", f"{live_base_url}/api/health")
@@ -165,7 +187,7 @@ def test_runtime_health_and_graph_live(live_runtime: str) -> None:
 
 
 @pytest.mark.live
-def test_virtual_agent_behavior_live(live_runtime: str, repo_root: Path) -> None:
+def test_virtual_agent_behavior_live(live_runtime: str, live_project_root: Path) -> None:
     require_companion = os.getenv("REMORA_LIVE_REQUIRE_COMPANION", "0") == "1"
     timeout_s = max(5, int(os.getenv("REMORA_LIVE_VIRTUAL_TIMEOUT_S", "20")))
     poll_interval_s = max(1, int(os.getenv("REMORA_LIVE_VIRTUAL_POLL_INTERVAL_S", "1")))
@@ -182,7 +204,7 @@ def test_virtual_agent_behavior_live(live_runtime: str, repo_root: Path) -> None
     assert isinstance(before_events, list)
     before_counts = _virtual_event_counts([event for event in before_events if isinstance(event, dict)])
 
-    trigger_dir = repo_root / "src/.remora_demo_trigger"
+    trigger_dir = live_project_root / "src/.remora_demo_trigger"
     trigger_dir.mkdir(parents=True, exist_ok=True)
     trigger_file = trigger_dir / f"trigger_live_{int(time.time())}.py"
     trigger_file.write_text("def _remora_live_trigger() -> int:\n    return 1\n", encoding="utf-8")
@@ -298,13 +320,23 @@ def test_proposal_flow_live(live_runtime: str) -> None:
 
 
 @pytest.mark.live
-def test_search_live(live_runtime: str, repo_root: Path) -> None:
+def test_search_live(live_runtime: str, live_project_root: Path, live_config_path: Path) -> None:
     require_search = os.getenv("REMORA_LIVE_REQUIRE_SEARCH", "0") == "1"
     index_timeout_s = max(60, int(os.getenv("REMORA_LIVE_INDEX_TIMEOUT_S", "180")))
 
     index_proc = subprocess.run(
-        ["devenv", "shell", "--", "remora", "index", "--project-root", "."],
-        cwd=repo_root,
+        [
+            "devenv",
+            "shell",
+            "--",
+            "remora",
+            "index",
+            "--project-root",
+            str(live_project_root),
+            "--config",
+            str(live_config_path),
+        ],
+        cwd=live_project_root,
         capture_output=True,
         text=True,
         timeout=index_timeout_s,
@@ -341,4 +373,3 @@ def test_search_live(live_runtime: str, repo_root: Path) -> None:
     assert isinstance(search.get("results"), list)
     assert isinstance(search.get("total_results"), int)
     assert search["total_results"] >= 1
-

@@ -13,7 +13,7 @@ uv.lock
 .devenv.flake.nix
 .remora-probe/**
 **.db**
-
+**/**.png
 
 
 # C extensions
@@ -152,6 +152,7 @@ celerybeat.pid
 .envrc
 .venv
 .remora/
+.remora-*/
 env/
 venv/
 ENV/

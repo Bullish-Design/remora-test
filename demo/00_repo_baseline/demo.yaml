@@ -1,0 +1,15 @@
+demo_id: 00_repo_baseline
+name: "Repository Baseline Demo"
+repo_url: local
+repo_dir: /tmp/remora-demo-00-repo-baseline
+project_root: .
+config_path: demo/00_repo_baseline/config/remora.yaml
+constrained_config_path: demo/00_repo_baseline/config/remora.constrained.yaml
+stress_config_path: demo/00_repo_baseline/config/remora.stress.yaml
+workspace_root: .remora-00-repo-baseline
+port: 8080
+base_url: http://127.0.0.1:8080
+requires:
+  lsp: true
+  search: true
+  web: true

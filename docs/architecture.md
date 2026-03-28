@@ -11,7 +11,7 @@ Discovery output is exposed through `/api/nodes` and `/api/edges`.
 
 ## Bundle roles
 
-`remora.yaml` maps node types with `bundle_overlays`:
+`demo/00_repo_baseline/config/remora.yaml` maps node types with `bundle_overlays`:
 - `function|class|method|file` => `demo-code-agent`
 - `directory` => `demo-directory-agent`
 
@@ -38,24 +38,26 @@ The demo explicitly showcases:
 - proposal accept/reject lifecycle (`/api/proposals/*`)
 - relationship-aware tool execution (`show_dependencies`, `show_importers`, `show_relationship_edges`)
 
-## Validation scripts
+## Validation checks
 
-Primary scripts:
-- `scripts/test_demo_runtime.sh`: baseline API/chat contract checks
-- `scripts/test_virtual_agents.sh`: review/companion reactive behavior checks
-- `scripts/test_reflection_pipeline.sh`: reflection-to-digest-to-companion flow
-- `scripts/test_subscription_filters.sh`: path-scoped virtual routing
-- `scripts/test_proposal_flow.sh`: proposal reject path
-- `scripts/test_proposal_accept_flow.sh`: proposal accept + materialization path
-- `scripts/test_multilang_discovery.sh`: Python/Markdown/TOML discovery checks
-- `scripts/test_sse_contract.sh`: SSE replay/resume contract checks
-- `scripts/test_cursor_focus.sh`: cursor-to-node event checks
-- `scripts/test_relationship_tools.sh`: graph relationship tool checks
-- `scripts/test_runtime_guardrails.sh`: metrics/overflow guardrail checks (stress profile)
-- `scripts/test_lsp_startup.sh`: LSP startup/dependency diagnostics
-- `scripts/test_lsp_event_bridge.sh`: LSP didOpen/didSave -> file change events (`content_changed` or `node_changed`) with strict handshake enforcement
-- `scripts/test_search.sh`: semantic search/index checks with strict `MAX_INDEX_ERRORS` threshold support
-- `scripts/run_demo_checks.sh`: orchestrated check runner with optional guardrails/LSP bridge gates
+Primary Python checks (under `demo/00_repo_baseline/checks/`):
+- `check_runtime.py`: baseline API/chat contract checks
+- `check_virtual_agents.py`: review/companion reactive behavior checks
+- `check_reflection.py`: reflection-to-digest-to-companion flow
+- `check_subscriptions.py`: path-scoped virtual routing
+- `check_proposal_reject.py`: proposal reject path
+- `check_proposal_accept.py`: proposal accept + materialization path with cleanup
+- `check_discovery.py`: Python/Markdown/TOML discovery checks
+- `check_sse.py`: SSE replay/resume contract checks
+- `check_cursor.py`: cursor-to-node event checks
+- `check_relationships.py`: graph relationship tool checks
+- `check_guardrails.py`: metrics/overflow guardrail checks (stress profile)
+- `check_lsp_startup.py`: LSP startup/dependency diagnostics
+- `check_lsp_bridge.py`: LSP didOpen/didSave -> change events with fixture restore safety
+- `check_search.py`: semantic search/index checks with strict error thresholds
+- `check_ui_dependencies.py`: CDN reachability + UI dependency mode diagnostics
+- `check_ui_playwright.py`: headless browser UI render smoke via Playwright screenshot
+- `runner.py`: orchestrated check runner (`--strict`, capability flags, optional filtered runs)
 
 ## Repository artifact policy
 
@@ -64,6 +66,6 @@ Stable `.grail` sources (such as `monty_code.py`, `inputs.json`, `externals.json
 
 ## Runtime profiles
 
-- Default profile: `remora.yaml` (full showcase behavior)
-- Constrained fallback: `remora.constrained.yaml` (reduced virtual behavior for unstable environments)
-- Stress profile: `remora.stress.yaml` (small inbox limits for overflow/guardrail demonstrations)
+- Default profile: `demo/00_repo_baseline/config/remora.yaml` (full showcase behavior)
+- Constrained fallback: `demo/00_repo_baseline/config/remora.constrained.yaml` (reduced virtual behavior for unstable environments)
+- Stress profile: `demo/00_repo_baseline/config/remora.stress.yaml` (small inbox limits for overflow/guardrail demonstrations)

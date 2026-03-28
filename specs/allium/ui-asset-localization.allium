@@ -1,30 +1,19 @@
 -- allium: 3
 -- ui-asset-localization.allium
 --
--- Scope: local UI vendor installation and CDN dependency checks
+-- Scope: upstream package UI dependency integrity checks
 -- Includes:
---   - copying vendor JS assets into remora static dir
---   - patching index.html script sources to /static/vendor/*
---   - diagnostic check for unpkg dependency/reachability
+--   - verifying runtime-served index references packaged /static/vendor assets
+--   - verifying required vendor assets are served from runtime static paths
 -- Excludes:
 --   - graph rendering semantics
 --   - runtime API behavior
 
-entity UiAssetInstall {
-    status: pending | installed
-    static_dir: String when status = installed
-    index_patched_to_local_vendor: Boolean when status = installed
-
-    transitions status {
-        pending -> installed
-        terminal: installed
-    }
-}
-
 entity UiDependencyCheck {
     status: pending | checked
     index_references_unpkg: Boolean when status = checked
-    unpkg_reachable: Boolean when status = checked
+    index_references_packaged_vendor: Boolean when status = checked
+    vendor_assets_served: Boolean when status = checked
 
     transitions status {
         pending -> checked
@@ -32,34 +21,31 @@ entity UiDependencyCheck {
     }
 }
 
-rule InstallVendorAssetsLocally {
-    when: install: UiAssetInstall.created
-    requires: install.status = pending
-    ensures: install.static_dir = RemoraStatic.resolve_dir()
-    ensures: VendorAssetCopied(path: "graphology.umd.min.js")
-    ensures: VendorAssetCopied(path: "sigma.min.js")
-    ensures: VendorAssetCopied(path: "graphology-layout-forceatlas2.min.js")
-    ensures: install.index_patched_to_local_vendor = true
-    ensures: install.status = installed
-}
-
 rule RunUiDependencyDiagnostics {
     when: check: UiDependencyCheck.created
     requires: check.status = pending
     ensures: check.index_references_unpkg = UiIndex.has_unpkg_graph_dependencies()
-    ensures: check.unpkg_reachable = NetworkProbe.unpkg_reachable()
+    ensures: check.index_references_packaged_vendor = UiIndex.has_packaged_vendor_dependencies()
+    ensures: check.vendor_assets_served = RuntimeStatic.vendor_assets_served()
     ensures: check.status = checked
 }
 
-rule RaiseOfflineAdvisory {
+rule RejectCdnDependency {
     when: check: UiDependencyCheck.status transitions_to checked
     requires: check.index_references_unpkg
-    requires: not check.unpkg_reachable
-    ensures: UiOfflineAdvisoryRaised(
-        message: "UI may be blank in offline-restricted environments; use API/script demos"
+    ensures: UiDependencyViolationRaised(
+        message: "UI must not depend on unpkg CDN in demo verification"
     )
 }
 
-deferred RemoraStatic.resolve_dir
+rule RequirePackagedVendorAssets {
+    when: check: UiDependencyCheck.status transitions_to checked
+    requires: not check.index_references_packaged_vendor or not check.vendor_assets_served
+    ensures: UiDependencyViolationRaised(
+        message: "UI must resolve required /static/vendor assets from upstream package runtime"
+    )
+}
+
 deferred UiIndex.has_unpkg_graph_dependencies
-deferred NetworkProbe.unpkg_reachable
+deferred UiIndex.has_packaged_vendor_dependencies
+deferred RuntimeStatic.vendor_assets_served

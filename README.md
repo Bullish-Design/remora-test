@@ -1,173 +1,71 @@
 # remora-test-demo
 
-## What This Repository Demonstrates
+Demonstration repository for `remora-v2`.
 
-This repository demonstrates current `remora-v2` runtime capabilities against a small multi-language codebase:
-- graph discovery across Python, Markdown, and TOML
-- chat-driven node interaction with local bundle/tool overrides
-- layered reflection flow (`turn_digested` + companion observer)
-- scoped virtual-agent routing (`path_glob` filtering)
-- proposal (human-in-the-loop) review flow (reject and accept paths)
-- SSE replay/resume, cursor focus events, and relationship-aware tools
-- semantic search/index path
-- LSP startup and LSP event-bridge path
+## Demo Catalog
+
+- [`00_repo_baseline`](demo/00_repo_baseline/README.md): baseline end-to-end demo for web graph, virtual agents, proposals, SSE, search, and LSP.
+
+## Common Demo Control
+
+Use the shared control plane:
+
+```bash
+python scripts/democtl.py setup --demo 00_repo_baseline --clean-workspace
+python scripts/democtl.py start --demo 00_repo_baseline
+```
+
+In another shell:
+
+```bash
+python scripts/democtl.py status --demo 00_repo_baseline
+python scripts/democtl.py queries --demo 00_repo_baseline
+python scripts/democtl.py verify --demo 00_repo_baseline
+```
+
+Strict verification (no capability skips):
+
+```bash
+python scripts/democtl.py verify --demo 00_repo_baseline --strict
+```
+
+Direct check runner (useful for filtered validation):
+
+```bash
+python demo/00_repo_baseline/checks/runner.py --base http://127.0.0.1:8080 --project-root . --config-path demo/00_repo_baseline/config/remora.yaml
+python demo/00_repo_baseline/checks/runner.py --base http://127.0.0.1:8080 --project-root . --config-path demo/00_repo_baseline/config/remora.yaml --filter check_runtime --filter check_relationships --filter check_ui_playwright
+```
+
+Frequent UI screenshot capture (shared repo-level script):
+
+```bash
+python scripts/playwright_screenshot.py --url http://127.0.0.1:8080/ --project-root . --config-path demo/00_repo_baseline/config/remora.yaml --json
+```
+
+Fresh-run wipe:
+
+```bash
+python scripts/democtl.py wipe --demo 00_repo_baseline --force
+```
 
 ## Prerequisites
 
 - `devenv`
 - `uv`
-- `jq`
-- local `remora-v2` checkout at `../remora-v2`
-- optional model endpoint (default: `http://remora-server:8000/v1`)
-- embeddy backend for semantic search (required only for strict search checks)
-- local mock embedder adapter (`scripts/mock_embedder_server.py`) for strict search in environments without a real embeddy local model
+- local/remote model endpoint for agent turns
+- embeddy backend if running strict semantic search checks
 
-Environment variables (optional):
+Optional environment variables:
+
 - `REMORA_MODEL_BASE_URL`
 - `REMORA_MODEL_API_KEY`
 - `REMORA_MODEL`
-- `REMORA_EMBEDDY_URL` (required for search checks)
+- `REMORA_EMBEDDY_URL`
 
-## Quick Start
+## Notes
 
-```bash
-devenv shell -- uv sync --extra dev
-devenv shell -- remora discover --project-root .
-devenv shell -- remora start --project-root . --port 8080 --log-events
-```
-
-For a full copy/paste walkthrough (including high-impact demo flows), see:
-- `DEMO_SCRIPT.md`
-
-## API Smoke Verification
-
-With runtime running on `:8080`:
-
-```bash
-curl -sS http://127.0.0.1:8080/api/health | jq .
-curl -sS http://127.0.0.1:8080/api/nodes | jq 'length'
-curl -sS http://127.0.0.1:8080/api/edges | jq 'length'
-curl -sS 'http://127.0.0.1:8080/api/events?limit=5' | jq 'length'
-```
-
-Baseline script:
-
-```bash
-scripts/test_demo_runtime.sh
-```
-
-## Advanced Demo Paths
-
-Core behavior checks:
-
-```bash
-scripts/test_virtual_agents.sh
-scripts/test_reflection_pipeline.sh
-scripts/test_subscription_filters.sh
-scripts/test_proposal_flow.sh
-scripts/test_proposal_accept_flow.sh
-scripts/test_multilang_discovery.sh
-scripts/test_sse_contract.sh
-scripts/test_cursor_focus.sh
-scripts/test_relationship_tools.sh
-scripts/test_search.sh
-scripts/test_lsp_startup.sh
-```
-
-Optional high-load / deep integration checks:
-
-```bash
-# requires runtime started with remora.stress.yaml for strict overflow expectation
-REQUIRE_OVERFLOW=1 scripts/test_runtime_guardrails.sh
-
-# requires healthy remora runtime and lsp extras available
-scripts/test_lsp_event_bridge.sh
-```
-
-Companion strict mode examples:
-
-```bash
-REQUIRE_COMPANION=1 scripts/test_virtual_agents.sh
-REQUIRE_COMPANION=1 scripts/test_reflection_pipeline.sh
-```
-
-Constrained fallback profile (if full-mode virtual behavior is unstable in your environment):
-
-```bash
-devenv shell -- remora start --project-root . --config remora.constrained.yaml --port 8080 --log-events
-```
-
-Stress profile (for guardrail metrics demo):
-
-```bash
-devenv shell -- remora start --project-root . --config remora.stress.yaml --port 8080 --log-events
-```
-
-Full check runner:
-
-```bash
-scripts/run_demo_checks.sh
-```
-
-Runner options:
-
-```bash
-REQUIRE_SEARCH=1 scripts/run_demo_checks.sh
-REQUIRE_SEARCH=1 MAX_INDEX_ERRORS=0 scripts/test_search.sh
-RUN_GUARDRAILS_CHECK=1 REQUIRE_OVERFLOW=1 scripts/run_demo_checks.sh
-RUN_LSP_BRIDGE_CHECK=1 REQUIRE_LSP_BRIDGE=1 scripts/run_demo_checks.sh
-```
-
-## Repository Hygiene Policy
-
-`.grail/*/check.json` and `.grail/*/run.log` are runtime-generated artifacts and are intentionally ignored.
-Only stable tool sources/config inputs under `.grail/*` should be tracked.
-
-## Troubleshooting
-
-`remora discover` fails with unknown config keys:
-- Ensure `remora.yaml` uses modern keys (`bundle_search_paths`, `bundle_overlays`, `workspace_root`).
-
-Custom tools missing in agent workspaces:
-- Verify `bundle_overlays` maps node types to `demo-code-agent` and `demo-directory-agent`.
-- Confirm tool files exist under `bundles/demo-code-agent/tools/`.
-
-No proposals appear:
-- Confirm target node resolves and tools exist under `_bundle/tools`.
-- Check `/api/events` for tool call failures.
-
-Search returns 503:
-- In default mode, `scripts/test_search.sh` skips with diagnostics.
-- For strict behavior, run with `REQUIRE_SEARCH=1` after installing `remora[search]`, starting embeddy, and setting `REMORA_EMBEDDY_URL`.
-- In strict mode, indexing errors are also enforced. Override threshold only when needed with `MAX_INDEX_ERRORS=<N>`.
-
-Search returns 500 with `Model not loaded`:
-- Start the local adapter in one shell:
-  `devenv shell -- python scripts/mock_embedder_server.py`
-- Start embeddy in a second shell with remote config:
-  `devenv shell -- embeddy serve --config configs/embeddy.remote.yaml`
-- Start remora with:
-  `REMORA_EMBEDDY_URL=http://127.0.0.1:8585 devenv shell -- remora start --project-root . --port 8080 --log-events`
-
-LSP startup check fails:
-- Ensure `.remora/remora.db` exists by running runtime at least once.
-- If output mentions `LSP support requires pygls`, install LSP extras (`remora[lsp]`).
-
-LSP bridge check fails:
-- Ensure runtime is already running on `BASE` and points to same `.remora/remora.db`.
-- Install `remora[lsp]` (pygls dependency).
-- In strict mode (`REQUIRE_LSP_BRIDGE=1`), initialize handshake failure is terminal.
-- Bridge check accepts change events emitted as either `content_changed` or `node_changed` for the target file.
-
-### Troubleshooting Matrix
-
-| Symptom | Likely cause | Action |
-|---|---|---|
-| `Unable to parse index error count` | `remora index` output format changed | Inspect index log tail and update parser in `scripts/test_search.sh` |
-| `Indexing reported too many errors` | backend unavailable or per-file indexing failures | fix backend, or set temporary `MAX_INDEX_ERRORS` while triaging |
-| `Chat send failed for proposal-* trigger` | `/api/chat` request rejected | inspect returned JSON payload and runtime logs before polling proposals |
-| `LSP cycle failed` / no bridge event | LSP extras missing, wrong runtime DB path, or no change event emitted | install `remora[lsp]`, verify `.remora/remora.db`, rerun with strict mode diagnostics |
-
-Guardrails check shows no overflow increase:
-- Start runtime with `remora.stress.yaml` and retry with `REQUIRE_OVERFLOW=1`.
-- Without stress profile, metrics keys still validate but overflow may remain zero.
+- Demo runtime state is isolated under `.remora-00-repo-baseline`.
+- Demo assets live under `demo/00_repo_baseline/`.
+- Automated checks live under `demo/00_repo_baseline/checks/`.
+- `devenv` includes Playwright runtime/browser wiring for UI smoke verification.
+- For detailed operator flow, use the demo-local docs and cue sheet.
