@@ -7,77 +7,48 @@ import json
 from pathlib import Path
 from typing import Callable
 
-import check_cursor
-import check_discovery
-import check_guardrails
-import check_lsp_bridge
-import check_lsp_startup
-import check_proposal_accept
-import check_proposal_reject
-import check_reflection
-import check_relationships
-import check_runtime
-import check_search
-import check_smoke
-import check_sse
-import check_subscriptions
+import check_graph_boot
 import check_ui_dependencies
 import check_ui_playwright
-import check_virtual_agents
 from _harness import CheckContext, CheckResult, auto_command_prefix
 
 
 RunFn = Callable[[CheckContext], CheckResult]
+REPO_ROOT = Path(__file__).resolve().parents[3]
+DEFAULT_CONFIG_PATH = REPO_ROOT / "demo/01-clone-to-knowledge-graph/config/remora.yaml"
+DEFAULT_PROJECT_ROOT = REPO_ROOT / "demo/01-clone-to-knowledge-graph/repo/blinker"
 
 CHECKS: dict[str, RunFn] = {
-    "check_runtime": check_runtime.run,
-    "check_virtual_agents": check_virtual_agents.run,
-    "check_reflection": check_reflection.run,
-    "check_subscriptions": check_subscriptions.run,
-    "check_proposal_reject": check_proposal_reject.run,
-    "check_proposal_accept": check_proposal_accept.run,
-    "check_discovery": check_discovery.run,
-    "check_sse": check_sse.run,
-    "check_cursor": check_cursor.run,
-    "check_relationships": check_relationships.run,
-    "check_search": check_search.run,
-    "check_smoke": check_smoke.run,
-    "check_lsp_startup": check_lsp_startup.run,
-    "check_lsp_bridge": check_lsp_bridge.run,
-    "check_guardrails": check_guardrails.run,
+    "check_graph_boot": check_graph_boot.run,
     "check_ui_dependencies": check_ui_dependencies.run,
     "check_ui_playwright": check_ui_playwright.run,
 }
 
 DEFAULT_ORDER = [
-    "check_runtime",
-    "check_virtual_agents",
-    "check_reflection",
-    "check_subscriptions",
-    "check_proposal_reject",
-    "check_proposal_accept",
-    "check_discovery",
-    "check_sse",
-    "check_cursor",
-    "check_relationships",
-    "check_search",
+    "check_graph_boot",
     "check_ui_dependencies",
     "check_ui_playwright",
-    "check_lsp_startup",
-    "check_lsp_bridge",
 ]
 
 
 def _build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Run demo baseline checks")
-    parser.add_argument("--base", default="http://127.0.0.1:8080")
-    parser.add_argument("--project-root", default="demo/00_repo_baseline/fixture")
-    parser.add_argument("--config-path", default="demo/00_repo_baseline/config/remora.yaml")
+    parser = argparse.ArgumentParser(
+        description="Run Idea #6 clone-to-knowledge-graph checks (reference: blinker)"
+    )
+    parser.add_argument("--base", default="http://127.0.0.1:8081")
+    parser.add_argument(
+        "--config-path",
+        default=str(DEFAULT_CONFIG_PATH),
+    )
+    parser.add_argument(
+        "--project-root",
+        default=str(DEFAULT_PROJECT_ROOT),
+    )
     parser.add_argument("--strict", action="store_true")
     parser.add_argument("--require-web", action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument("--require-search", action=argparse.BooleanOptionalAction, default=False)
     parser.add_argument("--require-lsp-bridge", action=argparse.BooleanOptionalAction, default=False)
-    parser.add_argument("--run-lsp-bridge", action=argparse.BooleanOptionalAction, default=True)
+    parser.add_argument("--run-lsp-bridge", action=argparse.BooleanOptionalAction, default=False)
     parser.add_argument("--run-guardrails", action=argparse.BooleanOptionalAction, default=False)
     parser.add_argument("--require-overflow", action=argparse.BooleanOptionalAction, default=False)
     parser.add_argument("--filter", action="append", default=[])
@@ -91,11 +62,7 @@ def _selected_checks(args: argparse.Namespace) -> list[str]:
         if unknown:
             raise SystemExit(f"Unknown checks: {unknown}")
         return args.filter
-
-    order = list(DEFAULT_ORDER)
-    if args.run_guardrails and "check_guardrails" not in order:
-        order.append("check_guardrails")
-    return order
+    return list(DEFAULT_ORDER)
 
 
 def _print_result(result: CheckResult) -> None:

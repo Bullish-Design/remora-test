@@ -4,8 +4,18 @@
 from __future__ import annotations
 
 import argparse
+from pathlib import Path
+import sys
 
-from _lib.commands import (
+# Allow direct script execution (`python scripts/democtl.py`) while also
+# supporting package import (`scripts.democtl:main`).
+if __package__ in {None, ""}:
+    repo_root = Path(__file__).resolve().parents[1]
+    repo_root_str = str(repo_root)
+    if repo_root_str not in sys.path:
+        sys.path.insert(0, repo_root_str)
+
+from scripts._lib.commands import (
     cmd_cleanup,
     cmd_queries,
     cmd_setup,
@@ -14,8 +24,8 @@ from _lib.commands import (
     cmd_verify,
     cmd_wipe,
 )
-from _lib.manifest import DemoConfigError, load_manifest
-from _lib.paths import DEFAULT_DEMO_ID, REPO_ROOT
+from scripts._lib.manifest import DemoConfigError, load_manifest
+from scripts._lib.paths import DEFAULT_DEMO_ID, REPO_ROOT
 
 
 def _build_parser() -> argparse.ArgumentParser:

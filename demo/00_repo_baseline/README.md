@@ -22,12 +22,17 @@ This demo showcases remora graph/runtime capabilities against this repository wi
 
 ## Quick Start
 
+Pyproject entrypoint (`uv run demo00`) is equivalent to `python scripts/democtl.py --demo 00_repo_baseline ...`.
+
 Terminal A:
 
 ```bash
 cd /home/andrew/Documents/Projects/remora-test
 devenv shell -- python scripts/democtl.py setup --demo 00_repo_baseline --clean-workspace
 devenv shell -- python scripts/democtl.py start --demo 00_repo_baseline
+# or:
+devenv shell -- uv run demo00 setup --clean-workspace
+devenv shell -- uv run demo00 start
 ```
 
 Terminal B:
@@ -37,6 +42,10 @@ cd /home/andrew/Documents/Projects/remora-test
 devenv shell -- python scripts/democtl.py status --demo 00_repo_baseline
 devenv shell -- python scripts/democtl.py queries --demo 00_repo_baseline
 devenv shell -- python scripts/democtl.py verify --demo 00_repo_baseline
+# or:
+devenv shell -- uv run demo00 status
+devenv shell -- uv run demo00 queries
+devenv shell -- uv run demo00 verify
 ```
 
 Strict verification (no scoped capability skips):
@@ -54,7 +63,7 @@ Run all default checks directly:
 ```bash
 devenv shell -- python demo/00_repo_baseline/checks/runner.py \
   --base http://127.0.0.1:8080 \
-  --project-root . \
+  --project-root demo/00_repo_baseline/fixture \
   --config-path demo/00_repo_baseline/config/remora.yaml
 ```
 
@@ -63,7 +72,7 @@ Run selected checks:
 ```bash
 devenv shell -- python demo/00_repo_baseline/checks/runner.py \
   --base http://127.0.0.1:8080 \
-  --project-root . \
+  --project-root demo/00_repo_baseline/fixture \
   --config-path demo/00_repo_baseline/config/remora.yaml \
   --filter check_runtime \
   --filter check_relationships \
@@ -75,7 +84,7 @@ Enable optional guardrails and strict LSP/search requirements:
 ```bash
 devenv shell -- python demo/00_repo_baseline/checks/runner.py \
   --base http://127.0.0.1:8080 \
-  --project-root . \
+  --project-root demo/00_repo_baseline/fixture \
   --config-path demo/00_repo_baseline/config/remora.yaml \
   --strict \
   --require-search \
@@ -96,7 +105,7 @@ Run UI-only Playwright smoke check:
 ```bash
 devenv shell -- python demo/00_repo_baseline/checks/runner.py \
   --base http://127.0.0.1:8080 \
-  --project-root . \
+  --project-root demo/00_repo_baseline/fixture \
   --config-path demo/00_repo_baseline/config/remora.yaml \
   --filter check_ui_playwright
 ```
@@ -109,7 +118,7 @@ Shared repo-level screenshot command (can be reused by other demos):
 ```bash
 devenv shell -- uv run python scripts/playwright_screenshot.py \
   --url http://127.0.0.1:8080/ \
-  --project-root . \
+  --project-root demo/00_repo_baseline/fixture \
   --config-path demo/00_repo_baseline/config/remora.yaml \
   --json
 ```
@@ -127,7 +136,7 @@ Terminal D:
 
 ```bash
 cd /home/andrew/Documents/Projects/remora-test
-devenv shell -- embeddy serve --config configs/embeddy.remote.yaml
+devenv shell -- embeddy serve --config demo/00_repo_baseline/fixture/configs/embeddy.remote.yaml
 ```
 
 Restart runtime with embeddy URL if needed:

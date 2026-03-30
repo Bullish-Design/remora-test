@@ -52,6 +52,7 @@ def start_runtime_process(
     port: int,
     log_level: str,
     *,
+    log_events: bool = False,
     env: dict[str, str] | None = None,
     command_prefix: list[str] | None = None,
 ) -> subprocess.Popen[str]:
@@ -71,9 +72,10 @@ def start_runtime_process(
             "127.0.0.1",
             "--log-level",
             log_level,
-            "--log-events",
         ],
     )
+    if log_events:
+        cmd.append("--log-events")
     return subprocess.Popen(
         cmd,
         stdout=subprocess.DEVNULL,
@@ -172,6 +174,10 @@ def start_search_stack(
     mock_script = demo_script_dir / "mock_embedder_server.py"
     embeddy_template = (REPO_ROOT / "configs/embeddy.remote.yaml").resolve()
     config_path = Path(str(paths["config_path"]))
+    project_root = Path(str(paths["project_root"]))
+
+    if not embeddy_template.exists():
+        embeddy_template = (project_root / "configs/embeddy.remote.yaml").resolve()
 
     if not mock_script.exists():
         raise DemoConfigError(f"Missing mock embedder server script: {mock_script}")

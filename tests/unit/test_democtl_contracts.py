@@ -20,5 +20,5 @@ def test_democtl_wipe_requires_force() -> None:
 
 def test_democtl_uses_refactored_library_modules() -> None:
     text = Path("scripts/democtl.py").read_text(encoding="utf-8")
-    assert "from _lib.commands import" in text
-    assert "from _lib.manifest import DemoConfigError, load_manifest" in text
+    assert "from scripts._lib.commands import" in text
+    assert "from scripts._lib.manifest import DemoConfigError, load_manifest" in text

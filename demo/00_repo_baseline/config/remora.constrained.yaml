@@ -1,5 +1,5 @@
 # Constrained fallback profile for environments where full virtual-agent behavior is unstable.
-# Use with: remora start --project-root . --config demo/00_repo_baseline/config/remora.constrained.yaml --port 8080 --log-events
+# Use with: remora start --project-root demo/00_repo_baseline/fixture --config demo/00_repo_baseline/config/remora.constrained.yaml --port 8080 --log-events
 project_path: "."
 discovery_paths:
   - "src/"
@@ -13,11 +13,11 @@ language_map:
   ".toml": "toml"
 
 query_search_paths:
-  - "demo/00_repo_baseline/queries/"
+  - "../queries/"
   - "@default"
 
 bundle_search_paths:
-  - "demo/00_repo_baseline/bundles/"
+  - "../bundles/"
   - "@default"
 
 bundle_overlays:

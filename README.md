@@ -5,6 +5,7 @@ Demonstration repository for `remora-v2`.
 ## Demo Catalog
 
 - [`00_repo_baseline`](demo/00_repo_baseline/README.md): baseline end-to-end demo for web graph, virtual agents, proposals, SSE, search, and LSP.
+- [`01-clone-to-knowledge-graph`](demo/01-clone-to-knowledge-graph/README.md): clone-first, clean-slate Idea #6 demo scaffold (reference repo: `pallets-eco/blinker`).
 
 ## Common Demo Control
 
@@ -13,6 +14,20 @@ Use the shared control plane:
 ```bash
 python scripts/democtl.py setup --demo 00_repo_baseline --clean-workspace
 python scripts/democtl.py start --demo 00_repo_baseline
+```
+
+Pinned pyproject entrypoint for demo `00`:
+
+```bash
+uv run demo00 setup --clean-workspace
+uv run demo00 start
+uv run demo00 verify
+```
+
+Live pop-in pyproject entrypoint for demo `01`:
+
+```bash
+uv run demo01-live
 ```
 
 In another shell:
@@ -32,14 +47,14 @@ python scripts/democtl.py verify --demo 00_repo_baseline --strict
 Direct check runner (useful for filtered validation):
 
 ```bash
-python demo/00_repo_baseline/checks/runner.py --base http://127.0.0.1:8080 --project-root . --config-path demo/00_repo_baseline/config/remora.yaml
-python demo/00_repo_baseline/checks/runner.py --base http://127.0.0.1:8080 --project-root . --config-path demo/00_repo_baseline/config/remora.yaml --filter check_runtime --filter check_relationships --filter check_ui_playwright
+python demo/00_repo_baseline/checks/runner.py --base http://127.0.0.1:8080 --project-root demo/00_repo_baseline/fixture --config-path demo/00_repo_baseline/config/remora.yaml
+python demo/00_repo_baseline/checks/runner.py --base http://127.0.0.1:8080 --project-root demo/00_repo_baseline/fixture --config-path demo/00_repo_baseline/config/remora.yaml --filter check_runtime --filter check_relationships --filter check_ui_playwright
 ```
 
 Frequent UI screenshot capture (shared repo-level script):
 
 ```bash
-python scripts/playwright_screenshot.py --url http://127.0.0.1:8080/ --project-root . --config-path demo/00_repo_baseline/config/remora.yaml --json
+python scripts/playwright_screenshot.py --url http://127.0.0.1:8080/ --project-root demo/00_repo_baseline/fixture --config-path demo/00_repo_baseline/config/remora.yaml --json
 ```
 
 Fresh-run wipe:

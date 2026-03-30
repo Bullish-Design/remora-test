@@ -15,11 +15,11 @@ language_map:
   ".toml": "toml"
 
 query_search_paths:
-  - "demo/00_repo_baseline/queries/"
+  - "../queries/"
   - "@default"
 
 bundle_search_paths:
-  - "demo/00_repo_baseline/bundles/"
+  - "../bundles/"
   - "@default"
 
 bundle_overlays:

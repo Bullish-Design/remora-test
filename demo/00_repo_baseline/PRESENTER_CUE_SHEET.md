@@ -29,7 +29,7 @@ devenv shell -- python scripts/democtl.py queries --demo 00_repo_baseline
 ```bash
 devenv shell -- python demo/00_repo_baseline/checks/runner.py \
   --base "$BASE" \
-  --project-root . \
+  --project-root demo/00_repo_baseline/fixture \
   --config-path demo/00_repo_baseline/config/remora.yaml \
   --filter check_runtime \
   --filter check_relationships
@@ -40,7 +40,7 @@ devenv shell -- python demo/00_repo_baseline/checks/runner.py \
 ```bash
 devenv shell -- python demo/00_repo_baseline/checks/runner.py \
   --base "$BASE" \
-  --project-root . \
+  --project-root demo/00_repo_baseline/fixture \
   --config-path demo/00_repo_baseline/config/remora.yaml \
   --filter check_virtual_agents \
   --filter check_reflection \
@@ -60,7 +60,7 @@ Optional UI render proof (Playwright):
 ```bash
 devenv shell -- python demo/00_repo_baseline/checks/runner.py \
   --base "$BASE" \
-  --project-root . \
+  --project-root demo/00_repo_baseline/fixture \
   --config-path demo/00_repo_baseline/config/remora.yaml \
   --filter check_ui_playwright
 ```
@@ -113,7 +113,7 @@ Terminal D:
 
 ```bash
 cd /home/andrew/Documents/Projects/remora-test
-devenv shell -- embeddy serve --config configs/embeddy.remote.yaml
+devenv shell -- embeddy serve --config demo/00_repo_baseline/fixture/configs/embeddy.remote.yaml
 ```
 
 ## Recovery paths

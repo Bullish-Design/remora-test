@@ -1,0 +1,15 @@
+demo_id: 01-clone-to-knowledge-graph
+name: "Clone-to-Knowledge-Graph (Reference: Blinker)"
+repo_url: https://github.com/pallets-eco/blinker.git
+repo_dir: demo/01-clone-to-knowledge-graph/repo/blinker
+project_root: demo/01-clone-to-knowledge-graph/repo/blinker
+config_path: demo/01-clone-to-knowledge-graph/config/remora.yaml
+constrained_config_path: demo/01-clone-to-knowledge-graph/config/remora.constrained.yaml
+stress_config_path: demo/01-clone-to-knowledge-graph/config/remora.stress.yaml
+workspace_root: .remora-01-clone-to-knowledge-graph
+port: 8081
+base_url: http://127.0.0.1:8081
+requires:
+  lsp: false
+  search: false
+  web: true

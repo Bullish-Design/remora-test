@@ -30,6 +30,8 @@ def resolve_paths(manifest: dict[str, Any], profile: str, repo_root: Path = REPO
 
     raw_repo_dir = str(manifest.get("repo_dir", f"/tmp/remora-demo-{manifest['demo_id']}"))
     repo_dir = Path(raw_repo_dir)
+    if not repo_dir.is_absolute():
+        repo_dir = (repo_root / repo_dir).resolve()
 
     return {
         "demo_root": demo_root.resolve(),

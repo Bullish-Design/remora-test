@@ -45,15 +45,21 @@ def test_demo_isolation_unique_demo_ids_ports_workspace_roots_and_repo_dirs() ->
     assert len(repo_dirs) == len(set(repo_dirs)), "Duplicate repo_dir across manifests"
 
 
-def test_demo_repo_dirs_use_tmp_prefix() -> None:
+def test_demo_repo_dirs_use_safe_prefix() -> None:
+    demo_root = (REPO_ROOT / "demo").resolve()
     for path in _manifest_paths():
         manifest = _load_manifest(path)
         repo_url = str(manifest.get("repo_url", "")).strip().lower()
         if repo_url == "local":
             continue
-        repo_dir = str(manifest["repo_dir"])
-        assert repo_dir.startswith("/tmp/remora-demo-"), (
-            f"repo_dir must use /tmp/remora-demo- prefix for safety: {path} -> {repo_dir}"
+        raw_repo_dir = Path(str(manifest["repo_dir"]))
+        repo_dir = raw_repo_dir if raw_repo_dir.is_absolute() else (REPO_ROOT / raw_repo_dir)
+        resolved = repo_dir.resolve(strict=False)
+        is_tmp = str(resolved).startswith("/tmp/remora-demo-")
+        is_repo_demo_subpath = demo_root in resolved.parents
+        assert is_tmp or is_repo_demo_subpath, (
+            "repo_dir must be either /tmp/remora-demo-* or under repo demo/ for safety: "
+            f"{path} -> {resolved}"
         )
 
 

@@ -2,7 +2,7 @@ demo_id: 00_repo_baseline
 name: "Repository Baseline Demo"
 repo_url: local
 repo_dir: /tmp/remora-demo-00-repo-baseline
-project_root: .
+project_root: demo/00_repo_baseline/fixture
 config_path: demo/00_repo_baseline/config/remora.yaml
 constrained_config_path: demo/00_repo_baseline/config/remora.constrained.yaml
 stress_config_path: demo/00_repo_baseline/config/remora.stress.yaml

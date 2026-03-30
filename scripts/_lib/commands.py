@@ -39,22 +39,26 @@ def cmd_setup(manifest: dict[str, Any], args: argparse.Namespace) -> int:
 
     if not demo_root.exists():
         raise DemoConfigError(f"Demo root missing: {demo_root}")
-    if not project_root.exists():
-        raise DemoConfigError(f"Project root missing: {project_root}")
     if not config_path.exists():
         raise DemoConfigError(f"Config missing: {config_path}")
 
     repo_url = str(manifest.get("repo_url", "")).strip().lower()
     repo_dir = Path(str(paths["repo_dir"]))
-    if repo_url != "local":
+    if repo_url == "local":
+        if not project_root.exists():
+            raise DemoConfigError(f"Project root missing: {project_root}")
+    else:
         if args.force and repo_dir.exists():
-            ensure_path_safe_for_delete(repo_dir)
+            ensure_path_safe_for_delete(repo_dir, allow_repo_subpaths=True)
             shutil.rmtree(repo_dir)
         if not repo_dir.exists():
+            repo_dir.parent.mkdir(parents=True, exist_ok=True)
             subprocess.run(
                 ["git", "clone", "--depth", "1", str(manifest["repo_url"]), str(repo_dir)],
                 check=True,
             )
+        if not project_root.exists():
+            raise DemoConfigError(f"Project root missing after clone: {project_root}")
 
     if args.clean_workspace:
         workspace_root = Path(str(paths["workspace_root"]))
@@ -178,7 +182,7 @@ def cmd_wipe(manifest: dict[str, Any], args: argparse.Namespace) -> int:
     repo_url = str(manifest.get("repo_url", "")).strip().lower()
     deleted_repo_dir = False
     if repo_url != "local" and (repo_dir.exists() or repo_dir.is_symlink()):
-        deleted_repo_dir = delete_if_exists(repo_dir)
+        deleted_repo_dir = delete_if_exists(repo_dir, allow_repo_subpaths=True)
 
     print("wipe_complete")
     print(f"workspace_deleted={int(deleted_workspace)}")
@@ -244,6 +248,7 @@ def cmd_verify(manifest: dict[str, Any], args: argparse.Namespace) -> int:
                 Path(str(paths["config_path"])),
                 port,
                 args.log_level,
+                log_events=bool(args.log_events),
                 env=env,
                 command_prefix=prefix,
             )

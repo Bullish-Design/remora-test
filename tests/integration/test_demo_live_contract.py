@@ -139,7 +139,7 @@ def repo_root() -> Path:
 def live_project_root(repo_root: Path) -> Path:
     raw = os.getenv("REMORA_LIVE_PROJECT_ROOT", "").strip()
     if not raw:
-        return repo_root
+        return (repo_root / "demo/00_repo_baseline/fixture").resolve()
     path = Path(raw).expanduser()
     if not path.is_absolute():
         path = (repo_root / path).resolve()
