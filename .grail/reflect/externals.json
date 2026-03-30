@@ -19,19 +19,6 @@
       "docstring": null
     },
     {
-      "name": "read_file",
-      "async": true,
-      "parameters": [
-        {
-          "name": "path",
-          "type": "str",
-          "default": null
-        }
-      ],
-      "return_type": "str",
-      "docstring": null
-    },
-    {
       "name": "write_file",
       "async": true,
       "parameters": [

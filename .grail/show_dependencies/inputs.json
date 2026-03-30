@@ -1,0 +1,10 @@
+{
+  "inputs": [
+    {
+      "name": "target_node_id",
+      "type": "str",
+      "required": false,
+      "default": ""
+    }
+  ]
+}

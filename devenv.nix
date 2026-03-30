@@ -2,14 +2,24 @@
 
 {
   # https://devenv.sh/basics/
-  env.GREET = "devenv";
+  env = {
+    GREET = "devenv";
+    PLAYWRIGHT_CLI_PATH = "${pkgs.python313Packages.playwright}/bin/playwright";
+    PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright.browsers}";
+    PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "true";
+    PLAYWRIGHT_NODEJS_PATH = "${pkgs.nodejs}/bin/node";
+  };
 
   # https://devenv.sh/packages/
-  packages = [ 
-    pkgs.git 
+  packages = [
+    pkgs.git
     pkgs.uv
     pkgs.jq
-    ];
+    pkgs.nodejs
+    pkgs.python313Packages.playwright
+    pkgs.playwright-driver
+    pkgs.playwright.browsers
+  ];
 
   # https://devenv.sh/languages/
   # languages.rust.enable = true;
@@ -36,6 +46,7 @@
   enterShell = ''
     hello
     git --version
+    "$PLAYWRIGHT_CLI_PATH" --version
   '';
 
   # https://devenv.sh/tasks/

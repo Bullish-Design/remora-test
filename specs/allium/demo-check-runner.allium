@@ -1,0 +1,82 @@
+-- allium: 3
+-- demo-check-runner.allium
+--
+-- Scope: orchestration contract for demo/00_repo_baseline/checks/runner.py
+-- Includes:
+--   - required check execution order
+--   - optional guardrails and LSP-bridge gates
+--   - aggregate pass/fail completion
+-- Excludes:
+--   - internals of each individual check
+
+entity DemoCheckRun {
+    status: pending | running | completed | failed
+    run_guardrails_check: Boolean
+    run_lsp_bridge_check: Boolean
+
+    checks: DemoScriptCheck with run = this
+
+    transitions status {
+        pending -> running
+        running -> completed
+        running -> failed
+        terminal: completed, failed
+    }
+}
+
+entity DemoScriptCheck {
+    run: DemoCheckRun
+    check_name: String
+    status: pending | passed | skipped | failed
+
+    transitions status {
+        pending -> passed
+        pending -> skipped
+        pending -> failed
+        terminal: passed, skipped, failed
+    }
+}
+
+rule StartCheckRun {
+    when: run: DemoCheckRun.created
+    requires: run.status = pending
+    ensures: run.status = running
+    ensures: DemoScriptCheck.created(run: run, check_name: "check_runtime", status: pending)
+    ensures: DemoScriptCheck.created(run: run, check_name: "check_virtual_agents", status: pending)
+    ensures: DemoScriptCheck.created(run: run, check_name: "check_reflection", status: pending)
+    ensures: DemoScriptCheck.created(run: run, check_name: "check_subscriptions", status: pending)
+    ensures: DemoScriptCheck.created(run: run, check_name: "check_proposal_reject", status: pending)
+    ensures: DemoScriptCheck.created(run: run, check_name: "check_proposal_accept", status: pending)
+    ensures: DemoScriptCheck.created(run: run, check_name: "check_discovery", status: pending)
+    ensures: DemoScriptCheck.created(run: run, check_name: "check_sse", status: pending)
+    ensures: DemoScriptCheck.created(run: run, check_name: "check_cursor", status: pending)
+    ensures: DemoScriptCheck.created(run: run, check_name: "check_relationships", status: pending)
+    ensures: DemoScriptCheck.created(run: run, check_name: "check_search", status: pending)
+    ensures: DemoScriptCheck.created(run: run, check_name: "check_lsp_startup", status: pending)
+}
+
+rule AddOptionalGuardrailsCheck {
+    when: run: DemoCheckRun.status transitions_to running
+    requires: run.run_guardrails_check
+    ensures: DemoScriptCheck.created(run: run, check_name: "check_guardrails", status: pending)
+}
+
+rule AddOptionalLspBridgeCheck {
+    when: run: DemoCheckRun.status transitions_to running
+    requires: run.run_lsp_bridge_check
+    ensures: DemoScriptCheck.created(run: run, check_name: "check_lsp_bridge", status: pending)
+}
+
+rule CompleteRunSuccessfully {
+    when: AllChecksFinished(run)
+    requires: run.status = running
+    requires: not run.checks.any(c => c.status = failed)
+    requires: not run.checks.any(c => c.status = pending)
+    ensures: run.status = completed
+}
+
+rule FailRunOnAnyCheckFailure {
+    when: CheckFailed(run, check_name)
+    requires: run.status = running
+    ensures: run.status = failed
+}

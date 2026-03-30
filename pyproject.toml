@@ -1,6 +1,6 @@
 [project]
 name = "remora-test"
-version = "0.1.0"
+version = "0.2.0"
 description = "Demonstration repository for remora-v2 runtime capabilities."
 readme = "README.md"
 requires-python = ">=3.13"
@@ -11,8 +11,14 @@ authors = [
 
 dependencies = [
   "pydantic>=2.12.5",
-  "remora[python,markdown,toml]",
+  "pyyaml>=6.0.2",
+  "remora[all-languages,search-local,lsp]",
 ]
+
+[project.scripts]
+democtl = "scripts.democtl:main"
+demo00 = "scripts.demo00:main"
+demo01-live = "scripts.demo01_live:main"
 
 [project.optional-dependencies]
 dev = [
@@ -23,8 +29,8 @@ dev = [
 ]
 
 [tool.uv.sources]
-remora = { path = "../remora-v2", editable = false }
-#remora = { git = "https://github.com/Bullish-Design/remora-v2.git", rev = "main" }
+#remora = { path = "../remora-v2", editable = false }
+remora = { git = "https://github.com/Bullish-Design/remora-v2.git", tag="v0.10.2" } # rev = "cd93213efd6a99cf45a3c9e19fb34e66f4377450" }
 
 
 [build-system]
@@ -32,11 +38,12 @@ requires = ["hatchling>=1.18"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src"]
+packages = ["src", "scripts"]
 
 [tool.hatch.build.targets.sdist]
 include = [
   "src",
+  "scripts",
   "README.md",
   "tests",
   "pyproject.toml",
@@ -45,7 +52,7 @@ include = [
 [tool.uv]
 
 [tool.pytest.ini_options]
-addopts = "-q --cov=src --cov-report=term-missing"
+addopts = "-q --cov=src --cov-report=term-missing --cov-fail-under=60"
 testpaths = ["tests"]
 markers = [
   "live: tests that require a running remora runtime and optional external services",

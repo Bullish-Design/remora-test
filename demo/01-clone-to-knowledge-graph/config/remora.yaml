@@ -1,0 +1,38 @@
+project_path: "."
+discovery_paths:
+  - "src/"
+
+discovery_languages:
+  - "python"
+
+language_map:
+  ".py": "python"
+
+query_search_paths:
+  - "@default"
+
+bundle_search_paths:
+  - "@default"
+
+model_base_url: "${REMORA_MODEL_BASE_URL:-http://remora-server:8000/v1}"
+model_api_key: "${REMORA_MODEL_API_KEY:-EMPTY}"
+model_default: "${REMORA_MODEL:-Qwen/Qwen3-4B-Instruct-2507-FP8}"
+timeout_s: 300.0
+max_turns: 2
+
+workspace_root: ".remora-01-clone-to-knowledge-graph"
+max_concurrency: 2
+max_trigger_depth: 4
+trigger_cooldown_ms: 300
+workspace_ignore_patterns:
+  - ".git"
+  - ".github"
+  - "docs"
+  - "examples"
+  - ".venv"
+  - "__pycache__"
+  - "node_modules"
+  - ".remora-01-clone-to-knowledge-graph"
+
+search:
+  enabled: false

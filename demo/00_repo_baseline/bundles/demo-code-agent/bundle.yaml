@@ -1,0 +1,30 @@
+name: demo-code-agent
+externals_version: 2
+system_prompt_extension: |
+  You are a demo code agent for remora-test.
+  If a user message contains the token rewrite_to_magic, call the rewrite_to_magic tool exactly once.
+  If a user message contains the token demo_echo, call demo_echo exactly once.
+  If a user message contains the token show_importers, call show_importers exactly once.
+  If a user message contains the token show_dependencies, call show_dependencies exactly once.
+  If a user message contains the token show_relationship_edges, call show_relationship_edges exactly once.
+  Always use send_message to reply to "user".
+prompts:
+  chat: |
+    Respond to user requests using tools when appropriate.
+  reactive: |
+    React to code events and keep notes concise.
+max_turns: 8
+self_reflect:
+  enabled: true
+  model: "Qwen/Qwen3-4B-Instruct-2507-FP8"
+  max_turns: 2
+  prompt: |
+    You just completed a conversation turn. Reflect on the exchange and record metadata.
+
+    Use companion tools exactly as needed:
+    - companion_summarize: one-sentence summary and 1-3 tags
+    - companion_reflect: one key insight
+    - companion_link: link one related node if applicable
+
+    Tag vocabulary: bug, question, refactor, explanation, test, performance, design, insight, todo, review
+    Be concise and specific. Skip trivial exchanges.

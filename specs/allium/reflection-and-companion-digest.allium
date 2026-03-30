@@ -1,0 +1,75 @@
+-- allium: 3
+-- reflection-and-companion-digest.allium
+--
+-- Scope: primary->reflection->digest->companion event pipeline
+-- Includes:
+--   - tagged primary and reflection completions
+--   - turn_digested emission after reflection
+--   - optional companion follow-up bound to same correlation
+-- Excludes:
+--   - proposal lifecycle
+--   - search/indexing behavior
+
+entity ConversationTurn {
+    agent_id: String
+    correlation_id: String
+    status: pending | primary_complete | reflection_complete | digested | companion_complete
+
+    transitions status {
+        pending -> primary_complete
+        primary_complete -> reflection_complete
+        reflection_complete -> digested
+        digested -> companion_complete
+        terminal: digested, companion_complete
+    }
+}
+
+entity CompanionTurn {
+    correlation_id: String
+    status: pending | completed
+
+    transitions status {
+        pending -> completed
+        terminal: completed
+    }
+}
+
+rule RecordPrimaryCompletion {
+    when: PrimaryCompleted(turn)
+    requires: turn.status = pending
+    ensures: turn.status = primary_complete
+}
+
+rule RecordReflectionCompletion {
+    when: ReflectionCompleted(turn)
+    requires: turn.status = primary_complete
+    ensures: turn.status = reflection_complete
+}
+
+rule EmitDigestEvent {
+    when: turn: ConversationTurn.status transitions_to reflection_complete
+    ensures: TurnDigested(correlation_id: turn.correlation_id, agent_id: turn.agent_id)
+    ensures: turn.status = digested
+}
+
+rule RunCompanionAfterDigest {
+    when: TurnDigested(correlation_id, agent_id)
+    ensures:
+        let companion = CompanionTurn.created(correlation_id: correlation_id, status: pending)
+        CompanionTurnStarted(companion: companion, source_agent_id: agent_id)
+}
+
+rule CompleteCompanionTurn {
+    when: companion: CompanionTurn.created
+    requires: companion.status = pending
+    ensures: companion.status = completed
+}
+
+rule MarkConversationCompanionComplete {
+    when: companion: CompanionTurn.status transitions_to completed
+    let turn = ConversationTurn{correlation_id: companion.correlation_id}
+    requires: turn.status = digested
+    ensures: turn.status = companion_complete
+}
+
+open question "Should companion completion be mandatory for all turns, or optional as in current non-strict virtual-agent checks?"

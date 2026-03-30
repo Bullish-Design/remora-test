@@ -1,0 +1,22 @@
+from grail import Input, external
+
+target_node_id: str = Input("target_node_id", default="")
+
+
+@external
+async def my_node_id() -> str: ...
+
+
+@external
+async def graph_get_dependencies(target_id: str) -> list[str]: ...
+
+
+resolved = target_node_id.strip() if target_node_id.strip() else await my_node_id()
+dependencies = await graph_get_dependencies(resolved)
+
+if not dependencies:
+    result = f"No dependencies found for {resolved}"
+else:
+    lines = "\n".join(f"- {node_id}" for node_id in dependencies[:30])
+    result = f"Dependencies for {resolved} ({len(dependencies)}):\n{lines}"
+result

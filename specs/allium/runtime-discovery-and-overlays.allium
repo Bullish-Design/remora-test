@@ -1,0 +1,100 @@
+-- allium: 3
+-- runtime-discovery-and-overlays.allium
+--
+-- Scope: remora runtime profile selection, discovery, and overlay routing
+-- Includes:
+--   - default/constrained/stress profile activation
+--   - discovery expectations across configured languages
+--   - modern remora config key validation
+-- Excludes:
+--   - per-tool execution semantics
+--   - proposal acceptance details
+
+entity RuntimeProfile {
+    name: default | constrained | stress
+    status: draft | active
+    discovery_paths: Set<String>
+    discovery_languages: Set<String>
+    query_search_paths: Set<String>
+    bundle_search_paths: Set<String>
+    search_enabled: Boolean
+    max_concurrency: Integer
+    trigger_cooldown_ms: Integer
+    actor_inbox_max_items: Integer?
+    actor_inbox_overflow_policy: drop_new | unbounded
+
+    transitions status {
+        draft -> active
+        terminal: active
+    }
+}
+
+entity DiscoveryRun {
+    profile: RuntimeProfile
+    status: pending | completed
+    function_nodes: Integer when status = completed
+    section_nodes: Integer when status = completed
+    table_nodes: Integer when status = completed
+    virtual_nodes: Integer when status = completed
+
+    transitions status {
+        pending -> completed
+        terminal: completed
+    }
+}
+
+entity RuntimeConfigDocument {
+    status: unchecked | validated
+    modern_keys_present: Boolean when status = validated
+    legacy_keys_present: Boolean when status = validated
+
+    transitions status {
+        unchecked -> validated
+        terminal: validated
+    }
+}
+
+rule ActivateProfile {
+    when: ProfileSelected(profile)
+    requires: profile.status = draft
+    ensures: profile.status = active
+}
+
+rule ValidateRuntimeConfigShape {
+    when: config_doc: RuntimeConfigDocument.created
+    requires: config_doc.status = unchecked
+    ensures: config_doc.modern_keys_present = ConfigScanner.has_modern_runtime_keys(config_doc)
+    ensures: config_doc.legacy_keys_present = ConfigScanner.has_legacy_runtime_keys(config_doc)
+    ensures: config_doc.status = validated
+}
+
+rule ExecuteDiscovery {
+    when: run: DiscoveryRun.created
+    requires: run.status = pending
+    requires: run.profile.status = active
+    ensures: run.function_nodes = Discovery.count_nodes(run.profile, "function")
+    ensures: run.section_nodes = Discovery.count_nodes(run.profile, "section")
+    ensures: run.table_nodes = Discovery.count_nodes(run.profile, "table")
+    ensures: run.virtual_nodes = Discovery.count_nodes(run.profile, "virtual")
+    ensures: run.status = completed
+}
+
+invariant RuntimeConfigMustUseModernKeys {
+    for config_doc in RuntimeConfigDocuments:
+        config_doc.status = validated implies config_doc.modern_keys_present and not config_doc.legacy_keys_present
+}
+
+invariant DiscoveryYieldsFunctions {
+    for run in DiscoveryRuns:
+        run.status = completed implies run.function_nodes >= 1
+}
+
+invariant MultiLanguageProfilesYieldMarkdownAndTomlNodes {
+    for run in DiscoveryRuns:
+        run.status = completed and run.profile.name in {default, stress}
+            implies run.section_nodes >= 1 and run.table_nodes >= 1
+}
+
+deferred ConfigScanner.has_modern_runtime_keys
+deferred ConfigScanner.has_legacy_runtime_keys
+deferred Discovery.count_nodes

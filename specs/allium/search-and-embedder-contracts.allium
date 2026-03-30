@@ -1,0 +1,101 @@
+-- allium: 3
+-- search-and-embedder-contracts.allium
+--
+-- Scope: indexing/search contract and remote embedder behavior
+-- Includes:
+--   - pre-search indexing requirement
+--   - strict vs non-strict search behavior
+--   - response-shape guarantees for successful search
+--   - mock embedder health/encode contract used in demo environments
+-- Excludes:
+--   - runtime discovery and overlays
+--   - LSP bridge path
+
+entity IndexRun {
+    status: pending | completed | failed
+    error_count: Integer when status = completed | failed
+
+    transitions status {
+        pending -> completed
+        pending -> failed
+        terminal: completed, failed
+    }
+}
+
+entity SearchCheck {
+    query: String
+    collection: String
+    mode: String
+    require_search: Boolean
+    max_index_errors: Integer
+    status: pending | passed | skipped | failed
+    total_results: Integer when status = passed
+
+    transitions status {
+        pending -> passed
+        pending -> skipped
+        pending -> failed
+        terminal: passed, skipped, failed
+    }
+}
+
+entity EmbedderService {
+    mode: remote
+    remote_url: String
+    model_name: String
+    embedding_dimension: Integer
+}
+
+rule RunIndex {
+    when: check: SearchCheck.created
+    requires: check.status = pending
+    ensures: IndexRequested(check: check)
+}
+
+rule CompleteSearchCheckStrictFailure {
+    when: IndexCompleted(check, index_run)
+    requires: check.status = pending
+    requires: check.require_search = true
+    requires: index_run.status = failed or index_run.error_count > check.max_index_errors
+    ensures: check.status = failed
+}
+
+rule CompleteSearchCheckNonStrictSkip {
+    when: IndexCompleted(check, index_run)
+    requires: check.status = pending
+    requires: check.require_search = false
+    requires: index_run.status = failed
+    ensures: check.status = skipped
+}
+
+rule ExecuteSearchAfterHealthyIndex {
+    when: IndexCompleted(check, index_run)
+    requires: check.status = pending
+    requires: index_run.status = completed
+    requires: index_run.error_count <= check.max_index_errors
+    let results = SearchApi.total_results(check.query, check.collection, check.mode)
+    ensures: check.total_results = results
+    ensures:
+        if results >= 1:
+            check.status = passed
+        else:
+            check.status = failed
+}
+
+rule VerifyEmbedderHealth {
+    when: service: EmbedderService.created
+    ensures: EmbedderHealthObserved(service: service, status: "ok", dimension: service.embedding_dimension)
+}
+
+rule VerifyEmbedderEncode {
+    when: EncodeRequested(service, input_count)
+    requires: input_count >= 0
+    ensures: EmbeddingsReturned(service: service, vector_count: input_count, dimension: service.embedding_dimension)
+}
+
+invariant EmbedderDimensionPositive {
+    for service in EmbedderServices:
+        service.embedding_dimension > 0
+}
+
+deferred SearchApi.total_results

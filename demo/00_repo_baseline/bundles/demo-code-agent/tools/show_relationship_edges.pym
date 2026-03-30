@@ -1,0 +1,28 @@
+from grail import Input, external
+
+target_node_id: str = Input("target_node_id", default="")
+edge_type: str = Input("edge_type", default="imports")
+
+
+@external
+async def my_node_id() -> str: ...
+
+
+@external
+async def graph_get_edges_by_type(target_id: str, edge_type: str) -> list[dict]: ...
+
+
+resolved = target_node_id.strip() if target_node_id.strip() else await my_node_id()
+resolved_edge_type = edge_type.strip() if edge_type.strip() else "imports"
+edges = await graph_get_edges_by_type(resolved, resolved_edge_type)
+
+if not edges:
+    result = f"No {resolved_edge_type} edges for {resolved}"
+else:
+    lines = []
+    for item in edges[:50]:
+        from_id = str(item.get("from_id", ""))
+        to_id = str(item.get("to_id", ""))
+        lines.append(f"- {from_id} -> {to_id}")
+    result = f"{resolved_edge_type} edges for {resolved} ({len(edges)}):\n" + "\n".join(lines)
+result

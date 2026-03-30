@@ -1,0 +1,51 @@
+-- allium: 3
+-- ui-asset-localization.allium
+--
+-- Scope: upstream package UI dependency integrity checks
+-- Includes:
+--   - verifying runtime-served index references packaged /static/vendor assets
+--   - verifying required vendor assets are served from runtime static paths
+-- Excludes:
+--   - graph rendering semantics
+--   - runtime API behavior
+
+entity UiDependencyCheck {
+    status: pending | checked
+    index_references_unpkg: Boolean when status = checked
+    index_references_packaged_vendor: Boolean when status = checked
+    vendor_assets_served: Boolean when status = checked
+
+    transitions status {
+        pending -> checked
+        terminal: checked
+    }
+}
+
+rule RunUiDependencyDiagnostics {
+    when: check: UiDependencyCheck.created
+    requires: check.status = pending
+    ensures: check.index_references_unpkg = UiIndex.has_unpkg_graph_dependencies()
+    ensures: check.index_references_packaged_vendor = UiIndex.has_packaged_vendor_dependencies()
+    ensures: check.vendor_assets_served = RuntimeStatic.vendor_assets_served()
+    ensures: check.status = checked
+}
+
+rule RejectCdnDependency {
+    when: check: UiDependencyCheck.status transitions_to checked
+    requires: check.index_references_unpkg
+    ensures: UiDependencyViolationRaised(
+        message: "UI must not depend on unpkg CDN in demo verification"
+    )
+}
+
+rule RequirePackagedVendorAssets {
+    when: check: UiDependencyCheck.status transitions_to checked
+    requires: not check.index_references_packaged_vendor or not check.vendor_assets_served
+    ensures: UiDependencyViolationRaised(
+        message: "UI must resolve required /static/vendor assets from upstream package runtime"
+    )
+}
+
+deferred UiIndex.has_unpkg_graph_dependencies
+deferred UiIndex.has_packaged_vendor_dependencies
+deferred RuntimeStatic.vendor_assets_served

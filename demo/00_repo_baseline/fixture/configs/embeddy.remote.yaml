@@ -1,0 +1,12 @@
+embedder:
+  mode: remote
+  remote_url: http://127.0.0.1:8586
+  model_name: mock-embedder-v1
+  embedding_dimension: 2048
+
+pipeline:
+  collection: code
+
+server:
+  host: 127.0.0.1
+  port: 8585

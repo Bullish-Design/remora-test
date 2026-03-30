@@ -1,0 +1,42 @@
+{
+  "externals": [
+    {
+      "name": "write_file",
+      "async": true,
+      "parameters": [
+        {
+          "name": "path",
+          "type": "str",
+          "default": null
+        },
+        {
+          "name": "content",
+          "type": "str",
+          "default": null
+        }
+      ],
+      "return_type": "None",
+      "docstring": null
+    },
+    {
+      "name": "propose_changes",
+      "async": true,
+      "parameters": [
+        {
+          "name": "reason",
+          "type": "str",
+          "default": "Constant(value='')"
+        }
+      ],
+      "return_type": "str",
+      "docstring": null
+    },
+    {
+      "name": "my_node_id",
+      "async": true,
+      "parameters": [],
+      "return_type": "str",
+      "docstring": null
+    }
+  ]
+}
